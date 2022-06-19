@@ -6,6 +6,7 @@ import HomeLayout from 'src/layouts/HomeLayout'
 const Routes = () => {
   return (
     <Router>
+      <Route path="/product" page={ProductPage} name="product" />
       <Set wrap={ProductsLayout}>
         <Route path="/products/new" page={ProductNewProductPage} name="newProduct" />
         <Route path="/products/{id:Int}/edit" page={ProductEditProductPage} name="editProduct" />

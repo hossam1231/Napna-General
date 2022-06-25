@@ -8,12 +8,20 @@
 // 'src/pages/Admin/BooksPage/BooksPage.js' -> AdminBooksPage
 
 import { Router, Route, Set } from '@redwoodjs/router'
+
+import ProductsLayout from 'src/layouts/ProductsLayout'
 import FooterLayout from 'src/layouts/FooterLayout'
 import HeaderLayout from 'src/layouts/HeaderLayout'
 
 const Routes = () => {
   return (
     <Router>
+      <Set wrap={ProductsLayout}>
+        <Route path="/products/new" page={ProductNewProductPage} name="newProduct" />
+        <Route path="/products/{id}/edit" page={ProductEditProductPage} name="editProduct" />
+        <Route path="/products/{id}" page={ProductProductPage} name="product" />
+        <Route path="/products" page={ProductProductsPage} name="products" />
+      </Set>
       <Set wrap={FooterLayout}>
         <Set wrap={HeaderLayout}>
           <Route path="/" page={HomePage} name="home" />

@@ -75,7 +75,7 @@ export const FooterComponent = () => {
           borderTop: (theme) => `1px solid ${theme.palette.divider}`,
           mt: 8,
           py: [3, 6],
-          position: 'absolute',
+          position: 'relative',
           bottom: 0,
         }}
       >

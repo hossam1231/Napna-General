@@ -16,6 +16,7 @@ import HeaderLayout from 'src/layouts/HeaderLayout'
 const Routes = () => {
   return (
     <Router>
+      <Route path="/shop/{id:String}" page={ShopPage} name="shop" />
       <Set wrap={ProductsLayout}>
         <Route path="/products/new" page={ProductNewProductPage} name="newProduct" />
         <Route path="/products/{id}/edit" page={ProductEditProductPage} name="editProduct" />

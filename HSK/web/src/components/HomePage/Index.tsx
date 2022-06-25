@@ -15,26 +15,6 @@ import Typography from '@mui/material/Typography'
 import GlobalStyles from '@mui/material/GlobalStyles'
 import Container from '@mui/material/Container'
 
-type HeaderLayoutProps = {
-  children?: React.ReactNode
-}
-
-function Copyright(props: any) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {'Copyright © '}
-
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  )
-}
-
 const tiers = [
   {
     title: 'Free',
@@ -74,87 +54,16 @@ const tiers = [
     buttonVariant: 'outlined',
   },
 ]
-const Headers = [
-  {
-    title: 'Company',
-    description: ['Team', 'History', 'Contact us', 'Locations'],
-  },
-  {
-    title: 'Features',
-    description: [
-      'Cool stuff',
-      'Random feature',
-      'Team feature',
-      'Developer stuff',
-      'Another one',
-    ],
-  },
-  {
-    title: 'Resources',
-    description: [
-      'Resource',
-      'Resource name',
-      'Another resource',
-      'Final resource',
-    ],
-  },
-  {
-    title: 'Legal',
-    description: ['Privacy policy', 'Terms of use'],
-  },
-]
 
-function PricingContent() {
+const Index = () => {
+  return <div>Index</div>
+}
+
+export const Pricing = () => {
   return (
-    <React.Fragment>
-      <GlobalStyles
-        styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }}
-      />
-      <CssBaseline />
-      <AppBar
-        position="static"
-        color="default"
-        elevation={0}
-        sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
-      >
-        <Toolbar sx={{ flexWrap: 'wrap' }}>
-          <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-            Company name
-          </Typography>
-          <nav>
-            <Link
-              variant="button"
-              color="text.primary"
-              href="#"
-              sx={{ my: 1, mx: 1.5 }}
-            >
-              Features
-            </Link>
-            <Link
-              variant="button"
-              color="text.primary"
-              href="#"
-              sx={{ my: 1, mx: 1.5 }}
-            >
-              Enterprise
-            </Link>
-            <Link
-              variant="button"
-              color="text.primary"
-              href="#"
-              sx={{ my: 1, mx: 1.5 }}
-            >
-              Support
-            </Link>
-          </nav>
-          <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
-            Login
-          </Button>
-        </Toolbar>
-      </AppBar>
-
-      {/* Hero unit */}
-      {/* <Container
+    <>
+      {/* // Hero unit */}
+      <Container
         disableGutters
         maxWidth="sm"
         component="main"
@@ -179,9 +88,9 @@ function PricingContent() {
           with this layout. It&apos;s built with default MUI components with
           little customization.
         </Typography>
-      </Container> */}
-      {/* End hero unit */}
-      {/* <Container maxWidth="md" component="main">
+      </Container>
+      {/* // End hero unit */}
+      <Container maxWidth="md" component="main">
         <Grid container spacing={5} alignItems="flex-end">
           {tiers.map((tier) => (
             // Enterprise card is full width at sm breakpoint
@@ -252,54 +161,10 @@ function PricingContent() {
               </Card>
             </Grid>
           ))}
-        </Grid> */}
-      {/* </Container> */}
-      {/* Header */}
-      {/* <Container
-        maxWidth="md"
-        component="Header"
-        sx={{
-          borderTop: (theme) => `1px solid ${theme.palette.divider}`,
-          mt: 8,
-          py: [3, 6],
-          position: 'absolute',
-          bottom: 0,
-        }}
-      >
-        <Grid container spacing={4} justifyContent="space-evenly">
-          {Headers.map((Header) => (
-            <Grid item xs={6} sm={3} key={Header.title}>
-              <Typography variant="h6" color="text.primary" gutterBottom>
-                {Header.title}
-              </Typography>
-              <ul>
-                {Header.description.map((item) => (
-                  <li key={item}>
-                    <Link href="#" variant="subtitle1" color="text.secondary">
-                      {item}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </Grid>
-          ))}
         </Grid>
-        <Copyright sx={{ mt: 5 }} />
-      </Container> */}
-      {/* End Header */}
-    </React.Fragment>
-  )
-}
-
-const HeaderLayout = ({ children }: HeaderLayoutProps) => {
-  return (
-    <>
-      <header>
-        <PricingContent />
-      </header>
-      <main>{children}</main>
+      </Container>
     </>
   )
 }
 
-export default HeaderLayout
+export default Index

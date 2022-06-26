@@ -1,5 +1,6 @@
 import type { ShopQuery } from 'types/graphql'
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
+import Shop from '../Shop/Shop'
 
 export const QUERY = gql`
   query ShopQuery($id: String!) {
@@ -22,5 +23,5 @@ export const Failure = ({ error }: CellFailureProps) => (
 )
 
 export const Success = ({ shop }: CellSuccessProps<ShopQuery>) => {
-  return JSON.stringify(shop)
+  return <Shop shop={shop} />
 }

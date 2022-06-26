@@ -14,6 +14,7 @@ import Typography from '@mui/material/Typography'
 import GlobalStyles from '@mui/material/GlobalStyles'
 import Container from '@mui/material/Container'
 import { Link, routes } from '@redwoodjs/router'
+import { useAuth } from '@redwoodjs/auth'
 
 type HeaderLayoutProps = {
   children?: React.ReactNode
@@ -35,45 +36,6 @@ function Copyright(props: any) {
   )
 }
 
-const tiers = [
-  {
-    title: 'Free',
-    price: '0',
-    description: [
-      '10 users included',
-      '2 GB of storage',
-      'Help center access',
-      'Email support',
-    ],
-    buttonText: 'Sign up for free',
-    buttonVariant: 'outlined',
-  },
-  {
-    title: 'Pro',
-    subheader: 'Most popular',
-    price: '15',
-    description: [
-      '20 users included',
-      '10 GB of storage',
-      'Help center access',
-      'Priority email support',
-    ],
-    buttonText: 'Get started',
-    buttonVariant: 'contained',
-  },
-  {
-    title: 'Enterprise',
-    price: '30',
-    description: [
-      '50 users included',
-      '30 GB of storage',
-      'Help center access',
-      'Phone & email support',
-    ],
-    buttonText: 'Contact us',
-    buttonVariant: 'outlined',
-  },
-]
 const Headers = [
   {
     title: 'Company',
@@ -104,7 +66,9 @@ const Headers = [
   },
 ]
 
-function PricingContent() {
+function HeaderContent() {
+  const { isAuthenticated, currentUser, logOut } = useAuth()
+
   return (
     <React.Fragment>
       <GlobalStyles
@@ -129,11 +93,28 @@ function PricingContent() {
               <li>
                 <Link to={routes.contact()}>Contact</Link>
               </li>
+
+              <li>
+                <Link to={routes.signup()}>Sign Up</Link>
+              </li>
+              <li>
+                <Link to={routes.login()}>Log In</Link>
+              </li>
             </ul>
+
+            <div className="flex-between">
+              {isAuthenticated ? (
+                <div>
+                  <span>Logged in as {currentUser.email}</span>{' '}
+                  <button type="button" onClick={logOut}>
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <Link to={routes.login()}>Login</Link>
+              )}
+            </div>
           </nav>
-          <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
-            Login
-          </Button>
         </Toolbar>
       </AppBar>
     </React.Fragment>
@@ -144,7 +125,7 @@ const HeaderLayout = ({ children }: HeaderLayoutProps) => {
   return (
     <>
       <header>
-        <PricingContent />
+        <HeaderContent />
       </header>
       <main>{children}</main>
     </>

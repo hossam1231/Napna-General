@@ -25,6 +25,7 @@ const Routes = () => {
       </Set>
       <Set wrap={FooterLayout}>
         <Set wrap={HeaderLayout}>
+          <Route path="/contact" page={ContactPage} name="contact" />
           <Route path="/" page={HomePage} name="home" />
         </Set>
       </Set>

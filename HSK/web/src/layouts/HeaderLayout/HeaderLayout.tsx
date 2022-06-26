@@ -1,4 +1,3 @@
-import { Link, routes } from '@redwoodjs/router'
 import Button from '@mui/material/Button'
 import * as React from 'react'
 import AppBar from '@mui/material/AppBar'
@@ -14,6 +13,7 @@ import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import GlobalStyles from '@mui/material/GlobalStyles'
 import Container from '@mui/material/Container'
+import { Link, routes } from '@redwoodjs/router'
 
 type HeaderLayoutProps = {
   children?: React.ReactNode
@@ -122,171 +122,20 @@ function PricingContent() {
             Company name
           </Typography>
           <nav>
-            <Link
-              variant="button"
-              color="text.primary"
-              href="#"
-              sx={{ my: 1, mx: 1.5 }}
-            >
-              Features
-            </Link>
-            <Link
-              variant="button"
-              color="text.primary"
-              href="#"
-              sx={{ my: 1, mx: 1.5 }}
-            >
-              Enterprise
-            </Link>
-            <Link
-              variant="button"
-              color="text.primary"
-              href="#"
-              sx={{ my: 1, mx: 1.5 }}
-            >
-              Support
-            </Link>
+            <ul>
+              <li>
+                <Link to={routes.home()}>Home</Link>
+              </li>
+              <li>
+                <Link to={routes.contact()}>Contact</Link>
+              </li>
+            </ul>
           </nav>
           <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
             Login
           </Button>
         </Toolbar>
       </AppBar>
-
-      {/* Hero unit */}
-      {/* <Container
-        disableGutters
-        maxWidth="sm"
-        component="main"
-        sx={{ pt: 8, pb: 6 }}
-      >
-        <Typography
-          component="h1"
-          variant="h2"
-          align="center"
-          color="text.primary"
-          gutterBottom
-        >
-          Pricing
-        </Typography>
-        <Typography
-          variant="h5"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Quickly build an effective pricing table for your potential customers
-          with this layout. It&apos;s built with default MUI components with
-          little customization.
-        </Typography>
-      </Container> */}
-      {/* End hero unit */}
-      {/* <Container maxWidth="md" component="main">
-        <Grid container spacing={5} alignItems="flex-end">
-          {tiers.map((tier) => (
-            // Enterprise card is full width at sm breakpoint
-            <Grid
-              item
-              key={tier.title}
-              xs={12}
-              sm={tier.title === 'Enterprise' ? 12 : 6}
-              md={4}
-            >
-              <Card>
-                <CardHeader
-                  title={tier.title}
-                  subheader={tier.subheader}
-                  titleTypographyProps={{ align: 'center' }}
-                  action={tier.title === 'Pro' ? <StarIcon /> : null}
-                  subheaderTypographyProps={{
-                    align: 'center',
-                  }}
-                  sx={{
-                    backgroundColor: (theme) =>
-                      theme.palette.mode === 'light'
-                        ? theme.palette.grey[200]
-                        : theme.palette.grey[700],
-                  }}
-                />
-                <CardContent>
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'baseline',
-                      mb: 2,
-                    }}
-                  >
-                    <Typography
-                      component="h2"
-                      variant="h3"
-                      color="text.primary"
-                    >
-                      ${tier.price}
-                    </Typography>
-                    <Typography variant="h6" color="text.secondary">
-                      /mo
-                    </Typography>
-                  </Box>
-                  <ul>
-                    {tier.description.map((line) => (
-                      <Typography
-                        component="li"
-                        variant="subtitle1"
-                        align="center"
-                        key={line}
-                      >
-                        {line}
-                      </Typography>
-                    ))}
-                  </ul>
-                </CardContent>
-                <CardActions>
-                  <Button
-                    fullWidth
-                    variant={tier.buttonVariant as 'outlined' | 'contained'}
-                  >
-                    {tier.buttonText}
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
-        </Grid> */}
-      {/* </Container> */}
-      {/* Header */}
-      {/* <Container
-        maxWidth="md"
-        component="Header"
-        sx={{
-          borderTop: (theme) => `1px solid ${theme.palette.divider}`,
-          mt: 8,
-          py: [3, 6],
-          position: 'absolute',
-          bottom: 0,
-        }}
-      >
-        <Grid container spacing={4} justifyContent="space-evenly">
-          {Headers.map((Header) => (
-            <Grid item xs={6} sm={3} key={Header.title}>
-              <Typography variant="h6" color="text.primary" gutterBottom>
-                {Header.title}
-              </Typography>
-              <ul>
-                {Header.description.map((item) => (
-                  <li key={item}>
-                    <Link href="#" variant="subtitle1" color="text.secondary">
-                      {item}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </Grid>
-          ))}
-        </Grid>
-        <Copyright sx={{ mt: 5 }} />
-      </Container> */}
-      {/* End Header */}
     </React.Fragment>
   )
 }

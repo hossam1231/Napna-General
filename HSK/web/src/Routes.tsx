@@ -8,9 +8,7 @@
 // 'src/pages/Admin/BooksPage/BooksPage.js' -> AdminBooksPage
 import { Private, Router, Route, Set } from '@redwoodjs/router'
 import ProductsLayout from 'src/layouts/ProductsLayout'
-import FooterLayout from 'src/layouts/FooterLayout'
-import HeaderLayout from 'src/layouts/HeaderLayout'
-import HomeLayout from './layouts/HomeLayout/HomeLayout'
+import HeaderAndFooterLayout from './layouts/HeaderAndFooterLayout/HeaderAndFooterLayout'
 
 const Routes = () => {
   return (
@@ -26,8 +24,9 @@ const Routes = () => {
         <Route path="/products/{id}" page={ProductProductPage} name="product" />
         <Route path="/products" page={ProductProductsPage} name="products" />
       </Set>
-      <Set wrap={HomeLayout}>
+      <Set wrap={HeaderAndFooterLayout}>
         <Route path="/" page={HomePage} name="home" />
+        <Route path="/pricing" page={PricingPage} name="pricing" />
       </Set>
 
       <Route path="/contact" page={ContactPage} name="contact" />

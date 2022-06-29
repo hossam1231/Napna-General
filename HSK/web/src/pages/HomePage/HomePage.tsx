@@ -303,7 +303,7 @@ const HomePage = () => {
               <p>£0.03 per</p>
             </Grid>
             <Grid item sm={3}>
-              <Typography>250 free p/m</Typography>
+              <Typography>250 included p/m</Typography>
             </Grid>
             <Grid item sm={3}>
               <Check />
@@ -311,9 +311,11 @@ const HomePage = () => {
             <Grid item sm={3}>
               <Typography>Teams</Typography>
             </Grid>
-            <Grid item sm={3}></Grid>
             <Grid item sm={3}>
-              <Typography>250 free p/m</Typography>
+              <Check />
+            </Grid>
+            <Grid item sm={3}>
+              <Check />
             </Grid>
             <Grid item sm={3}>
               <Check />
@@ -321,9 +323,11 @@ const HomePage = () => {
             <Grid item sm={3}>
               <Typography>Storage</Typography>
             </Grid>
-            <Grid item sm={3}></Grid>
             <Grid item sm={3}>
-              <Typography>250 free p/m</Typography>
+              <Typography>£1 per GB p/pm</Typography>
+            </Grid>
+            <Grid item sm={3}>
+              <Typography>500mb included p/m</Typography>
             </Grid>
             <Grid item sm={3}>
               <Check />
@@ -331,9 +335,21 @@ const HomePage = () => {
             <Grid item sm={3}>
               <Typography>Mailing List</Typography>
             </Grid>
+            <Grid item sm={3}>
+              <Typography>£8 per 1000 recepients</Typography>
+            </Grid>
+            <Grid item sm={3}>
+              <Typography>1500 included</Typography>
+            </Grid>
+            <Grid item sm={3}>
+              <Check />
+            </Grid>
+            <Grid item sm={3}>
+              <Typography>Promotions </Typography>
+            </Grid>
             <Grid item sm={3}></Grid>
             <Grid item sm={3}>
-              <Typography>5</Typography>
+              <Check />
             </Grid>
             <Grid item sm={3}>
               <Check />
@@ -415,62 +431,58 @@ const HomePage = () => {
             <Grid item sm={3}>
               <Typography>Accept payments</Typography>
             </Grid>
+            <Grid item sm={3}></Grid>
             <Grid item sm={3}>
-              <p>hi</p>
-            </Grid>
-            <Grid item sm={3}>
-              <p>hi</p>
+              <Typography>0.5% + £0.17 </Typography>
             </Grid>{' '}
             <Grid item sm={3}>
-              <p>hi</p>
+              <Typography>0.5 + £0.15</Typography>
             </Grid>
             <Grid item sm={3}>
               <Typography>Stock managment</Typography>
             </Grid>
             <Grid item sm={3}>
-              <p>hi</p>
+              <Check />
             </Grid>
             <Grid item sm={3}>
-              <p>hi</p>
+              <Check />
             </Grid>{' '}
             <Grid item sm={3}>
-              <p>hi</p>
+              <Check />
             </Grid>
             <Grid item sm={3}>
               <Typography>Webhooks</Typography>
             </Grid>
+            <Grid item sm={3}></Grid>
             <Grid item sm={3}>
-              <p>hi</p>
-            </Grid>
-            <Grid item sm={3}>
-              <p>hi</p>
+              <Check />
             </Grid>{' '}
             <Grid item sm={3}>
-              <p>hi</p>
+              <Check />
             </Grid>
             <Grid item sm={3}>
               <Typography>Custom app & domain name</Typography>
             </Grid>
+            <Grid item sm={3}></Grid>
+            <Grid item sm={3}></Grid>
             <Grid item sm={3}>
-              <p>hi</p>
-            </Grid>
-            <Grid item sm={3}>
-              <p>hi</p>
-            </Grid>{' '}
-            <Grid item sm={3}>
-              <p>hi</p>
+              <Check />
             </Grid>
             <Grid item sm={3}>
               <Typography>Point of sale terminal</Typography>
             </Grid>
+            <Grid item sm={3}></Grid>
+            <Grid item sm={3}></Grid>
             <Grid item sm={3}>
-              <p>hi</p>
+              <Check />
             </Grid>
             <Grid item sm={3}>
-              <p>hi</p>
-            </Grid>{' '}
+              <Typography>CRM</Typography>
+            </Grid>
+            <Grid item sm={3}></Grid>
+            <Grid item sm={3}></Grid>
             <Grid item sm={3}>
-              <p>hi</p>
+              <Check />
             </Grid>
           </Grid>
         </Grid>
@@ -479,7 +491,7 @@ const HomePage = () => {
           <Grid item sm={1} xs={1}>
             {/* gutter */}
           </Grid>
-          <Grid item sm={10}>
+          <Grid sx={{ borderWidth: '2px', borderColor: 'black' }} item sm={10}>
             <Box>
               <Typography>Early bird special!</Typography>
             </Box>
@@ -500,6 +512,56 @@ const HomePage = () => {
             </Box>
           </Grid>
           <Grid item sm={1} xs={1}>
+            {/* gutter */}
+          </Grid>
+        </Grid>
+
+        <Grid
+          container
+          sx={{
+            width: '100%',
+            height: '400px',
+            borderWidth: '2px',
+            borderColor: 'black',
+          }}
+        ></Grid>
+
+        <Grid container>
+          <Grid item lg={1}>
+            {/* gutter */}
+          </Grid>
+          <Grid item lg={10}>
+            <Grid container>
+              <Grid item xs={12}>
+                <Typography>Key information about the paid plans</Typography>
+              </Grid>
+              <Grid item lg={6} xs={12}></Grid>
+              <Grid item lg={6} xs={12}></Grid>
+              <Grid item lg={6} xs={12}></Grid>
+              <Grid item lg={6} xs={12}></Grid>
+            </Grid>
+          </Grid>
+          <Grid item lg={1}>
+            {/* gutter */}
+          </Grid>
+        </Grid>
+
+        <Divider />
+        <Grid container>
+          <Grid item lg={1}>
+            {/* gutter */}
+          </Grid>
+          <Grid item lg={10}>
+            <Grid container>
+              <Grid item xs={12}>
+                <Typography>Frequently asked questions</Typography>
+              </Grid>
+              <Grid item lg={4} xs={12}></Grid>
+              <Grid item lg={4} xs={12}></Grid>
+              <Grid item lg={4} xs={12}></Grid>
+            </Grid>
+          </Grid>
+          <Grid item lg={1}>
             {/* gutter */}
           </Grid>
         </Grid>

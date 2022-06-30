@@ -66,7 +66,15 @@ const HomePage = () => {
           {/* gutter */}
         </Grid>
         <Grid item lg={8}>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Box
+            sx={{
+              width: '100%',
+              height: '20vh',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
             <Box>
               <Typography>Get the app</Typography>
             </Box>
@@ -105,6 +113,41 @@ const HomePage = () => {
         <Grid item lg={3}></Grid>
       </Grid>
 
+      <Grid
+        container
+        sx={{
+          borderWidth: '1px',
+          borderColor: 'black',
+          height: '85vh',
+          width: '100%',
+        }}
+      >
+        <Grid
+          item
+          sx={{
+            alignText: 'center',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+          lg={8}
+        >
+          <Box>
+            <Typography>Download App</Typography>
+            <Typography>
+              People around you are are getting the most out of their area using
+              the Napna App.
+            </Typography>
+            <Box sx={{ display: 'flex' }}>
+              <Box>{/* apple */}</Box>
+              <Box>{/* google */}</Box>
+            </Box>
+          </Box>
+        </Grid>
+
+        <Grid item lg={4}>
+          {/* phone */}
+        </Grid>
+      </Grid>
       <Modal
         open={open}
         onClose={handleClose}

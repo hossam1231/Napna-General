@@ -2,6 +2,7 @@ import React from 'react'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import { Box, Chip, Modal } from '@mui/material'
+import { Testemonials } from 'src/components/PricingPage/Index'
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -45,11 +46,11 @@ const HomePage = () => {
               <Typography>Get started</Typography>
             </Box>
             <Box onClick={handleOpen}>
-              <Typography>What are you feeling?</Typography>
+              <Typography>What are searching for?</Typography>
               <Box sx={{ display: 'flex' }}>
-                <Chip label="Groceries" />
-                <Chip label="Convenience" />
-                <Chip label="Barber" />
+                <Chip label="Oregano" />
+                <Chip label="Haircut" />
+                <Chip label="Lamps" />
               </Box>
             </Box>
           </Box>
@@ -61,12 +62,47 @@ const HomePage = () => {
       </Grid>
 
       <Grid container>
+        <Grid item lg={2}>
+          {/* gutter */}
+        </Grid>
+        <Grid item lg={8}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Box>
+              <Typography>Get the app</Typography>
+            </Box>
+            <Box>
+              <Box>{/* appple */}</Box>
+              <Box>{/* play store */}</Box>
+            </Box>
+          </Box>
+        </Grid>
+        <Grid item lg={2}>
+          {/* gutter */}
+        </Grid>
+      </Grid>
+
+      <Grid container>
         <Grid item lg={12}>
           <Typography>
             Beautiful and powerful, right out of the boxBeautiful and powerful,
             right out of the box
           </Typography>
+          {/* show image of scan of plant with type of room it would like and water frequency info with it and price ect */}
         </Grid>
+      </Grid>
+
+      <Testemonials />
+
+      <Grid container>
+        <Grid item lg={12}>
+          <Typography>
+            A delightful experience for you and your users
+          </Typography>
+        </Grid>
+        <Grid item lg={3}></Grid>
+        <Grid item lg={3}></Grid>
+        <Grid item lg={3}></Grid>
+        <Grid item lg={3}></Grid>
       </Grid>
 
       <Modal

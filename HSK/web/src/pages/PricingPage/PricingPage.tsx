@@ -11,6 +11,7 @@ import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
 import CheckIcon from '@mui/icons-material/Check'
 import CloseIcon from '@mui/icons-material/Close'
+import { Testemonials } from 'src/components/PricingPage/Index'
 
 const Close = styled(CloseIcon)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -531,15 +532,7 @@ const PricingPage = () => {
           </Grid>
         </Grid>
 
-        <Grid
-          container
-          sx={{
-            width: '100%',
-            height: '400px',
-            borderWidth: '2px',
-            borderColor: 'black',
-          }}
-        ></Grid>
+        <Testemonials />
 
         <Grid container>
           <Grid item lg={1}>

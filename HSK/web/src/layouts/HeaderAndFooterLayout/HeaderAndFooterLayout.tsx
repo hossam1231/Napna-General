@@ -7,13 +7,14 @@ import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
 import CardHeader from '@mui/material/CardHeader'
 import CssBaseline from '@mui/material/CssBaseline'
-import Grid from '@mui/material/Grid'
 import StarIcon from '@mui/icons-material/StarBorder'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
-import Link from '@mui/material/Link'
 import GlobalStyles from '@mui/material/GlobalStyles'
 import Container from '@mui/material/Container'
+import { Link, routes } from '@redwoodjs/router'
+import Grid from '@mui/material/Grid'
+import { useAuth } from '@redwoodjs/auth'
 
 type HeaderAndFooterLayoutProps = {
   children?: React.ReactNode
@@ -28,9 +29,7 @@ function Copyright(props: any) {
       {...props}
     >
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
+
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -67,6 +66,7 @@ const HeaderAndFooterLayout = ({ children }: HeaderAndFooterLayoutProps) => {
       description: ['Privacy policy', 'Terms of use'],
     },
   ]
+  const { isAuthenticated, currentUser, logOut } = useAuth()
 
   return (
     <>
@@ -77,45 +77,39 @@ const HeaderAndFooterLayout = ({ children }: HeaderAndFooterLayoutProps) => {
           elevation={0}
           sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
         >
-          <Toolbar sx={{ flexWrap: 'wrap' }}>
-            <Typography
-              variant="h6"
-              color="inherit"
-              noWrap
-              sx={{ flexGrow: 1 }}
-            >
-              Company name
-            </Typography>
-            <nav>
-              <Link
-                variant="button"
-                color="text.primary"
-                href="#"
-                sx={{ my: 1, mx: 1.5 }}
-              >
-                Features
+          <Grid
+            container
+            sx={{ alignItems: 'center', justifyContent: 'space-between' }}
+          >
+            <Grid item>
+              <Link to={routes.home()}>
+                <Typography
+                  variant="h6"
+                  color="inherit"
+                  noWrap
+                  sx={{ marginLeft: '15px', flexGrow: 1 }}
+                >
+                  Napna
+                </Typography>
               </Link>
-              <Link
-                variant="button"
-                color="text.primary"
-                href="#"
-                sx={{ my: 1, mx: 1.5 }}
-              >
-                Enterprise
-              </Link>
-              <Link
-                variant="button"
-                color="text.primary"
-                href="#"
-                sx={{ my: 1, mx: 1.5 }}
-              >
-                Support
-              </Link>
-            </nav>
-            <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
-              Login
-            </Button>
-          </Toolbar>
+            </Grid>
+            <Grid item sx={{ alignItems: 'center', display: 'flex' }}>
+              <Link to={routes.pricing()}>Pricing</Link>
+              <>
+                {isAuthenticated ? (
+                  <button type="button" onClick={logOut}>
+                    Logout
+                  </button>
+                ) : (
+                  <Link to={routes.login()}>
+                    <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
+                      Login
+                    </Button>
+                  </Link>
+                )}
+              </>
+            </Grid>
+          </Grid>
         </AppBar>
       </header>
 
@@ -140,9 +134,9 @@ const HeaderAndFooterLayout = ({ children }: HeaderAndFooterLayoutProps) => {
                 <ul>
                   {footer.description.map((item) => (
                     <li key={item}>
-                      <Link href="#" variant="subtitle1" color="text.secondary">
+                      <Typography variant="subtitle1" color="text.secondary">
                         {item}
-                      </Link>
+                      </Typography>
                     </li>
                   ))}
                 </ul>

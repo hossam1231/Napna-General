@@ -13616,14 +13616,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql@npm:16.5.0":
-  version: 15.8.0
-  resolution: "graphql@npm:15.8.0"
-  checksum: 30cc09b77170a9d1ed68e4c017ec8c5265f69501c96e4f34f8f6613f39a886c96dd9853eac925f212566ed651736334c8fe24ceae6c44e8d7625c95c3009a801
-  languageName: node
-  linkType: hard
-
-"graphql@npm:^16.3.0":
+"graphql@npm:16.5.0, graphql@npm:^16.3.0":
   version: 16.5.0
   resolution: "graphql@npm:16.5.0"
   checksum: 082bad733549a032fe313dd94b780c0e2a46a6a362183e02e2050f6e083fb49722afb1413b069314d5ba1bc3fa14e22817820a9e61e2bbcba8d35f925d0de60e

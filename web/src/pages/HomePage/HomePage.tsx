@@ -1,7 +1,15 @@
 import React from 'react'
 
+import DirectionsIcon from '@mui/icons-material/Directions'
+import MenuIcon from '@mui/icons-material/Menu'
+import SearchIcon from '@mui/icons-material/Search'
 import { Box, Chip, Modal } from '@mui/material'
+import Button from '@mui/material/Button'
+import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid'
+import IconButton from '@mui/material/IconButton'
+import InputBase from '@mui/material/InputBase'
+import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
 
 const style = {
@@ -32,9 +40,19 @@ const HomePage = () => {
           borderColor: 'black',
         }}
       >
-        <Grid item sx={{ justifyContent: 'center', flex: '1' }} lg={6}>
-          <Typography variant="h2" component="h2" gutterBottom>
-            Where you at though?
+        <Grid
+          item
+          sx={{
+            borderWidth: '1px',
+            borderColor: 'black',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flex: '1',
+          }}
+          lg={6}
+        >
+          <Typography variant="h1" component="h1" gutterBottom>
+            Where are you at though?
           </Typography>
           <Typography gutterBottom>
             Earn rewards, reduce the amount of CO2 you emit all by saving time
@@ -43,10 +61,43 @@ const HomePage = () => {
           </Typography>
           <Box sx={{ display: 'flex' }}>
             <Box onClick={handleOpen} sx={{ mr: '1rem' }}>
-              <Typography>Get started</Typography>
+              <Button>Get started</Button>
             </Box>
             <Box onClick={handleOpen}>
-              <Typography>What are searching for?</Typography>
+              <Paper
+                component="form"
+                sx={{
+                  p: '2px 4px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  width: 400,
+                }}
+              >
+                <IconButton sx={{ p: '10px' }} aria-label="menu">
+                  <MenuIcon />
+                </IconButton>
+                <InputBase
+                  sx={{ ml: 1, flex: 1 }}
+                  placeholder="What are searching for?"
+                  inputProps={{ 'aria-label': 'Search Napna' }}
+                />
+                <IconButton
+                  type="submit"
+                  sx={{ p: '10px' }}
+                  aria-label="search"
+                >
+                  <SearchIcon />
+                </IconButton>
+                <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+                <IconButton
+                  color="primary"
+                  sx={{ p: '10px' }}
+                  aria-label="directions"
+                >
+                  <DirectionsIcon />
+                </IconButton>
+              </Paper>
+
               <Box sx={{ display: 'flex' }}>
                 <Chip label="Oregano" />
                 <Chip label="Haircut" />

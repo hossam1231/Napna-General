@@ -8,7 +8,7 @@
 [web]
   port = 8910
   apiUrl = "/.netlify/functions"
-  title = "Redwood Tutorial Blog"
+  title = "Napna"
 [api]
   port = 8911
 [browser]

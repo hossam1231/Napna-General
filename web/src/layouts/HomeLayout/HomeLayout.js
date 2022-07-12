@@ -43,9 +43,12 @@ const HomeLayout = ({ children }) => {
               </Box>
 
               <Box sx={{ display: 'flex' }}>
-                <p style={{ color: 'white' }} className={'Manrope200'}>
-                  Login
-                </p>
+                <Link to={routes.login()}>
+                  <p style={{ color: 'white' }} className={'Manrope200'}>
+                    Login
+                  </p>
+                </Link>
+
                 <Box sx={{ display: 'flex', ml: '20px' }}>
                   <p style={{ color: 'white' }} className={'Manrope600'}>
                     English
@@ -106,28 +109,32 @@ const HomeLayout = ({ children }) => {
                   display: 'flex',
                 }}
               >
-                <button
-                  style={{
-                    marginLeft: '30px',
-                    marginRight: '10px',
-                    borderRadius: '20px',
-                    borderColor: 'black',
-                    borderWidth: '1px',
-                  }}
-                  className="py-2 px-4 hover:bg-black text-white transition duration-100 rounded"
-                >
-                  <p style={{ color: 'black' }} className="Manrope600">
-                    Sign up
-                  </p>
-                </button>
-                <button
-                  style={{ borderRadius: '20px' }}
-                  className="py-2 px-4 bg-violet-500 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 duration-100 "
-                >
-                  <p style={{ color: 'white' }} className="Manrope600">
-                    Contact sales
-                  </p>
-                </button>
+                <Link to={routes.signup()}>
+                  <button
+                    style={{
+                      marginLeft: '30px',
+                      marginRight: '10px',
+                      borderRadius: '20px',
+                      borderColor: 'black',
+                      borderWidth: '1px',
+                    }}
+                    className="py-2 px-4 hover:bg-black text-white transition duration-100 rounded"
+                  >
+                    <p style={{ color: 'black' }} className="Manrope600">
+                      Sign up
+                    </p>
+                  </button>
+                </Link>
+                <Link to={routes.contact()}>
+                  <button
+                    style={{ borderRadius: '20px' }}
+                    className="py-2 px-4 bg-violet-500 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 duration-100 "
+                  >
+                    <p style={{ color: 'white' }} className="Manrope600">
+                      Contact sales
+                    </p>
+                  </button>
+                </Link>
               </div>
             </div>
           </Grid>
@@ -137,9 +144,7 @@ const HomeLayout = ({ children }) => {
         </Grid>
       </header>
       <Divider />
-      <main className="max-w-4xl mx-auto p-12 bg-white shadow rounded-b">
-        {children}
-      </main>
+      <main style={{ width: '100%' }}>{children}</main>
       <footer>
         <Grid container sx={{ alignItems: 'center', width: '100%' }}>
           <Grid item xs={1}>
@@ -153,8 +158,24 @@ const HomeLayout = ({ children }) => {
                 {/* gutter */}
               </Grid>
               <Grid item xs={5}>
-                <p> Keep up to date </p>
-                <p>Join our newsletter for regular updates. No spam ever.</p>
+                <a
+                  href="#"
+                  className="group block max-w-xs mx-auto rounded-lg p-6 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-sky-500 hover:ring-sky-500"
+                >
+                  <div className="flex items-center space-x-3">
+                    <svg
+                      className="h-6 w-6 stroke-sky-500 group-hover:stroke-white"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    ></svg>
+                    <h3 className="text-slate-900 group-hover:text-white text-sm font-semibold">
+                      New project
+                    </h3>
+                  </div>
+                  <p className="text-slate-500 group-hover:text-white text-sm">
+                    Create a new project from a variety of starting templates.
+                  </p>
+                </a>
               </Grid>
               <Grid item xs={6}>
                 <Grid container>
@@ -185,7 +206,7 @@ const HomeLayout = ({ children }) => {
         </Grid>
         <Divider sx={{ my: '20px' }} />
         <div className="flex justify-between items-center p-4 text-sm text-gray-600">
-          <p>© 2013 - 2022 Semptia® Inc. All Rights Reserved.</p>
+          <p>© 2013 - 2022 Semptia® Ltd. All Rights Reserved.</p>
           <Box sx={{ alignItems: 'center', display: 'flex', mr: '10px' }}>
             <p>Status • Legal • Privacy • Terms</p>
             <Box sx={{ alignItems: 'center', display: 'flex', ml: '20px' }}>

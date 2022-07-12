@@ -62,3 +62,22 @@
     font-family: 'Josefin Sans', cursive;
   }
 
+
+/* variables */
+
+  :root {
+    --theme-color: #52b3d0;
+  }
+
+  /* ... */
+
+  .btn {
+    background-color: var(--theme-color);
+    /* ... */
+  }
+
+  /* demo over  */
+
+
+
+  

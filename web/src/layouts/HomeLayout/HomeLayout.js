@@ -1,12 +1,13 @@
 import { useAuth } from '@redwoodjs/auth'
 import { Link, routes } from '@redwoodjs/router'
+impor
 
 const HomeLayout = ({ children }) => {
   const { logIn, logOut, isAuthenticated, currentUser } = useAuth()
   return (
     <>
       <header className="relative flex justify-between items-center py-4 px-8 bg-blue-700 text-white">
-        <h1 className="text-5xl font-semibold tracking-tight">
+        {/* <h1 className="text-5xl font-semibold tracking-tight">
           <Link
             className="text-blue-400 hover:text-blue-100 transition duration-100"
             to={routes.home()}
@@ -14,7 +15,7 @@ const HomeLayout = ({ children }) => {
             Redwood Blog
           </Link>
         </h1>
-        <nav>
+        <nav style={{ position: 'absolute', left: '50vh', right: '50vh' }}>
           <ul className="relative flex items-center font-light">
             <li>
               <Link
@@ -52,6 +53,26 @@ const HomeLayout = ({ children }) => {
             </div>
           )}
         </nav>
+
+        <nav>
+          <ul className="relative flex items-center font-light">
+            <li>
+              <Link
+                className="py-2 px-4 hover:bg-blue-600 transition duration-100 rounded"
+                to={routes.about()}
+              >
+                About
+              </Link>
+            </li>
+          </ul>
+        </nav> */}
+        <Grid container spacing={3}>
+          <Grid item lg={4}></Grid>
+          <Grid item lg={4}>
+            <p>hi</p>
+          </Grid>
+          <Grid item lg={4}></Grid>
+        </Grid>
       </header>
       <main className="max-w-4xl mx-auto p-12 bg-white shadow rounded-b">
         {children}
@@ -65,16 +86,16 @@ const HomeLayout = ({ children }) => {
 
 export default HomeLayout
 
-
-
-
-
-{/* <Link
+{
+  /* <Link
 className="text-blue-400 hover:text-blue-100 transition duration-100"
 to={routes.home()}
-> */}
+> */
+}
 
-{/* <Link
+{
+  /* <Link
 className="py-2 px-4 hover:bg-blue-600 transition duration-100 rounded"
 to={routes.contact()}
-> */}
+> */
+}

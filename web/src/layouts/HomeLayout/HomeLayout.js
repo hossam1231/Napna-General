@@ -66,11 +66,10 @@ const HomeLayout = ({ children }) => {
 
           <Grid
             sx={{
-              mt: '25px',
+              mt: '20px',
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
-              flexGrow: '1',
             }}
             item
             xs={10}
@@ -78,7 +77,7 @@ const HomeLayout = ({ children }) => {
             <div>
               <h1>Napna</h1>
             </div>
-            <div style={{ display: 'flex' }}>
+            <div style={{ alignItems: 'center', display: 'flex' }}>
               <div>
                 <ul className="flex items-center font-light">
                   <li>
@@ -108,14 +107,23 @@ const HomeLayout = ({ children }) => {
                 }}
               >
                 <button
-                  style={{ borderColor: 'black' }}
-                  className="py-2 px-4 hover:bg-blue-600  transition duration-100 rounded"
+                  style={{
+                    marginLeft: '30px',
+                    marginRight: '10px',
+                    borderRadius: '20px',
+                    borderColor: 'black',
+                    borderWidth: '1px',
+                  }}
+                  className="py-2 px-4 hover:bg-black text-white transition duration-100 rounded"
                 >
-                  <p style={{ color: 'white' }} className="Manrope600">
+                  <p style={{ color: 'black' }} className="Manrope600">
                     Sign up
                   </p>
                 </button>
-                <button className="py-2 px-4 hover:bg-blue-600 transition duration-100 rounded">
+                <button
+                  style={{ borderRadius: '20px' }}
+                  className="py-2 px-4 bg-violet-500 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 duration-100 "
+                >
                   <p style={{ color: 'white' }} className="Manrope600">
                     Contact sales
                   </p>

@@ -4,6 +4,8 @@ import { Box, Grid, Divider } from '@mui/material'
 import { useAuth } from '@redwoodjs/auth'
 import { Link, routes } from '@redwoodjs/router'
 
+import { footerData } from 'src/data/HomeLayout'
+
 const HomeLayout = ({ children }) => {
   return (
     <>
@@ -48,7 +50,7 @@ const HomeLayout = ({ children }) => {
                   <p style={{ color: 'white' }} className={'Manrope600'}>
                     English
                   </p>
-                  <LanguageIcon sx={{ ml: '10px' }} />
+                  <LanguageIcon sx={{ color: 'white', ml: '10px' }} />
                 </Box>
               </Box>
             </Grid>
@@ -98,13 +100,26 @@ const HomeLayout = ({ children }) => {
                 </ul>
               </div>
 
-              <div style={{ display: 'flex' }}>
-                <div>
-                  <p>Sign up</p>
-                </div>
-                <div>
-                  <p>Sign up</p>
-                </div>
+              <div
+                style={{
+                  alignItems: 'center',
+                  mx: '10px',
+                  display: 'flex',
+                }}
+              >
+                <button
+                  style={{ borderColor: 'black' }}
+                  className="py-2 px-4 hover:bg-blue-600  transition duration-100 rounded"
+                >
+                  <p style={{ color: 'white' }} className="Manrope600">
+                    Sign up
+                  </p>
+                </button>
+                <button className="py-2 px-4 hover:bg-blue-600 transition duration-100 rounded">
+                  <p style={{ color: 'white' }} className="Manrope600">
+                    Contact sales
+                  </p>
+                </button>
               </div>
             </div>
           </Grid>
@@ -117,29 +132,50 @@ const HomeLayout = ({ children }) => {
       <main className="max-w-4xl mx-auto p-12 bg-white shadow rounded-b">
         {children}
       </main>
-      <footer style={{ height: '80vh' }}>
+      <footer>
         <Grid container sx={{ alignItems: 'center', width: '100%' }}>
           <Grid item xs={1}>
-            <div className="flex justify-between items-center p-4 text-sm text-gray-600">
-              <p>helllo</p> <p>hdaod</p>
-            </div>
+            {/* gutter */}
           </Grid>
 
           <Grid item xs={10}>
-            <Divider />
-            <div className="flex justify-between items-center p-4 text-sm text-gray-600">
-              <p>helllo</p> <p>hdaod</p>
-            </div>
+            <Divider sx={{ my: '20px' }} />
+            <Grid container>
+              <Grid item xs={1}>
+                {/* gutter */}
+              </Grid>
+              <Grid item xs={5}>
+                <p> Keep up to date </p>
+                <p>Join our newsletter for regular updates. No spam ever.</p>
+              </Grid>
+              <Grid item xs={6}>
+                <Grid container>
+                  {footerData.map(function (item, i) {
+                    return (
+                      <Grid key={i} item xs={3}>
+                        <p className="Manrope800">{item.title}</p>
+                        <ul>
+                          {item.data.map(function (item, i) {
+                            return (
+                              <li key={i}>
+                                <p className="Manrope200">{item}</p>
+                              </li>
+                            )
+                          })}
+                        </ul>
+                      </Grid>
+                    )
+                  })}
+                </Grid>
+              </Grid>
+            </Grid>
           </Grid>
 
           <Grid item xs={1}>
-            <div className="flex justify-between items-center p-4 text-sm text-gray-600">
-              <p>helllo</p> <p>hdaod</p>
-            </div>
+            {/* gutter */}
           </Grid>
         </Grid>
-        <Divider />
-
+        <Divider sx={{ my: '20px' }} />
         <div className="flex justify-between items-center p-4 text-sm text-gray-600">
           <p>© 2013 - 2022 Semptia® Inc. All Rights Reserved.</p>
           <Box sx={{ alignItems: 'center', display: 'flex', mr: '10px' }}>

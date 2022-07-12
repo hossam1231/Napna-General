@@ -1,7 +1,8 @@
-import SearchIcon from '@mui/icons-material/Search'
 import { Box, Grid } from '@mui/material'
 
 import { MetaTags } from '@redwoodjs/web'
+
+import { ProductSearchModal } from 'src/components/Search/Index'
 
 // import ArticlesCell from 'src/components/ArticlesCell'
 
@@ -25,22 +26,7 @@ const HomePage = () => {
             components.
           </p>
           <Box sx={{ marginTop: '20px', display: 'flex' }}>
-            <a
-              href="#"
-              className="group block max-w-xs rounded-lg p-6 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-sky-500 hover:ring-sky-500"
-            >
-              <div className="flex items-center space-x-3">
-                <SearchIcon />
-
-                <h3 className="text-slate-900 group-hover:text-white text-sm font-semibold">
-                  Try it out
-                </h3>
-              </div>
-              <p className="text-slate-500 group-hover:text-white text-sm">
-                Search a handful of merchants near you, find what your looking
-                for locally.
-              </p>
-            </a>
+            <ProductSearchModal />
           </Box>
         </Grid>
         <Grid item xs={12} sm={7}>

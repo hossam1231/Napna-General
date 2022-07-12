@@ -24,51 +24,39 @@
   font-family: 'Manrope', sans-serif;
   font-weight: 200;
 
-
-
  }
  .Manrope300{
   font-family: 'Manrope', sans-serif;
   font-weight: 300;
-
-
 
  }
  .Manrope400{
   font-family: 'Manrope', sans-serif;
   font-weight: 400;
 
-
-
  }
  .Manrope500{
   font-family: 'Manrope', sans-serif;
   font-weight: 500;
-
-
 
  }
   .Manrope600{
     font-family: 'Manrope', sans-serif;
     font-weight: 600;
 
-
-
  }
  .Manrope700{
   font-family: 'Manrope', sans-serif;
   font-weight: 700;
-
-
 
  }
  .Manrope800{
   font-family: 'Manrope', sans-serif;
   font-weight: 800;
 
-
-
  }
+
+/* components */
 
   h1 {
     font-family: 'Josefin Sans', cursive;

@@ -8,8 +8,10 @@
 // 'src/pages/Admin/BooksPage/BooksPage.js' -> AdminBooksPage
 
 import { Router, Route, Private, Set } from '@redwoodjs/router'
-import PostsLayout from 'src/layouts/PostsLayout'
+
 import BlogLayout from 'src/layouts/BlogLayout'
+import HomeLayout from 'src/layouts/HomeLayout'
+import PostsLayout from 'src/layouts/PostsLayout'
 
 const Routes = () => {
   return (
@@ -30,8 +32,12 @@ const Routes = () => {
         <Route path="/contact" page={ContactPage} name="contact" />
         <Route path="/article/{id:Int}" page={ArticlePage} name="article" />
         <Route path="/about" page={AboutPage} name="about" />
+      </Set>
+
+      <Set wrap={HomeLayout}>
         <Route path="/" page={HomePage} name="home" />
       </Set>
+
       <Route notfound page={NotFoundPage} />
     </Router>
   )

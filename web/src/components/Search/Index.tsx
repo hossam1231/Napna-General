@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import { ExpandMore } from '@mui/icons-material'
 import SearchIcon from '@mui/icons-material/Search'
 import { Divider } from '@mui/material'
 import Backdrop from '@mui/material/Backdrop'
@@ -14,10 +15,11 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  borderRadius: '15px',
-  boxShadow: 24,
+  // width: 400,
+
+  // bgcolor: 'background.paper',
+  // borderRadius: '15px',
+  // boxShadow: 24,
 }
 
 export function ProductSearchModal() {
@@ -56,16 +58,25 @@ export function ProductSearchModal() {
         }}
       >
         <div
-          style={{ height: '100vh', width: '100%' }}
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100vh',
+            width: '100%',
+          }}
           className="backdrop-blur-sm bg-white/30"
         >
           <Fade in={open}>
-            <Box sx={style}>
+            <Box
+              className="group block max-w-xs rounded-lg bg-white ring-1 ring-slate-900/5 shadow-lg"
+              sx={style}
+            >
               <Box
                 sx={{
                   padding: '20px',
                   width: '100%',
                   justifyContent: 'space-between',
+                  display: 'flex',
                 }}
               >
                 <SearchIcon />
@@ -84,6 +95,35 @@ export function ProductSearchModal() {
               </Box>
             </Box>
           </Fade>
+          <div
+            style={{
+              position: 'absolute',
+              bottom: '20%',
+              left: '50%',
+              transform: 'translate(-50%, 0)',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <p
+              style={{
+                color: 'white',
+                marginBottom: '40px',
+              }}
+              className={'Manrope300'}
+            >
+              Open in Napna
+            </p>
+            <ExpandMore
+              style={{
+                position: 'absolute',
+                bottom: '10px',
+                left: '50%',
+                transform: 'translate(-50%, 0)',
+                color: 'white',
+              }}
+            />
+          </div>
         </div>
       </Modal>
     </div>

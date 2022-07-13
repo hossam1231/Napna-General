@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { ExpandMore } from '@mui/icons-material'
 import SearchIcon from '@mui/icons-material/Search'
-import { Divider } from '@mui/material'
+import { Divider, InputBase } from '@mui/material'
 import Backdrop from '@mui/material/Backdrop'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
@@ -76,10 +76,16 @@ export function ProductSearchModal() {
                   padding: '20px',
                   width: '100%',
                   justifyContent: 'space-between',
+                  alignItems: 'center',
                   display: 'flex',
                 }}
               >
-                <SearchIcon />
+                <SearchIcon sx={{ color: '#0772E5' }} />
+                <InputBase
+                  sx={{ ml: 1, flex: 1 }}
+                  placeholder="Search Google Maps"
+                  inputProps={{ 'aria-label': 'search google maps' }}
+                />
               </Box>
               <Divider />
               <Box

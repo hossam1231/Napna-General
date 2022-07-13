@@ -55,18 +55,36 @@ export function ProductSearchModal() {
           timeout: 500,
         }}
       >
-        <Fade in={open}>
-          <Box sx={style}>
-            <Box sx={{ width: '100%', justifyContent: 'space-between' }}>
-              <SearchIcon />
+        <div
+          style={{ height: '100vh', width: '100%' }}
+          className="backdrop-blur-sm bg-white/30"
+        >
+          <Fade in={open}>
+            <Box sx={style}>
+              <Box
+                sx={{
+                  padding: '20px',
+                  width: '100%',
+                  justifyContent: 'space-between',
+                }}
+              >
+                <SearchIcon />
+              </Box>
+              <Divider />
+              <Box
+                sx={{
+                  padding: '20px',
+                  width: '100%',
+                }}
+              >
+                <Typography id="transition-modal-description" sx={{ mt: 2 }}>
+                  Duis mollis, est non commodo luctus, nisi erat porttitor
+                  ligula.
+                </Typography>
+              </Box>
             </Box>
-            <Divider />
-
-            <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </Typography>
-          </Box>
-        </Fade>
+          </Fade>
+        </div>
       </Modal>
     </div>
   )

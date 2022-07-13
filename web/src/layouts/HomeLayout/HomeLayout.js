@@ -1,6 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import FaceIcon from '@mui/icons-material/Face'
 import LanguageIcon from '@mui/icons-material/Language'
+import StoreIcon from '@mui/icons-material/Store'
 import { Box, Grid, Divider } from '@mui/material'
 
 import { Link, routes } from '@redwoodjs/router'
@@ -184,24 +185,22 @@ const HomeLayout = ({ children }) => {
                 {/* gutter */}
               </Grid>
               <Grid item xs={5}>
-                <a
+                <div
                   href="#"
                   className="group block max-w-xs mx-auto rounded-lg p-6 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-sky-500 hover:ring-sky-500"
                 >
                   <div className="flex items-center space-x-3">
-                    <svg
-                      className="h-6 w-6 stroke-sky-500 group-hover:stroke-white"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    ></svg>
+                    <svg className="h-6 w-6 " fill="none" viewBox="0 0 24 24">
+                      <StoreIcon />
+                    </svg>
                     <h3 className="text-slate-900 group-hover:text-white text-sm font-semibold">
-                      New project
+                      Merchant portal
                     </h3>
                   </div>
                   <p className="text-slate-500 group-hover:text-white text-sm">
-                    Create a new project from a variety of starting templates.
+                    Head to the merchant portal to manage your business.
                   </p>
-                </a>
+                </div>
               </Grid>
               <Grid item xs={6}>
                 <Grid container>
@@ -247,140 +246,3 @@ const HomeLayout = ({ children }) => {
 }
 
 export default HomeLayout
-
-{
-  /* <Link
-className="text-blue-400 hover:text-blue-100 transition duration-100"
-to={routes.home()}
-> */
-}
-
-{
-  /* <Link
-className="py-2 px-4 hover:bg-blue-600 transition duration-100 rounded"
-to={routes.contact()}
-> */
-}
-
-{
-  /* <h1 className="text-5xl font-semibold tracking-tight">
-          <Link
-            className="text-blue-400 hover:text-blue-100 transition duration-100"
-            to={routes.home()}
-          >
-            Redwood Blog
-          </Link>
-        </h1>
-        <nav style={{ position: 'absolute', left: '50vh', right: '50vh' }}>
-          <ul className="relative flex items-center font-light">
-            <li>
-              <Link
-                className="py-2 px-4 hover:bg-blue-600 transition duration-100 rounded"
-                to={routes.about()}
-              >
-                About
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="py-2 px-4 hover:bg-blue-600 transition duration-100 rounded"
-                to={routes.contact()}
-              >
-                Contact
-              </Link>
-            </li>
-            <li>
-              {isAuthenticated ? (
-                <div>
-                  <button type="button" onClick={logOut} className="py-2 px-4">
-                    Logout
-                  </button>
-                </div>
-              ) : (
-                <Link to={routes.login()} className="py-2 px-4">
-                  Login
-                </Link>
-              )}
-            </li>
-          </ul>
-          {isAuthenticated && (
-            <div className="absolute bottom-1 right-0 mr-12 text-xs text-blue-300">
-              {currentUser.email}
-            </div>
-          )}
-        </nav>
-
-        <nav>
-          <ul className="relative flex items-center font-light">
-            <li>
-              <Link
-                className="py-2 px-4 hover:bg-blue-600 transition duration-100 rounded"
-                to={routes.about()}
-              >
-                About
-              </Link>
-            </li>
-          </ul>
-        </nav> */
-}
-{
-  /* <h1 className="text-5xl font-semibold tracking-tight">
-          <Link
-            className="text-blue-400 hover:text-blue-100 transition duration-100"
-            to={routes.home()}
-          >
-            Redwood Blog
-          </Link>
-        </h1>
-        <nav style={{ position: 'absolute', left: '50vh', right: '50vh' }}>
-          <ul className="relative flex items-center font-light">
-            <li>
-              <Link
-                className="py-2 px-4 hover:bg-blue-600 transition duration-100 rounded"
-                to={routes.about()}
-              >
-                About
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="py-2 px-4 hover:bg-blue-600 transition duration-100 rounded"
-                to={routes.contact()}
-              >
-                Contact
-              </Link>
-            </li>
-            <li>
-              {isAuthenticated ? (
-                <div>
-                  <button type="button" onClick={logOut} className="py-2 px-4">
-                    Logout
-                  </button>
-                </div>
-              ) : (
-                <Link to={routes.login()} className="py-2 px-4">
-                  Login
-                </Link>
-              )}
-            </li>
-          </ul>
-          {isAuthenticated && (
-            <div className="absolute bottom-1 right-0 mr-12 text-xs text-blue-300">
-              {currentUser.email}
-            </div>
-          )}
-        </nav>
-
-        <nav>
-          <ul className="relative flex items-center font-light">
-            <li>
-              <Link
-                className="py-2 px-4 hover:bg-blue-600 transition duration-100 rounded"
-                to={routes.about()}
-              >
-                About
-              </Link>
-            </li>
-          </ul>
-        </nav> */
-}

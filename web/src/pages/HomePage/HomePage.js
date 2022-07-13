@@ -1,3 +1,10 @@
+import AddCardIcon from '@mui/icons-material/AddCard'
+import FaceIcon from '@mui/icons-material/Face'
+import GradeIcon from '@mui/icons-material/Grade'
+import InsightsIcon from '@mui/icons-material/Insights'
+import InventoryIcon from '@mui/icons-material/Inventory'
+import MarkEmailReadIcon from '@mui/icons-material/MarkEmailRead'
+import StorefrontIcon from '@mui/icons-material/Storefront'
 import { Box, Grid } from '@mui/material'
 
 import { MetaTags } from '@redwoodjs/web'
@@ -17,10 +24,13 @@ const HomePage = () => {
         </Grid>
 
         <Grid item sm={5}>
-          <p style={{ fontSize: '65px' }} className={'Manrope700'}>
+          <p
+            style={{ fontSize: '65px', marginBottom: '20px' }}
+            className={'Manrope700'}
+          >
             Move faster with intuitive React UI tools
           </p>
-          <p style={{ color: '#4B5563' }}>
+          <p style={{ marginBottom: '20px', color: '#4B5563' }}>
             MUI offers a comprehensive suite of UI tools to help you ship new
             features faster. Start with Material UI, our fully-loaded component
             library, or bring your own design system to our production-ready
@@ -34,6 +44,26 @@ const HomePage = () => {
           {/* image */}
         </Grid>
       </Grid>
+
+      {/* <Grid container sx={{ marginTop: '20px' }} spacing={3}>
+        <Grid item sm={12}>
+// testemonials
+        </Grid>
+        <Grid
+          sx={{
+            jusitfyContent: 'center',
+            alignItems: 'center',
+            alignText: 'center',
+          }}
+          item
+          sm={12}
+        >
+          <p>
+            The world's best product teams trust MUI to deliver an unrivaled
+            experience for both developers and users.
+          </p>
+        </Grid>
+      </Grid> */}
 
       <Grid container sx={{ marginTop: '20px' }} spacing={3}>
         <Grid item sm={1}>
@@ -67,12 +97,12 @@ const HomePage = () => {
             style={{ color: 'blue', fontSize: '15px' }}
             className={'Manrope700'}
           >
-            Why build with MUI?
+            Why build with Napna?
           </p>
           <p>
-            A delightful experience for you and your users Timeless aesthetics
-            Build beautiful UIs with ease. Start with Google's Material Design,
-            or create your own sophisticated theme.
+            A delightful experience for you and your customers. Increase
+            footfall, build lasting customer relations with ease. Start with
+            Napna and create your own, sophisticated sales campagins.
           </p>
           <Grid container sx={{ marginTop: '20px' }} spacing={3}>
             <Grid item sm={4}>
@@ -86,15 +116,17 @@ const HomePage = () => {
                       viewBox="0 0 24 24"
                       stroke="currentColor"
                       aria-hidden="true"
-                    ></svg>
+                    >
+                      <GradeIcon sx={{ color: 'white' }} />
+                    </svg>
                   </span>
                 </div>
                 <h3 className="text-slate-900 dark:text-white mt-5 text-base font-medium tracking-tight">
-                  Writes Upside-Down
+                  Loyalty schemes and rewards
                 </h3>
                 <p className="text-slate-500 dark:text-slate-400 mt-2 text-sm">
-                  The Zero Gravity Pen can be used to write in any orientation,
-                  including upside-down. It even works in outer space.
+                  Give back to customers for using your services. Create loyalty
+                  schemes, rewards and cashback for your customers .
                 </p>
               </div>
             </Grid>
@@ -109,18 +141,21 @@ const HomePage = () => {
                       viewBox="0 0 24 24"
                       stroke="currentColor"
                       aria-hidden="true"
-                    ></svg>
+                    >
+                      <StorefrontIcon sx={{ color: 'white' }} />
+                    </svg>
                   </span>
                 </div>
                 <h3 className="text-slate-900 dark:text-white mt-5 text-base font-medium tracking-tight">
-                  Writes Upside-Down
+                  Virtual storefront
                 </h3>
                 <p className="text-slate-500 dark:text-slate-400 mt-2 text-sm">
-                  The Zero Gravity Pen can be used to write in any orientation,
-                  including upside-down. It even works in outer space.
+                  Allow your customers to buy, search products and book
+                  reservations, without having to visit. Solidify your brand and
+                  its online presence.
                 </p>
               </div>
-            </Grid>{' '}
+            </Grid>
             <Grid item sm={4}>
               <div className="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl">
                 <div>
@@ -132,15 +167,17 @@ const HomePage = () => {
                       viewBox="0 0 24 24"
                       stroke="currentColor"
                       aria-hidden="true"
-                    ></svg>
+                    >
+                      <InsightsIcon sx={{ color: 'white' }} />
+                    </svg>
                   </span>
                 </div>
                 <h3 className="text-slate-900 dark:text-white mt-5 text-base font-medium tracking-tight">
-                  Writes Upside-Down
+                  Identify trends
                 </h3>
                 <p className="text-slate-500 dark:text-slate-400 mt-2 text-sm">
-                  The Zero Gravity Pen can be used to write in any orientation,
-                  including upside-down. It even works in outer space.
+                  Be the first on local trends and discover new products. Get a
+                  realtime view of your customers and their behavior.
                 </p>
               </div>
             </Grid>
@@ -189,6 +226,47 @@ const HomePage = () => {
             Find out why MUI's tools are trusted by thousands of open source
             developers and teams around the world.
           </p>
+        </Grid>
+
+        <Grid item sm={1}>
+          {/* gutter */}
+        </Grid>
+      </Grid>
+
+      <Grid
+        container
+        sx={{ backgroundColor: 'black', marginTop: '20px' }}
+        spacing={3}
+      >
+        <Grid item sm={1}>
+          {/* gutter */}
+        </Grid>
+
+        <Grid item sm={6}>
+          {/* <p
+            style={{ color: 'blue', fontSize: '15px' }}
+            className={'Manrope700'}
+          >
+            Download App
+          </p> */}
+          <p>
+            People around you are finding amazing savings and earning rewards
+            while they shop using the Napna App.
+          </p>
+
+          <Box sx={{ display: 'flex' }}>
+            <img
+              src="https://www.freepnglogos.com/uploads/app-store-logo-png/apple-app-store-travel-awards-globestamp-7.png"
+              alt="app-store"
+            />
+          </Box>
+        </Grid>
+
+        <Grid item sm={4}>
+          <img
+            src="https://treact.owaiskhan.me/static/media/app-mockup.3cdce84c.png"
+            alt="app-store"
+          />
         </Grid>
 
         <Grid item sm={1}>
@@ -262,11 +340,63 @@ const HomePage = () => {
                           viewBox="0 0 24 24"
                           stroke="currentColor"
                           aria-hidden="true"
-                        ></svg>
+                        >
+                          <MarkEmailReadIcon sx={{ color: 'white' }} />
+                        </svg>
                       </span>
                     </div>
                     <h3 className="text-slate-900 dark:text-white mt-5 text-base font-medium tracking-tight">
-                      Writes Upside-Down
+                      Mailiing lists
+                    </h3>
+                    <p className="text-slate-500 dark:text-slate-400 mt-2 text-sm">
+                      Manage and send newsletters. Track and improve promotions
+                      you offer to your customers.
+                    </p>
+                  </div>
+                </Grid>
+                <Grid item sm={6}>
+                  <div className="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 ">
+                    <div>
+                      <span className="inline-flex items-center justify-center p-2 bg-indigo-500 rounded-md shadow-lg">
+                        <svg
+                          className="h-6 w-6 text-white"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          aria-hidden="true"
+                        >
+                          <AddCardIcon sx={{ color: 'white' }} />
+                        </svg>
+                      </span>
+                    </div>
+                    <h3 className="text-slate-900 dark:text-white mt-5 text-base font-medium tracking-tight">
+                      Payments & orders
+                    </h3>
+                    <p className="text-slate-500 dark:text-slate-400 mt-2 text-sm">
+                      Accept online payments. Manage your payment methods.
+                      Collect and process orders from your customers.
+                    </p>
+                  </div>
+                </Grid>
+                <Grid item sm={6}>
+                  <div className="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 ">
+                    <div>
+                      <span className="inline-flex items-center justify-center p-2 bg-indigo-500 rounded-md shadow-lg">
+                        <svg
+                          className="h-6 w-6 text-white"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          aria-hidden="true"
+                        >
+                          <InventoryIcon sx={{ color: 'white' }} />
+                        </svg>
+                      </span>
+                    </div>
+                    <h3 className="text-slate-900 dark:text-white mt-5 text-base font-medium tracking-tight">
+                      Stock managment
                     </h3>
                     <p className="text-slate-500 dark:text-slate-400 mt-2 text-sm">
                       The Zero Gravity Pen can be used to write in any
@@ -286,59 +416,13 @@ const HomePage = () => {
                           viewBox="0 0 24 24"
                           stroke="currentColor"
                           aria-hidden="true"
-                        ></svg>
+                        >
+                          <FaceIcon sx={{ color: 'white' }} />
+                        </svg>
                       </span>
                     </div>
                     <h3 className="text-slate-900 dark:text-white mt-5 text-base font-medium tracking-tight">
-                      Writes Upside-Down
-                    </h3>
-                    <p className="text-slate-500 dark:text-slate-400 mt-2 text-sm">
-                      The Zero Gravity Pen can be used to write in any
-                      orientation, including upside-down. It even works in outer
-                      space.
-                    </p>
-                  </div>
-                </Grid>
-                <Grid item sm={6}>
-                  <div className="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 ">
-                    <div>
-                      <span className="inline-flex items-center justify-center p-2 bg-indigo-500 rounded-md shadow-lg">
-                        <svg
-                          className="h-6 w-6 text-white"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          aria-hidden="true"
-                        ></svg>
-                      </span>
-                    </div>
-                    <h3 className="text-slate-900 dark:text-white mt-5 text-base font-medium tracking-tight">
-                      Writes Upside-Down
-                    </h3>
-                    <p className="text-slate-500 dark:text-slate-400 mt-2 text-sm">
-                      The Zero Gravity Pen can be used to write in any
-                      orientation, including upside-down. It even works in outer
-                      space.
-                    </p>
-                  </div>
-                </Grid>
-                <Grid item sm={6}>
-                  <div className="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 ">
-                    <div>
-                      <span className="inline-flex items-center justify-center p-2 bg-indigo-500 rounded-md shadow-lg">
-                        <svg
-                          className="h-6 w-6 text-white"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          aria-hidden="true"
-                        ></svg>
-                      </span>
-                    </div>
-                    <h3 className="text-slate-900 dark:text-white mt-5 text-base font-medium tracking-tight">
-                      Writes Upside-Down
+                      Employee managment
                     </h3>
                     <p className="text-slate-500 dark:text-slate-400 mt-2 text-sm">
                       The Zero Gravity Pen can be used to write in any

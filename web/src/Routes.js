@@ -39,7 +39,17 @@ const Routes = () => {
         <Route path="/" page={HomePage} name="home" />
       </Set>
 
-      
+      {/* apps */}
+
+      {/* merchannt */}
+      <Route path="/merchant" page={MerchantPage} name="merchant" />
+      {/* merchant */}
+
+      {/* market */}
+      <Route path="/market" page={MarketPage} name="market" />
+      {/* market */}
+
+      {/* apps */}
 
       <Route notfound page={NotFoundPage} />
     </Router>

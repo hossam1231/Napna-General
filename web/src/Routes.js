@@ -11,6 +11,8 @@ import { Router, Route, Private, Set } from '@redwoodjs/router'
 
 import BlogLayout from 'src/layouts/BlogLayout'
 import HomeLayout from 'src/layouts/HomeLayout'
+import MarketLayout from 'src/layouts/MarketLayout'
+import MerchantLayout from 'src/layouts/MerchantLayout'
 import PostsLayout from 'src/layouts/PostsLayout'
 
 const Routes = () => {
@@ -42,11 +44,16 @@ const Routes = () => {
       {/* apps */}
 
       {/* merchannt */}
-      <Route path="/merchant" page={MerchantPage} name="merchant" />
+      <Set wrap={MerchantLayout}>
+        <Route path="/merchant" page={MerchantPage} name="merchant" />
+      </Set>
+
       {/* merchant */}
 
       {/* market */}
-      <Route path="/market" page={MarketPage} name="market" />
+      <Set wrap={MarketLayout}>
+        <Route path="/market" page={MarketPage} name="market" />
+      </Set>
       {/* market */}
 
       {/* apps */}

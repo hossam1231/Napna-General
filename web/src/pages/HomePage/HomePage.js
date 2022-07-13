@@ -11,7 +11,7 @@ const HomePage = () => {
     <>
       <MetaTags title="Home" description="Home page" />
       {/* <ArticlesCell /> */}
-      <Grid container spacing={3}>
+      <Grid sx={{ marginTop: '20px' }} container spacing={3}>
         <Grid item xs={1}>
           {/* gutter */}
         </Grid>

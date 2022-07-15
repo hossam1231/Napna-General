@@ -1,0 +1,12 @@
+[build]
+command = "yarn rw deploy netlify"
+publish = "web-build/"
+functions = "api/dist/functions"
+
+[dev]
+  command = "expo build:web"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

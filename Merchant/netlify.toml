@@ -1,10 +1,10 @@
 [build]
 command = "yarn rw deploy netlify"
-publish = "web/dist"
+publish = "web-build/"
 functions = "api/dist/functions"
 
 [dev]
-  command = "yarn rw dev"
+  command = "expo build:web"
 
 [[redirects]]
   from = "/*"

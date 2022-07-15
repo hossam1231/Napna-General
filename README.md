@@ -1,8 +1,8 @@
-# Napna General
+# Napna
 
-This repo represents the everchanging state of the app created for [Napna](https://Napna.co.uk) by Semptia.
+HSK i am the best dev in the world HSK
+
 ## Setup
-
 
 ```bash
 yarn install

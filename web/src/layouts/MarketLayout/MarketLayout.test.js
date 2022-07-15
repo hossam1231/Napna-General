@@ -1,14 +1,14 @@
 import { render } from '@redwoodjs/testing/web'
 
-import PricingPage from './PricingPage'
+import MarketLayout from './MarketLayout'
 
 //   Improve this test with help from the Redwood Testing Doc:
 //   https://redwoodjs.com/docs/testing#testing-pages-layouts
 
-describe('PricingPage', () => {
+describe('MarketLayout', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<PricingPage />)
+      render(<MarketLayout />)
     }).not.toThrow()
   })
 })

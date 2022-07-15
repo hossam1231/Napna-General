@@ -9,28 +9,54 @@
 
 import { Router, Route, Private, Set } from '@redwoodjs/router'
 
-import HeaderAndFooterLayout from 'src/layouts/HeaderAndFooterLayout'
+import BlogLayout from 'src/layouts/BlogLayout'
+import HomeLayout from 'src/layouts/HomeLayout'
+import MarketLayout from 'src/layouts/MarketLayout'
+import MerchantLayout from 'src/layouts/MerchantLayout'
+import PostsLayout from 'src/layouts/PostsLayout'
 
 const Routes = () => {
   return (
     <Router>
+      <Route path="/profile" page={ProfilePage} name="profile" />
       <Route path="/login" page={LoginPage} name="login" />
       <Route path="/signup" page={SignupPage} name="signup" />
       <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
       <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
       <Private unauthenticated="home">
-        <Route path="/admin/posts/new" page={PostNewPostPage} name="newPost" />
-        <Route path="/admin/posts/{id:Int}/edit" page={PostEditPostPage} name="editPost" />
-        <Route path="/admin/posts/{id:Int}" page={PostPostPage} name="post" />
-        <Route path="/admin/posts" page={PostPostsPage} name="posts" />
+        <Set wrap={PostsLayout}>
+          <Route path="/admin/posts/new" page={PostNewPostPage} name="newPost" />
+          <Route path="/admin/posts/{id:Int}/edit" page={PostEditPostPage} name="editPost" />
+          <Route path="/admin/posts/{id:Int}" page={PostPostPage} name="post" />
+          <Route path="/admin/posts" page={PostPostsPage} name="posts" />
+        </Set>
       </Private>
-
-      <Set wrap={HeaderAndFooterLayout}>
-        <Route path="/" page={HomePage} name="home" /> <Route path="/contact" page={ContactPage} name="contact" />
+      <Set wrap={BlogLayout}>
+        <Route path="/contact" page={ContactPage} name="contact" />
         <Route path="/article/{id:Int}" page={ArticlePage} name="article" />
         <Route path="/about" page={AboutPage} name="about" />
-        <Route path="/pricing" page={PricingPage} name="pricing" />
       </Set>
+
+      <Set wrap={HomeLayout}>
+        <Route path="/" page={HomePage} name="home" />
+      </Set>
+
+      {/* apps */}
+
+      {/* merchannt */}
+      <Set wrap={MerchantLayout}>
+        <Route path="/merchant" page={MerchantPage} name="merchant" />
+      </Set>
+
+      {/* merchant */}
+
+      {/* market */}
+      <Set wrap={MarketLayout}>
+        <Route path="/market" page={MarketPage} name="market" />
+      </Set>
+      {/* market */}
+
+      {/* apps */}
 
       <Route notfound page={NotFoundPage} />
     </Router>

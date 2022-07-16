@@ -19,4 +19,3 @@ const styles = StyleSheet.create({
   },
 });
 
-// {/* <></> */}

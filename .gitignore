@@ -1,4 +1,5 @@
 node_modules/
+.redwood/
 .expo/
 dist/
 npm-debug.*

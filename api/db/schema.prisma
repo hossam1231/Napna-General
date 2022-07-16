@@ -1,6 +1,6 @@
 datasource db {
-provider = "postgresql"
-url      = "postgresql://postgres:0PpLEaq7ilApGw2YaIBa@containers-us-west-57.railway.app:5933/railway"
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
 }
 
 generator client {

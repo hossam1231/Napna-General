@@ -1,12 +1,12 @@
+import { NavigationContainer } from '@react-navigation/native'
 import { Box, NativeBaseProvider } from 'native-base'
 import React from 'react'
+import LoadingScreen from './screens/loading/LoadingScreen'
 
 const App = () => {
   return (
 	<NativeBaseProvider>
-		<Box w="20" h="20" bg="black">
-
-		</Box>
+<LoadingScreen spinnerColor="black" textColor="black" accessibilityLabel="Loading" />
 	</NativeBaseProvider>
   )
 }

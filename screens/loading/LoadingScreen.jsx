@@ -1,17 +1,13 @@
-// react
 import React, { useState, useEffect, useCallback } from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { View, Platform } from "react-native";
 import "react-native-gesture-handler";
 
-// nativebase
 import { Spinner, Center, Heading, HStack } from "native-base";
 
-// import root navigator
+import useCachedResources from "../../hooks/useCachedResources";
 import Navigation from "../../navigation/Navigation";
 
-// importing services
-import useCachedResources from "../../hooks/useCachedResources";
 
 export const LoadingScreen = ({
 	spinnerColor,

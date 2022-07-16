@@ -1,3 +1,4 @@
+
 // react
 import * as React from "react";
 import { useEffect, useState } from "react";
@@ -9,30 +10,10 @@ import { FontAwesome } from "@expo/vector-icons";
 import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 
-// local storage
-import { getObj } from "../data/localStorage";
-
-// redux
-import { useDispatch, useSelector } from "react-redux";
-import { setUserID, setUser } from "../../Napna-Merchant/services/redux/actions";
 
 export default function useCachedResources() {
 	const [isLoadingComplete, setLoadingComplete] = useState(false);
-	const { user, userID } = useSelector((state) => state.userReducer);
-	const dispatch = useDispatch();
-
-	const getUser = async () => {
-		const getUser_Local = getObj("User_Local");
-		const result = await getUser_Local;
-		dispatch(setUser(result));
-	};
-
-	const getUserID = async () => {
-		const getUserID_Local = getObj("UserID_Local");
-		const result = await getUserID_Local;
-		dispatch(setUserID(result));
-	};
-
+	
 	// Load any resources or data that we need prior to rendering the app
 	useEffect(() => {
 		async function loadResourcesAndDataAsync() {
@@ -49,9 +30,8 @@ export default function useCachedResources() {
 					"Manrope-ExtraBold": require("../assets/fonts/Manrope/static/Manrope-ExtraBold.ttf"),
 					"Manrope-ExtraLight": require("../assets/fonts/Manrope/static/Manrope-ExtraLight.ttf"),
 				});
-				// load user
-				await getUserID();
-				await getUser();
+			
+				
 			} catch (e) {
 				// We might want to provide this error information to an error reporting service
 				console.warn(e);

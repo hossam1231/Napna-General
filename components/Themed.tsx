@@ -1,9 +1,11 @@
+import React from 'react';
+
 /**
  * Learn more about Light and Dark modes:
  * https://docs.expo.io/guides/color-schemes/
  */
 
-import { Text as DefaultText, View as DefaultView } from '../screens/node_modules/@types/react-native';
+import { Text as DefaultText, View as DefaultView } from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';

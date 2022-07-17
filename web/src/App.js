@@ -32,6 +32,12 @@ export const firebaseClient = {
   firebaseApp, // optional
 }
 
+export const getCurrentUser = async (decoded, { token, type }) => {
+  const { email, uid } = await firebaseApp.auth().verifyIdToken(token)
+  return { email, uid }
+}
+
+
 const App = () => (
   <FatalErrorBoundary page={FatalErrorPage}>
     <RedwoodProvider titleTemplate="%PageTitle | %AppTitle">

@@ -33,6 +33,9 @@ export default function AuthenticationTools({type}: {type: string}) {
 
 const gotoProfile = () => {
   navigate(routes.profile())
+  if (!isAuthenticated) {
+    handleOpen()
+  }
 }
 
   if (loading) {
@@ -85,7 +88,13 @@ if (isAuthenticated) {
               className="group block max-w-xs rounded-lg bg-white ring-1 ring-slate-900/5 shadow-lg"
               sx={style}
             >
-              <button>Sign out</button>
+              <button  onClick={async () => {
+        if (isAuthenticated) {
+          await logOut()
+          handleClose()
+          navigate('/')
+        }
+      }} >Sign out</button>
               <p>or alternativly</p>
               <p>log out of all devices</p>
               </Box>
@@ -97,6 +106,12 @@ if (isAuthenticated) {
 } else if (type == "button") {
 return (
   <button
+  onClick={async () => {
+    if (isAuthenticated) {
+      await logOut()
+      navigate('/')
+    }
+  }}
   style={{
     marginLeft: '30px',
     marginRight: '10px',
@@ -112,7 +127,7 @@ return (
 
 } else if (type == "icon") {
 return (
-<FaceIcon sx={{color:'white'}} onClick={gotoProfile} />)}
+<FaceIcon  sx={{color:'white'}} onClick={gotoProfile} />)}
 
 
 
@@ -120,15 +135,87 @@ return (
 
 
 } else {
- if (type == "modal") {
-  return (
-    <></>
-  )
-} else if (type == "button") {
-  return (<></>)
-} else if (type == "icon") {
-  return (<></>)
+    return (
+        <div>
+          {type == "modal" &&
+                    <button
+                    onClick={handleOpen}
+                      style={{
+                        marginLeft: '30px',
+                        marginRight: '10px',
+                        borderRadius: '20px',
+                        borderColor: 'black',
+                        borderWidth: '1px',
+                      }}
+                      className="py-2 px-4 text-black hover:bg-black hover:text-white transition duration-100 rounded"
+                    >
+
+                      <p className="Manrope600">Sign in</p>
+                    </button>
+  }
+  { type == "button" &&
+ <button
+ onClick={async () => {
+
+     await logOut()
+
+     navigate('/')
+
+ }}
+ style={{
+   marginLeft: '30px',
+   marginRight: '10px',
+   borderRadius: '20px',
+   borderColor: 'black',
+   borderWidth: '1px',
+ }}
+ className="py-2 px-4 bg-black text-white hover:bg-white hover:text-black transition duration-100 rounded"
+>
+ <p className="Manrope600">Log in</p>
+</button>
+
+  }
+
+  { type == "icon" && <FaceIcon sx={{color:'white'}} onClick={handleOpen}/>}
+
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <div
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100vh',
+            width: '100%',
+          }}
+          className="backdrop-blur-sm bg-white/30"
+        >
+          <Fade in={open}>
+            <Box
+              className="group block max-w-xs rounded-lg bg-white ring-1 ring-slate-900/5 shadow-lg"
+              sx={style}
+            >
+              <button onClick={async () => {
+               await logIn()
+               handleClose()
+}} >Sign in with google</button>
+
+              </Box>
+          </Fade>
+        </div>
+      </Modal>
+    </div>
+)
 }
 }
-}
+
+
 

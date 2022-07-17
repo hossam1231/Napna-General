@@ -1,16 +1,37 @@
-import { useAuth0 } from '@auth0/auth0-react'
 import FaceIcon from '@mui/icons-material/Face'
 import LanguageIcon from '@mui/icons-material/Language'
 import StoreIcon from '@mui/icons-material/Store'
 import { Box, Grid, Divider } from '@mui/material'
+import { useAuth } from '@redwoodjs/auth'
 
 import { Link, routes } from '@redwoodjs/router'
 
 import { footerData } from 'src/data/HomeLayout'
 
+const UserAuthTools = () => {
+  const { loading, isAuthenticated, logIn, logOut } = useAuth()
+
+  if (loading) {
+    return null
+  }
+
+  return (
+    <button
+      onClick={async () => {
+        if (isAuthenticated) {
+          await logOut()
+          navigate('/')
+        } else {
+          await logIn()
+        }
+      }}
+    >
+      {isAuthenticated ? 'Log out' : 'Log in'}
+    </button>
+  )
+}
+
 const HomeLayout = ({ children }) => {
-  const { loginWithRedirect, signupWithRedirect, logout, isAuthenticated } =
-    useAuth0()
 
   return (
     <>
@@ -48,7 +69,7 @@ const HomeLayout = ({ children }) => {
               </Box>
 
               <Box sx={{ display: 'flex' }}>
-                {!isAuthenticated ? (
+                {/* {!isAuthenticated ? (
                   <Link onClick={() => loginWithRedirect()}>
                     <p style={{ color: 'white' }} className={'Manrope200'}>
                       Login
@@ -58,7 +79,7 @@ const HomeLayout = ({ children }) => {
                   <Link to={routes.profile()}>
                     <FaceIcon sx={{ color: 'white' }} />
                   </Link>
-                )}
+                )} */}
 
                 <Box sx={{ display: 'flex', ml: '20px' }}>
                   <p style={{ color: 'white' }} className={'Manrope600'}>
@@ -120,7 +141,11 @@ const HomeLayout = ({ children }) => {
                   display: 'flex',
                 }}
               >
-                {!isAuthenticated ? (
+
+
+<UserAuthTools/>
+
+                {/* {!isAuthenticated ? (
                   <Link onClick={() => signupWithRedirect()}>
                     <button
                       style={{
@@ -150,7 +175,7 @@ const HomeLayout = ({ children }) => {
                       <p className="Manrope600">Log out</p>
                     </button>
                   </Link>
-                )}
+                )} */}
 
                 <Link to={routes.contact()}>
                   <button

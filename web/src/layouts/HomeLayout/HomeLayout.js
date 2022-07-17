@@ -2,37 +2,12 @@ import FaceIcon from '@mui/icons-material/Face'
 import LanguageIcon from '@mui/icons-material/Language'
 import StoreIcon from '@mui/icons-material/Store'
 import { Box, Grid, Divider } from '@mui/material'
-import { useAuth } from '@redwoodjs/auth'
 
 import { Link, routes } from '@redwoodjs/router'
-
+import AuthenticationTools from 'src/components/Auth/AuthenticationTools'
 import { footerData } from 'src/data/HomeLayout'
 
-const UserAuthTools = () => {
-  const { loading, isAuthenticated, logIn, logOut } = useAuth()
-
-  if (loading) {
-    return null
-  }
-
-  return (
-    <button
-      onClick={async () => {
-        if (isAuthenticated) {
-          await logOut()
-          navigate('/')
-        } else {
-          await logIn()
-        }
-      }}
-    >
-      {isAuthenticated ? 'Log out' : 'Log in'}
-    </button>
-  )
-}
-
 const HomeLayout = ({ children }) => {
-
   return (
     <>
       <header
@@ -69,17 +44,7 @@ const HomeLayout = ({ children }) => {
               </Box>
 
               <Box sx={{ display: 'flex' }}>
-                {/* {!isAuthenticated ? (
-                  <Link onClick={() => loginWithRedirect()}>
-                    <p style={{ color: 'white' }} className={'Manrope200'}>
-                      Login
-                    </p>
-                  </Link>
-                ) : (
-                  <Link to={routes.profile()}>
-                    <FaceIcon sx={{ color: 'white' }} />
-                  </Link>
-                )} */}
+                <AuthenticationTools type={'icon'} />
 
                 <Box sx={{ display: 'flex', ml: '20px' }}>
                   <p style={{ color: 'white' }} className={'Manrope600'}>
@@ -143,39 +108,9 @@ const HomeLayout = ({ children }) => {
               >
 
 
-<UserAuthTools/>
+                <AuthenticationTools type={'modal'} />
 
-                {/* {!isAuthenticated ? (
-                  <Link onClick={() => signupWithRedirect()}>
-                    <button
-                      style={{
-                        marginLeft: '30px',
-                        marginRight: '10px',
-                        borderRadius: '20px',
-                        borderColor: 'black',
-                        borderWidth: '1px',
-                      }}
-                      className="py-2 px-4 text-black hover:bg-black hover:text-white transition duration-100 rounded"
-                    >
-                      <p className="Manrope600">Sign up</p>
-                    </button>
-                  </Link>
-                ) : (
-                  <Link onClick={() => logout()}>
-                    <button
-                      style={{
-                        marginLeft: '30px',
-                        marginRight: '10px',
-                        borderRadius: '20px',
-                        borderColor: 'black',
-                        borderWidth: '1px',
-                      }}
-                      className="py-2 px-4 bg-black text-white hover:bg-white hover:text-black transition duration-100 rounded"
-                    >
-                      <p className="Manrope600">Log out</p>
-                    </button>
-                  </Link>
-                )} */}
+
 
                 <Link to={routes.contact()}>
                   <button

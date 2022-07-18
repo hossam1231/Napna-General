@@ -14,7 +14,7 @@ const Navigator = () => {
     }) => 
     <HStack alignItems="Center" p="10px">
     {item.icon}
-    <Text ml="5">
+    <Text className="Manrope600" ml="5">
       {item.name}
     </Text>
     </HStack>

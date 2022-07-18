@@ -2,15 +2,23 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useAuthentication } from '../utils/hooks/useAuthentication';
 import { Button } from 'react-native-elements';
+import Navigator from '../navigation/Navigator';
+import { Box } from 'native-base';
+
 
 export default function HomeScreen() {
   const { user } = useAuthentication();
 
   return (
     <View style={styles.container}>
-      <Text>Welcome {user?.email}!</Text>
+<Navigator/>
+<Box flex="1" bg="#EFF5F8" >
 
-      <Button title="Sign Out" style={styles.button} onPress={() => signOut(auth)} />
+
+
+
+</Box>
+   
     </View>
   );
 }
@@ -18,7 +26,8 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    display: 'flex',
+    backgroundColor: '#EFF5F8',
     alignItems: 'center',
     justifyContent: 'center',
   },

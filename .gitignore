@@ -3,6 +3,9 @@ node_modules/
 dist/
 npm-debug.*
 *.jks
+.env
+.yarn
+.redwood
 *.p8
 *.p12
 *.key

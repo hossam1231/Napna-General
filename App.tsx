@@ -4,6 +4,8 @@ import './config/firebase';
 import RootNavigation from './navigation';
 import { NativeBaseProvider } from "native-base";
 
+import './index.css'
+
 export default function App() {
   return (
     <ThemeProvider>

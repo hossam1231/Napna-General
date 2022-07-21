@@ -1,10 +1,12 @@
-import { AuthProvider } from '@redwoodjs/auth'
-import { initializeApp, getApp, getApps } from 'firebase/app'
 import * as firebaseAuth from '@firebase/auth'
+import { initializeApp, getApp, getApps } from 'firebase/app'
+
+import { AuthProvider } from '@redwoodjs/auth'
 import { FatalErrorBoundary, RedwoodProvider } from '@redwoodjs/web'
 import { RedwoodApolloProvider } from '@redwoodjs/web/apollo'
-import FatalErrorPage from 'src/pages/FatalErrorPage'
 
+import { CartProvider } from 'src/components/Cart'
+import FatalErrorPage from 'src/pages/FatalErrorPage'
 import Routes from 'src/Routes'
 
 import './scaffold.css'
@@ -37,14 +39,15 @@ export const getCurrentUser = async (decoded, { token, type }) => {
   return { email, uid }
 }
 
-
 const App = () => (
   <FatalErrorBoundary page={FatalErrorPage}>
     <RedwoodProvider titleTemplate="%PageTitle | %AppTitle">
       <AuthProvider client={firebaseClient} type="firebase">
-        <RedwoodApolloProvider>
-          <Routes />
-        </RedwoodApolloProvider>
+        <CartProvider>
+          <RedwoodApolloProvider>
+            <Routes />
+          </RedwoodApolloProvider>
+        </CartProvider>
       </AuthProvider>
     </RedwoodProvider>
   </FatalErrorBoundary>

@@ -4,6 +4,7 @@
 #
 # For the full list of options, see the "App Configuration: redwood.toml" doc:
 # https://redwoodjs.com/docs/app-configuration-redwood-toml
+#
 
 [web]
   port = 8910

@@ -4,6 +4,7 @@ import StoreIcon from '@mui/icons-material/Store'
 import { Box, Grid, Divider } from '@mui/material'
 
 import { Link, routes } from '@redwoodjs/router'
+
 import AuthenticationTools from 'src/components/Auth/AuthenticationTools'
 import { footerData } from 'src/data/HomeLayout'
 
@@ -96,6 +97,14 @@ const HomeLayout = ({ children }) => {
                       Contact
                     </Link>
                   </li>
+                  <li>
+                    <Link
+                      className="py-2 px-4 hover:bg-blue-600 transition duration-100 rounded"
+                      to={routes.pricing()}
+                    >
+                      Pricing
+                    </Link>
+                  </li>
                 </ul>
               </div>
 
@@ -106,11 +115,7 @@ const HomeLayout = ({ children }) => {
                   display: 'flex',
                 }}
               >
-
-
                 <AuthenticationTools type={'modal'} />
-
-
 
                 <Link to={routes.contact()}>
                   <button

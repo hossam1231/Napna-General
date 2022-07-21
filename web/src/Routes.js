@@ -9,33 +9,24 @@
 
 import { Router, Route, Private, Set } from '@redwoodjs/router'
 
-import PlansLayout from 'src/layouts/PlansLayout'
-
-import PackagesLayout from 'src/layouts/PackagesLayout'
-
 import HomeLayout from 'src/layouts/HomeLayout'
+import PlansLayout from 'src/layouts/PlansLayout'
 
 const Routes = () => {
   return (
     <Router>
-      <Set wrap={PlansLayout}>
-        <Route path="/plans/new" page={PlanNewPlanPage} name="newPlan" />
-        <Route path="/plans/{id}/edit" page={PlanEditPlanPage} name="editPlan" />
-        <Route path="/plans/{id}" page={PlanPlanPage} name="plan" />
-        <Route path="/plans" page={PlanPlansPage} name="plans" />
-      </Set>
-      <Set wrap={PackagesLayout}>
-        <Route path="/packages/new" page={PackageNewPackagePage} name="newPackage" />
-        <Route path="/packages/{id}/edit" page={PackageEditPackagePage} name="editPackage" />
-        <Route path="/packages/{id}" page={PackagePackagePage} name="package" />
-        <Route path="/packages" page={PackagePackagesPage} name="packages" />
-      </Set>
       <Route path="/profile" page={ProfilePage} name="profile" />
       <Route path="/login" page={LoginPage} name="login" />
       <Route path="/signup" page={SignupPage} name="signup" />
       <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
       <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
       <Private unauthenticated="home">
+        <Set wrap={PlansLayout}>
+          <Route path="/admin/plans/new" page={PlanNewPlanPage} name="newPlan" />
+          <Route path="/admin/plans/{id}/edit" page={PlanEditPlanPage} name="editPlan" />
+          <Route path="/admin/plans/{id}" page={PlanPlanPage} name="plan" />
+          <Route path="/admin/plans" page={PlanPlansPage} name="plans" />
+        </Set>
         <Route path="/admin/posts/new" page={PostNewPostPage} name="newPost" />
         <Route path="/admin/posts/{id:Int}/edit" page={PostEditPostPage} name="editPost" />
         <Route path="/admin/posts/{id:Int}" page={PostPostPage} name="post" />

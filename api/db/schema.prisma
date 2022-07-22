@@ -33,9 +33,11 @@ model User {
   resetTokenExpiresAt DateTime?
 }
 
-model Plan {
+model Product {
   id          String @id @default(cuid())
   name        String
   description String
   price       Int
 }
+
+

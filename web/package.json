@@ -13,21 +13,28 @@
     ]
   },
   "dependencies": {
-    "@auth0/auth0-react": "^1.10.2",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.0",
+    "@radix-ui/react-dialog": "0.1.7",
     "@redwoodjs/auth": "2.1.0",
     "@redwoodjs/forms": "2.1.0",
     "@redwoodjs/router": "2.1.0",
     "@redwoodjs/web": "2.1.0",
     "@stripe/react-stripe-js": "^1.9.0",
     "@stripe/stripe-js": "^1.32.0",
+    "@xstate/immer": "0.3.1",
+    "@xstate/react": "3.0.0",
     "firebase": "^9.9.0",
+    "immer": "9.0.15",
+    "open-props": "1.4.3",
     "prop-types": "15.8.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-feather": "^2.0.10",
+    "styled-components": "^5.3.5",
+    "xstate": "4.32.1"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "0.4.0",

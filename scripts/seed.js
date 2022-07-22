@@ -1,8 +1,8 @@
 import { db } from 'api/src/lib/db'
 
 export default async () => {
-  // create plans
-  await db.plan.upsert({
+  // create products
+  await db.product.upsert({
     where: { id: 'ad956423225ffe9f154419361eeeb' },
     create: {
       id: 'ad956423225ffe9f154419361eeeb',
@@ -14,11 +14,10 @@ export default async () => {
     update: {},
   })
 
-  await db.plan.upsert({
+  await db.product.upsert({
     where: { id: 'ad95630434239f154419361eeeb' },
     create: {
       id: 'ad95630434239f154419361eeeb',
-
       name: 'Silver',
       description: 'Some features',
       price: 42,
@@ -26,7 +25,7 @@ export default async () => {
     update: {},
   })
 
-  await db.plan.upsert({
+  await db.product.upsert({
     where: { id: 'ad9563042fe9f15dnoisi361eeeb' },
     create: {
       id: 'ad9563042fe9f15dnoisi361eeeb',
@@ -39,6 +38,6 @@ export default async () => {
   })
 
   console.info('')
-  console.info('Seeded table:plans successfully')
+  console.info('Seeded table:products successfully')
   console.info('')
 }

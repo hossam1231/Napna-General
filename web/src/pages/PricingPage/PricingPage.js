@@ -1,14 +1,13 @@
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
-import PricesCell from 'src/components/PricesCell'
+import ProductsCell from 'src/components/ProductsCell'
 
 const PricingPage = () => {
   return (
     <>
       <MetaTags title="Pricing" description="Pricing page" />
-
-      <PricesCell />
+      <ProductsCell />
     </>
   )
 }

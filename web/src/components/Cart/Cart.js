@@ -2,7 +2,7 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { ShoppingCart, Trash2 } from 'react-feather'
 import styled, { css } from 'styled-components'
 
-import Button from 'src/components/Button/Button'
+import Button from 'src/components/Button'
 import {
   useCart,
   useCheckout,
@@ -24,7 +24,6 @@ const Cart = (props) => {
     <Dialog.Root>
       <Dialog.Trigger asChild>
         <ShoppingCartButton
-          style={{ color: 'white' }}
           aria-label="Open cart"
           variant="icon"
           data-quantity={quantity}

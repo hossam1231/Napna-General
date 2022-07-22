@@ -6,6 +6,7 @@ import { Box, Grid, Divider } from '@mui/material'
 import { Link, routes } from '@redwoodjs/router'
 
 import AuthenticationTools from 'src/components/Auth/AuthenticationTools'
+import Cart from 'src/components/Cart'
 import { footerData } from 'src/data/HomeLayout'
 
 const HomeLayout = ({ children }) => {
@@ -46,7 +47,7 @@ const HomeLayout = ({ children }) => {
 
               <Box sx={{ display: 'flex' }}>
                 <AuthenticationTools type={'icon'} />
-
+                <Cart />
                 <Box sx={{ display: 'flex', ml: '20px' }}>
                   <p style={{ color: 'white' }} className={'Manrope600'}>
                     English

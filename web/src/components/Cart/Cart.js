@@ -24,6 +24,7 @@ const Cart = (props) => {
     <Dialog.Root>
       <Dialog.Trigger asChild>
         <ShoppingCartButton
+          style={{ color: 'white' }}
           aria-label="Open cart"
           variant="icon"
           data-quantity={quantity}

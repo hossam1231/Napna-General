@@ -14,36 +14,31 @@
   },
   "dependencies": {
     "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.0",
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
     "@radix-ui/react-dialog": "0.1.7",
     "@redwoodjs/auth": "2.1.0",
     "@redwoodjs/forms": "2.1.0",
     "@redwoodjs/router": "2.1.0",
     "@redwoodjs/web": "2.1.0",
-    "@stripe/react-stripe-js": "^1.9.0",
-    "@stripe/stripe-js": "^1.32.0",
+    "@stripe/stripe-js": "1.32.0",
     "@xstate/immer": "0.3.1",
     "@xstate/react": "3.0.0",
     "firebase": "^9.9.0",
     "immer": "9.0.15",
-    "open-props": "1.4.3",
+    "open-props": "1.4.4",
     "prop-types": "15.8.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-feather": "^2.0.10",
-    "styled-components": "^5.3.5",
+    "react-feather": "2.0.10",
+    "styled-components": "5.3.5",
     "xstate": "4.32.1"
   },
+  "resolutions": {
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
+  },
   "devDependencies": {
-    "@tailwindcss/aspect-ratio": "0.4.0",
-    "@tailwindcss/forms": "0.5.2",
-    "@tailwindcss/line-clamp": "0.4.0",
-    "@tailwindcss/typography": "0.5.2",
-    "autoprefixer": "10.4.7",
-    "postcss": "8.4.14",
-    "postcss-loader": "7.0.0",
-    "tailwindcss": "3.0.24"
+    "@testing-library/user-event": "14.3.0"
   }
 }

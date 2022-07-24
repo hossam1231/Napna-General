@@ -1,48 +1,42 @@
-import { db } from 'api/src/lib/db'
+import { db } from '$api/src/lib/db'
 
 export default async () => {
-  // create plans
-  await db.plan.upsert({
-    where: { id: 'ad956423225ffe9f154419361eeeb' },
-    create: {
-      id: 'ad956423225ffe9f154419361eeeb',
-      name: 'Bronze',
-      description: 'Few features',
-      price: 12.99,
-      image: 'https://i.imgur.com/XQj8Z9x.png',
-      type: 'plan',
-    },
-    update: {},
-  })
+  try {
+    //
+    // Manually seed via `yarn rw prisma db seed`
+    // Seeds automatically with `yarn rw prisma migrate dev` and `yarn rw prisma migrate reset`
+    //
+    // Update "const data = []" to match your data model and seeding needs
+    //
+    const data = [
+      // To try this example data with the UserExample model in schema.prisma,
+      // uncomment the lines below and run 'yarn rw prisma migrate dev'
+      //
+      // { name: 'alice', email: 'alice@example.com' },
+      // { name: 'mark', email: 'mark@example.com' },
+      // { name: 'jackie', email: 'jackie@example.com' },
+      // { name: 'bob', email: 'bob@example.com' },
+    ]
+    console.log(
+      "\nUsing the default './scripts/seed.js' template\nEdit the file to add seed data\n"
+    )
 
-  await db.plan.upsert({
-    where: { id: 'ad95630434239f154419361eeeb' },
-    create: {
-      id: 'ad95630434239f154419361eeeb',
-      name: 'Silver',
-      description: 'Some features',
-      price: 42.99,
-      image: 'https://via.placeholder.com/150',
-      type: 'plan',
-    },
-    update: {},
-  })
+    // Note: if using PostgreSQL, using `createMany` to insert multiple records is much faster
+    // @see: https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#createmany
+    Promise.all(
+      //
+      // Change to match your data model and seeding needs
+      //
+      data.map(async (userExample) => {
+        const record = await db.userExample.create({
+          data: { name: userExample.name, email: userExample.email },
+        })
 
-  await db.plan.upsert({
-    where: { id: 'ad9563042fe9f15dnoisi361eeeb' },
-    create: {
-      id: 'ad9563042fe9f15dnoisi361eeeb',
-      name: 'Gold',
-      description: ' All features',
-      price: 88.99,
-      image:
-        'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png',
-      type: 'plan',
-    },
-    update: {},
-  })
-
-  console.info('')
-  console.info('Seeded table:plans successfully')
-  console.info('')
+        console.log(record)
+      })
+    )
+  } catch (error) {
+    console.warn('Please define your seed data.')
+    console.error(error)
+  }
 }

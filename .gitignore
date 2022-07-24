@@ -5,6 +5,7 @@
 .expo
 .redwood
 dev.db*
+old
 dist
 dist-babel
 node_modules

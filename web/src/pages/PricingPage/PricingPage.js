@@ -1,15 +1,40 @@
-import { Link, routes } from '@redwoodjs/router'
-import { MetaTags } from '@redwoodjs/web'
+import styled from 'styled-components'
 
 import ProductsCell from 'src/components/ProductsCell'
 
 const PricingPage = () => {
   return (
-    <>
-      <MetaTags title="Pricing" description="Pricing page" />
-      <ProductsCell />
-    </>
+    <Wrapper>
+      <article>
+        <h2>Super Tokens</h2>
+        <Description>
+          These are single-use tokens. Great for emergencies and gifts.
+        </Description>
+        <ProductsCell />
+      </article>
+
+      <article>
+        <h2>Super Subs</h2>
+        <Description>
+          Monthly subscriptions to superpowers. Great for the career
+          supervillain, hero or parent.
+        </Description>
+        <ProductsCell type={'recurring'} />
+      </article>
+    </Wrapper>
   )
 }
 
 export default PricingPage
+
+// Styles
+
+const Wrapper = styled.main`
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--padding) * 2);
+`
+
+const Description = styled.p`
+  margin-bottom: var(--padding);
+`

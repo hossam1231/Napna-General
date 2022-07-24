@@ -1,5 +1,8 @@
-import { db } from 'src/lib/db'
 import { DbAuthHandler } from '@redwoodjs/api'
+
+import { db } from 'src/lib/db'
+import { sendEmail } from 'src/lib/email'
+import { stripe } from 'src/lib/stripe'
 
 export const handler = async (event, context) => {
   const forgotPasswordOptions = {
@@ -15,8 +18,14 @@ export const handler = async (event, context) => {
     // You could use this return value to, for example, show the email
     // address in a toast message so the user will know it worked and where
     // to look for the email.
-    handler: (user) => {
-      return user
+    handler: async (user) => {
+      const res = await sendEmail({
+        to: user.email,
+        subject: 'Reset Superstore Password',
+        text: `Copy the following link into your browser to reset your password: ${process.env.DOMAIN_URL}reset-password?resetToken=${user.resetToken}`,
+        html: `<div><h2>Reset Password</h2><p>Follow the link below to reset your password. </p><p><a href="${process.env.DOMAIN_URL}reset-password?resetToken=${user.resetToken}">${process.env.DOMAIN_URL}reset-password?resetToken=${user.resetToken}</a></p></div>`,
+      })
+      return res
     },
 
     // How long the resetToken is valid for, in seconds (default is 24 hours)
@@ -26,9 +35,9 @@ export const handler = async (event, context) => {
       // for security reasons you may want to be vague here rather than expose
       // the fact that the email address wasn't found (prevents fishing for
       // valid email addresses)
-      usernameNotFound: 'Username not found',
+      usernameNotFound: 'Email address not found',
       // if the user somehow gets around client validation
-      usernameRequired: 'Username is required',
+      usernameRequired: 'Email address is required',
     },
   }
 
@@ -49,8 +58,8 @@ export const handler = async (event, context) => {
     },
 
     errors: {
-      usernameOrPasswordMissing: 'Both username and password are required',
-      usernameNotFound: 'Username ${username} not found',
+      usernameOrPasswordMissing: 'Both email address and password are required',
+      usernameNotFound: 'Email address ${username} not found',
       // For security reasons you may want to make this the same as the
       // usernameNotFound error so that a malicious user can't use the error
       // to narrow down if it's the username or password that's incorrect
@@ -101,13 +110,27 @@ export const handler = async (event, context) => {
     //
     // If this returns anything else, it will be returned by the
     // `signUp()` function in the form of: `{ message: 'String here' }`.
-    handler: ({ username, hashedPassword, salt, userAttributes }) => {
+    handler: async ({ username: email, hashedPassword, salt }) => {
+      // get customerID from Stripe using email
+      const customerList = await stripe.customers.list({ email })
+      let customerId = ''
+      let customerName = ''
+      if (customerList.length > 0) {
+        customerId = customerList[0].id
+        customerName = customerList[0].name
+      } else {
+        const newCustomer = await stripe.customers.create({ email })
+        customerId = newCustomer.id
+      }
+
+      // Use Stripe details for adding new user
       return db.user.create({
         data: {
-          email: username,
-          hashedPassword: hashedPassword,
-          salt: salt,
-          // name: userAttributes.name
+          id: customerId,
+          email,
+          hashedPassword,
+          salt,
+          name: customerName,
         },
       })
     },
@@ -115,7 +138,7 @@ export const handler = async (event, context) => {
     errors: {
       // `field` will be either "username" or "password"
       fieldMissing: '${field} is required',
-      usernameTaken: 'Username `${username}` already in use',
+      usernameTaken: 'Email address `${username}` already in use',
     },
   }
 
@@ -139,18 +162,23 @@ export const handler = async (event, context) => {
       resetTokenExpiresAt: 'resetTokenExpiresAt',
     },
 
-    forgotPassword: forgotPasswordOptions,
-    login: loginOptions,
-    resetPassword: resetPasswordOptions,
-    signup: signupOptions,
-
+    // Specifies attributes on the cookie that dbAuth sets in order to remember
+    // who is logged in. See https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies
     cookie: {
       HttpOnly: true,
       Path: '/',
       SameSite: 'Strict',
-      Secure: true,
+      Secure: process.env.NODE_ENV !== 'development' ? true : false,
+
+      // If you need to allow other domains (besides the api side) access to
+      // the dbAuth session cookie:
       // Domain: 'example.com',
     },
+
+    forgotPassword: forgotPasswordOptions,
+    login: loginOptions,
+    resetPassword: resetPasswordOptions,
+    signup: signupOptions,
   })
 
   return await authHandler.invoke()

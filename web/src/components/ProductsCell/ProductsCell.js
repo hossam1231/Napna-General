@@ -6,12 +6,14 @@ import Product from 'src/components/Product'
 import Spinner from 'src/components/Spinner'
 
 export const QUERY = gql`
-  query Products {
-    products {
+  query Products($type: ProductType) {
+    products(type: $type) {
       id
       name
       description
+      image
       price
+      type
     }
   }
 `

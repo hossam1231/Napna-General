@@ -1,26 +1,21 @@
-import { Link, navigate, routes } from '@redwoodjs/router'
 import { useRef } from 'react'
+import { useEffect } from 'react'
+
+import { useAuth } from '@redwoodjs/auth'
 import {
   Form,
   Label,
-  TextField,
+  EmailField,
   PasswordField,
   FieldError,
   Submit,
 } from '@redwoodjs/forms'
-import { useAuth } from '@redwoodjs/auth'
+import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 import { toast, Toaster } from '@redwoodjs/web/toast'
-import { useEffect } from 'react'
 
 const SignupPage = () => {
-  const { isAuthenticated, signUp } = useAuth()
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate(routes.home())
-    }
-  }, [isAuthenticated])
+  const { signUp } = useAuth()
 
   // focus on email box on page load
   const usernameRef = useRef()
@@ -45,7 +40,7 @@ const SignupPage = () => {
     <>
       <MetaTags title="Signup" />
 
-      <main className="rw-main w-96 mx-auto mt-12">
+      <main className="rw-main">
         <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
         <div className="rw-scaffold rw-login-container">
           <div className="rw-segment">
@@ -61,9 +56,9 @@ const SignupPage = () => {
                     className="rw-label"
                     errorClassName="rw-label rw-label-error"
                   >
-                    Username
+                    Email address
                   </Label>
-                  <TextField
+                  <EmailField
                     name="username"
                     className="rw-input"
                     errorClassName="rw-input rw-input-error"
@@ -71,7 +66,7 @@ const SignupPage = () => {
                     validation={{
                       required: {
                         value: true,
-                        message: 'Username is required',
+                        message: 'Email address is required',
                       },
                     }}
                   />
@@ -109,7 +104,7 @@ const SignupPage = () => {
               </div>
             </div>
           </div>
-          <div className="rw-login-link mt-2 text-center">
+          <div className="rw-login-link">
             <span>Already have an account?</span>{' '}
             <Link to={routes.login()} className="rw-link">
               Log in!

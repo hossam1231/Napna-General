@@ -18,13 +18,13 @@ const Routes = () => {
   return (
     <Router>
       <Set wrap={[CartProvider]}>
-        <Set wrap={HomeLayout}>
-          <Route path="/" page={HomePage} name="home" />
-        </Set>
         <Route path="/success" page={SuccessPage} name="success" />
         <Route path="/failure" page={FailurePage} name="failure" />
         <Set wrap={MainLayout}>
           <Route path="/pricing" page={PricingPage} name="pricing" />
+        </Set>
+        <Set wrap={HomeLayout}>
+          <Route path="/" page={HomePage} name="home" />
         </Set>
         <Set wrap={AuthRedirect}>
           <Route path="/login" page={LoginPage} name="login" />

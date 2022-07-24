@@ -6,7 +6,6 @@ import { Box, Grid, Divider } from '@mui/material'
 import { Link, routes } from '@redwoodjs/router'
 
 import AuthenticationTools from 'src/components/Auth/AuthenticationTools'
-import Cart from 'src/components/Cart'
 import { footerData } from 'src/data/HomeLayout'
 
 const HomeLayout = ({ children }) => {
@@ -47,7 +46,7 @@ const HomeLayout = ({ children }) => {
 
               <Box sx={{ display: 'flex' }}>
                 <AuthenticationTools type={'icon'} />
-                <Cart />
+
                 <Box sx={{ display: 'flex', ml: '20px' }}>
                   <p style={{ color: 'white' }} className={'Manrope600'}>
                     English
@@ -151,10 +150,7 @@ const HomeLayout = ({ children }) => {
                 {/* gutter */}
               </Grid>
               <Grid item xs={5}>
-                <div
-                  href="#"
-                  className="group block max-w-xs mx-auto rounded-lg p-6 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-sky-500 hover:ring-sky-500"
-                >
+                <div className="group block max-w-xs mx-auto rounded-lg p-6 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-sky-500 hover:ring-sky-500">
                   <div className="flex items-center space-x-3">
                     <svg className="h-6 w-6 " fill="none" viewBox="0 0 24 24">
                       <StoreIcon />

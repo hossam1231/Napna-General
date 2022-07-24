@@ -27,7 +27,7 @@
     "@xstate/immer": "0.3.1",
     "@xstate/react": "3.0.0",
     "add": "^2.0.6",
-    "firebase": "^9.9.0",
+    "firebase": "^9.9.1",
     "immer": "9.0.15",
     "open-props": "1.4.4",
     "prop-types": "15.8.1",

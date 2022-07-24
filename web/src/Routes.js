@@ -18,11 +18,8 @@ const Routes = () => {
   return (
     <Router>
       <Set wrap={[CartProvider]}>
-        <Route path="/contact" page={ContactPage} name="contact" />
-        <Route path="/about" page={AboutPage} name="about" />
         <Set wrap={HomeLayout}>
           <Route path="/" page={HomePage} name="home" />
-          <Route path="/home" page={HomePage} name="home" />
         </Set>
         <Route path="/success" page={SuccessPage} name="success" />
         <Route path="/failure" page={FailurePage} name="failure" />
@@ -35,6 +32,8 @@ const Routes = () => {
           <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
           <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
         </Set>
+        <Route path="/contact" page={ContactPage} name="contact" />
+        <Route path="/about" page={AboutPage} name="about" />
       </Set>
 
       <Route notfound page={NotFoundPage} />

@@ -6,10 +6,10 @@
 # https://redwoodjs.com/docs/app-configuration-redwood-toml
 
 [web]
-  title = "Superstore"
+  title = "Napna"
   port = 8910
   apiUrl = "/.netlify/functions"
-  includeEnvironmentVariables = ['STRIPE_PK'] # any ENV vars that should be available to the web side, see https://redwoodjs.com/docs/environment-variables#web
+  includeEnvironmentVariables = ['STRIPE_PK','FIREBASE_API_KEY','FIREBASE_AUTH_DOMAIN,FIREBASE_PROJECT_ID','FIREBASE_STORAGE_BUCKET','FIREBASE_MESSAGING_SENDER_ID','FIREBASE_APP_ID','MEASUREMENT_ID']
 [api]
   port = 8911
 [browser]

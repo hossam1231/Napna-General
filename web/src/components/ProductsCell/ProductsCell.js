@@ -36,6 +36,8 @@ export const Empty = () => <div>Empty</div>
 
 export const Failure = ({ error }) => {
   console.error(error.stack)
+  console.log(error.code)
+  console.log(error.message)
 
   return (
     <Wrapper>

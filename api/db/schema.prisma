@@ -18,3 +18,17 @@ model User {
   resetTokenExpiresAt DateTime?
 }
 
+model Plan {
+  id                  String       @id
+  name                String?
+  price               String
+}
+
+model ActivePlan {
+  id                  String       @id
+  userId              String
+  merchantId          String
+  planId              String
+  updatedAt           String
+  createdAt           DateTime     @default(now())
+}

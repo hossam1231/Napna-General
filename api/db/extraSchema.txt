@@ -1,0 +1,34 @@
+merchant {
+id
+name
+locations
+}
+
+stock {
+address
+postcode
+product
+price
+}
+
+product {
+id
+name
+imgUrl
+barcode
+}
+
+transaction {
+id
+type
+store
+user
+body
+}
+
+recognitions {
+id
+user
+store
+product
+}

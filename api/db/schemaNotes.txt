@@ -1,0 +1,27 @@
+model ActivePlan {
+  id                  String       @id
+  userId              String
+  merchantId          String
+  planId              String
+  updatedAt           String    =  [{planId,DateTime}]
+  createdAt           DateTime     @default(now())
+}
+
+
+
+user creates account > user sets up merchant billing > merchantID added to user table > 
+user creates account >
+user creates account >
+user creates account >
+user creates account >
+user creates account >
+user creates account >
+user creates account >
+user creates account >
+user creates account >
+user creates account >
+user creates account >
+user creates account >
+user creates account >
+user creates account >
+user creates account >

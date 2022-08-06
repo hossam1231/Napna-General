@@ -4,21 +4,37 @@
  */
 import styled from 'styled-components'
 
-const List = ({ items, Component, direction = 'row' }) => {
+import ProductLoading from '../Product/Product'
+
+const List = ({ items, Component, direction = 'column', loading }) => {
   return (
-    <Wrapper
-      // This is a pattern Josh Comeau recommends for dynamic styles in styled components.
-      // See https://www.joshwcomeau.com/css/styled-components/.
-      style={{
-        '--direction': direction,
-      }}
-    >
-      {items.map((item) => (
-        <li key={item.id}>
-          <Component {...item} />
-        </li>
-      ))}
-    </Wrapper>
+    <>
+      {loading === true ? (
+        <Wrapper
+          // This is a pattern Josh Comeau recommends for dynamic styles in styled components.
+          // See https://www.joshwcomeau.com/css/styled-components/.
+          style={{
+            '--direction': direction,
+          }}
+        >
+          <ProductLoading /> <ProductLoading /> <ProductLoading />
+        </Wrapper>
+      ) : (
+        <Wrapper
+          // This is a pattern Josh Comeau recommends for dynamic styles in styled components.
+          // See https://www.joshwcomeau.com/css/styled-components/.
+          style={{
+            '--direction': direction,
+          }}
+        >
+          {items.map((item) => (
+            <li key={item.id}>
+              <Component {...item} />
+            </li>
+          ))}
+        </Wrapper>
+      )}
+    </>
   )
 }
 

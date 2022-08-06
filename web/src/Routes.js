@@ -17,6 +17,7 @@ import MainLayout from 'src/layouts/MainLayout'
 const Routes = () => {
   return (
     <Router>
+      <Route path="/settings" page={SettingsPage} name="settings" />
       <Set wrap={[CartProvider]}>
         <Route path="/success" page={SuccessPage} name="success" />
         <Route path="/failure" page={FailurePage} name="failure" />

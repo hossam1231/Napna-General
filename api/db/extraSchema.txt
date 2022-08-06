@@ -1,0 +1,37 @@
+
+
+firestore
+
+merchant {
+id
+name
+locations
+bookings
+Seating
+staff [{role,userID}]
+}
+
+realtime database
+
+stock {
+address
+postcode
+product
+price
+}
+
+transaction {
+id
+type
+store
+user
+body
+}
+
+payments{
+id
+user
+store
+body
+DateTime
+}

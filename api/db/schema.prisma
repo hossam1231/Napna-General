@@ -1,0 +1,50 @@
+datasource db {
+  provider = "postgres"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = "native"
+}
+
+model User {
+  id                  String       @id
+  email               String    @unique
+  name                String?
+  hashedPassword      String
+  salt                String
+  resetToken          String?
+  resetTokenExpiresAt DateTime?
+}
+
+model Plan {
+  id                  String       @id
+  name                String?
+  price               String
+}
+
+product {
+id
+name
+imgUrl
+barcode
+}
+
+
+recognitions {
+id
+user
+type
+store
+product
+}
+
+model ActivePlan {
+  id                  String       @id
+  userId              String
+  merchantId          String
+  planId              String
+  updatedAt           String
+  createdAt           DateTime     @default(now())
+}

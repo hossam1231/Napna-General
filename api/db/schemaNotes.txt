@@ -1,0 +1,8 @@
+model ActivePlan {
+  id                  String       @id
+  userId              String
+  merchantId          String
+  planId              String
+  updatedAt           String    =  [{planId,DateTime}]
+  createdAt           DateTime     @default(now())
+}

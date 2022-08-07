@@ -14,11 +14,11 @@ export default function HomeScreen() {
 <Navigator/>
 <Box flex="1" bg="#EFF5F8" >
 
-
+<Text> helloss  </Text>
 
 
 </Box>
-   
+
     </View>
   );
 }

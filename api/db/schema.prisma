@@ -24,6 +24,20 @@ model Plan {
   price               String
 }
 
+model Partner {
+  id                  String       @id
+  userId              String?      @unique
+  merchantId          String
+}
+
+model Merchant {
+  id                  String       @id
+  partnerId           String
+  name                String
+  address             String
+}
+
+
 model ActivePlan {
   id                  String       @id
   userId              String

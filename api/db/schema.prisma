@@ -24,21 +24,6 @@ model Plan {
   price               String
 }
 
-product {
-id
-name
-imgUrl
-barcode
-}
-
-
-recognitions {
-id
-user
-type
-store
-product
-}
 
 model ActivePlan {
   id                  String       @id

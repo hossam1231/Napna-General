@@ -1,10 +1,10 @@
 import {React, useState, useEffect }from 'react';
-
-import {SafeAreaProvider }from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ThemeProvider } from 'react-native-elements';
 import './config/firebase';
 import RootNavigation from './navigation';
-import { NativeBaseProvider, Center, Spinner,StatusBar} from "native-base";
+import { NativeBaseProvider, Center, Spinner} from "native-base";
 import useCachedResources from "./hooks/useCachedResources";
 import './index.css'
 import LoadingScreen from './screens/loading/LoadingScreen'

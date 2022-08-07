@@ -18,7 +18,7 @@ const Navigator = () => {
       <FlatList data={navigatorData} renderItem={({
       item
     }) =>
-    <HStack alignItems="Center" bg="grey" mt="2" m="1" w="100%"  p="10px">
+    <HStack key={item.id} alignItems="Center" bg="grey" mt="2" m="1" w="100%"  p="10px">
     {item.icon}
     <Text className="Manrope800" ml="5">
       {item.name}

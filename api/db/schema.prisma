@@ -9,8 +9,8 @@ generator client {
 }
 
 model User {
-  id                  String       @id
-  email               String    @unique
+  id                  String       @id @default(cuid())
+  email               String       @unique
   name                String?
   hashedPassword      String
   salt                String
@@ -19,27 +19,29 @@ model User {
 }
 
 model Plan {
-  id                  String       @id
+  id                  String       @id @default(cuid())
   name                String?
   price               String
+  body                String
 }
 
 model Partner {
-  id                  String       @id
+  id                  String       @id @default(cuid())
   userId              String?      @unique
   merchantId          String
 }
 
 model Merchant {
-  id                  String       @id
+  id                  String       @id @default(cuid())
   partnerId           String
   name                String
-  address             String
+  address             String       @unique
+  postalCode          String
 }
 
 model ActivePlan {
-  id                  String       @id
-  userId              String
+  id                  String       @id @default(cuid())
+  partnerId           String       @unique
   merchantId          String
   planId              String
   updatedAt           String

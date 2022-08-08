@@ -16,6 +16,7 @@ CREATE TABLE "Plan" (
     "id" TEXT NOT NULL,
     "name" TEXT,
     "price" TEXT NOT NULL,
+    "body" TEXT NOT NULL,
 
     CONSTRAINT "Plan_pkey" PRIMARY KEY ("id")
 );
@@ -35,6 +36,7 @@ CREATE TABLE "Merchant" (
     "partnerId" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "address" TEXT NOT NULL,
+    "postalCode" TEXT NOT NULL,
 
     CONSTRAINT "Merchant_pkey" PRIMARY KEY ("id")
 );
@@ -42,7 +44,7 @@ CREATE TABLE "Merchant" (
 -- CreateTable
 CREATE TABLE "ActivePlan" (
     "id" TEXT NOT NULL,
-    "userId" TEXT NOT NULL,
+    "partnerId" TEXT NOT NULL,
     "merchantId" TEXT NOT NULL,
     "planId" TEXT NOT NULL,
     "updatedAt" TEXT NOT NULL,
@@ -56,3 +58,9 @@ CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Partner_userId_key" ON "Partner"("userId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Merchant_address_key" ON "Merchant"("address");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "ActivePlan_partnerId_key" ON "ActivePlan"("partnerId");

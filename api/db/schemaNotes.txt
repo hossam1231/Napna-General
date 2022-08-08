@@ -1,27 +1,11 @@
-model ActivePlan {
-  id                  String       @id
-  userId              String
-  merchantId          String
-  planId              String
-  updatedAt           String    =  [{planId,DateTime}]
-  createdAt           DateTime     @default(now())
-}
+user idek
 
+plan is just showing what plans we have
 
+partner is a account that all backstage people get send them partner emails too
 
-user creates account > user sets up merchant billing > merchantID added to user table > 
-user creates account >
-user creates account >
-user creates account >
-user creates account >
-user creates account >
-user creates account >
-user creates account >
-user creates account >
-user creates account >
-user creates account >
-user creates account >
-user creates account >
-user creates account >
-user creates account >
-user creates account >
+merchant is a list of shops a partener can have multiple shops but a shop can only have one partner
+
+active plan is a record of who is paying us for sales and for our docs
+
+merchant is the shop this allows for one owner and multippe workersC(partners) of one shop

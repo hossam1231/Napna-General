@@ -29,14 +29,17 @@ export function ProductSearchModal() {
 
   return (
     <div>
-      <a
+      <div
         onClick={handleOpen}
-        className="group block max-w-xs rounded-lg p-6 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-sky-500 hover:ring-sky-500"
+        className="group block max-w-xs rounded-lg p-6 dark:bg-slate-700  bg-white ring-1 ring-slate-900/5 dark:ring-slate-700/5 shadow-lg space-y-3 hover:bg-sky-500 hover:ring-sky-500"
       >
         <div className="flex items-center space-x-3">
-          <SearchIcon />
 
-          <h3 className="text-slate-900 group-hover:text-white text-sm font-semibold">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 dark:stroke-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+<path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+</svg>
+
+          <h3 className=" dark:text-white text-slate-900 group-hover:text-white text-sm font-semibold">
             Try it out
           </h3>
         </div>
@@ -44,7 +47,7 @@ export function ProductSearchModal() {
           Search a handful of merchants near you, find what your looking for
           locally.
         </p>
-      </a>
+      </div>
 
       <Modal
         aria-labelledby="transition-modal-title"

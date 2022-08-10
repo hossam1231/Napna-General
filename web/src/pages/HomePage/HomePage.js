@@ -18,7 +18,7 @@ const HomePage = () => {
     <>
       <MetaTags title="Home" description="Home page" />
       {/* <ArticlesCell /> */}
-      <Grid sx={{ marginTop: '20px' }} container spacing={3}>
+      <Grid className='dark:bg-slate-800' sx={{ marginTop: '20px' }} container spacing={3}>
         <Grid item xs={1}>
           {/* gutter */}
         </Grid>
@@ -26,11 +26,11 @@ const HomePage = () => {
         <Grid item sm={5}>
           <p
             style={{ fontSize: '65px', marginBottom: '20px' }}
-            className={'Manrope700'}
+            className={'Manrope700 dark:text-white'}
           >
             Move faster with intuitive React UI tools
           </p>
-          <p style={{ marginBottom: '20px', color: '#4B5563' }}>
+          <p className='text-slate-500 dark:text-slate-400' style={{ marginBottom: '20px'}}>
             MUI offers a comprehensive suite of UI tools to help you ship new
             features faster. Start with Material UI, our fully-loaded component
             library, or bring your own design system to our production-ready

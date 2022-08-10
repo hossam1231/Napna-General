@@ -1,8 +1,5 @@
 import { Grid } from '@mui/material'
 
-import AuthButton from 'src/components/AuthButton'
-import Cart from 'src/components/Cart'
-import ProductsCell from 'src/components/ProductsCell'
 
 const MainLayout = ({ children }) => {
   return (
@@ -21,7 +18,6 @@ const MainLayout = ({ children }) => {
             }}
             className="z-20 shadow-xl flex flex-col"
           >
-            {/* <AuthButton /> <Cart /> */}
             <h2
               style={{
                 marginTop: '40x',
@@ -34,7 +30,6 @@ const MainLayout = ({ children }) => {
               Plans
             </h2>
             <div className="grow">
-            <ProductsCell/>
             </div>
 
                 <button

@@ -17,12 +17,8 @@ import { logger } from 'src/lib/logger'
  * function, and execution environment.
  */
 export const handler = async (event, context) => {
-  logger.info('Invoked serverTime function')
-
-  export const handler = async (event, context) => {
   return {
     statusCode: 200,
     body: new Date()
   }
-}
 }

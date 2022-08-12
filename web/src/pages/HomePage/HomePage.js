@@ -45,7 +45,7 @@ const landingPageMockup = './landingPageMockup.png'
         </Grid>
         <Grid item xs={12} sm={6}>
           {/* image */}
-          <div class="fill">
+          <div className="fill">
             <img src={require('./landingPageMockup.png')}/>
           </div>
         </Grid>
@@ -221,9 +221,9 @@ const landingPageMockup = './landingPageMockup.png'
       <Grid container sx={{ marginTop: '20px' }} spacing={3}>
       <Grid item lg={1}/>
       <Grid item xs={10}>
-      <span href="#" class="block p-6 max-w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Get started now</h5>
-    <p class="font-normal text-gray-700 dark:text-gray-400">Become a partner today and join the list of growing merchants bringing more to their business with Napna.</p>
+      <span href="#" className="block p-6 max-w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-[#122547] dark:border-[#1E4894] dark:hover:bg-gray-700">
+    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-[#CAE8FF]">Get started now</h5>
+    <p className="font-normal text-gray-700 dark:text-[#A7D3F8]">Become a partner today and join the list of growing merchants bringing more to their business with Napna.</p>
 </span>
       </Grid>
         <Grid item lg={1}/>

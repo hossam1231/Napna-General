@@ -2,18 +2,17 @@ import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
 const AboutPage = () => {
+
+
+async function testFunction() {
+   await fetch('http://localhost:8910/.netlify/functions/getMerchantId') 
+        .then(response => response.json())
+        .then(data => console.log(data));
+}
+
   return (
     <>
-      <MetaTags title="About" description="About page" />
-
-      <h1>AboutPage</h1>
-      <p>
-        Find me in <code>./web/src/pages/AboutPage/AboutPage.js</code>
-      </p>
-      <p>
-        My default route is named <code>about</code>, link to me with `
-        <Link to={routes.about()}>About</Link>`
-      </p>
+    <button onClick={testFunction}>Test</button>
     </>
   )
 }

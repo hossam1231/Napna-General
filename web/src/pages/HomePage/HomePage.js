@@ -14,11 +14,14 @@ import { ProductSearchModal } from 'src/components/Search/Index'
 // import ArticlesCell from 'src/components/ArticlesCell'
 
 const HomePage = () => {
+
+const landingPageMockup = './landingPageMockup.png'
+
   return (
     <>
       <MetaTags title="Home" description="Home page" />
       {/* <ArticlesCell /> */}
-      <Grid className='dark:bg-slate-800' sx={{ marginTop: '20px' }} container spacing={3}>
+      <Grid className='dark:bg-slate-800' container spacing={3}>
         <Grid item xs={1}>
           {/* gutter */}
         </Grid>
@@ -40,8 +43,14 @@ const HomePage = () => {
             <ProductSearchModal />
           </Box>
         </Grid>
-        <Grid item xs={12} sm={7}>
+        <Grid item xs={12} sm={6}>
           {/* image */}
+          <div class="fill">
+            <img src={require('./landingPageMockup.png')}/>
+          </div>
+        </Grid>
+        <Grid item xs={12}>
+          {/* gutter */}
         </Grid>
       </Grid>
 
@@ -72,14 +81,13 @@ const HomePage = () => {
 
         <Grid item sm={10}>
           <p
-            style={{ color: 'blue', fontSize: '15px' }}
-            className={'Manrope700'}
+            style={{  fontSize: '15px' }}
+            className={'Manrope700 dark:text-white'}
           >
             Products
           </p>
-          <p>Every component you need is ready for production</p>
-          Build at an accelerated pace without sacrificing flexibility or
-          control.
+          <p className='dark:text-slate-400'>Every component you need is ready for production,
+          build at an accelerated pace without sacrificing flexibility or control.</p>
         </Grid>
 
         <Grid item sm={1}>
@@ -94,19 +102,19 @@ const HomePage = () => {
 
         <Grid item sm={10}>
           <p
-            style={{ color: 'blue', fontSize: '15px' }}
-            className={'Manrope700'}
+            style={{  fontSize: '15px' }}
+            className={'Manrope700 dark:text-white'}
           >
             Why build with Napna?
           </p>
-          <p>
+          <p className='dark:text-slate-400'>
             A delightful experience for you and your customers. Increase
             footfall, build lasting customer relations with ease. Start with
             Napna and create your own, sophisticated sales campagins.
           </p>
           <Grid container sx={{ marginTop: '20px' }} spacing={3}>
             <Grid item sm={4}>
-              <div className="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl ">
+              <div className="bg-white dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl ">
                 <div>
                   <span className="inline-flex items-center justify-center p-2 bg-indigo-500 rounded-md shadow-lg">
                     <svg
@@ -131,7 +139,7 @@ const HomePage = () => {
               </div>
             </Grid>
             <Grid item sm={4}>
-              <div className="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl">
+              <div className="bg-white dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl">
                 <div>
                   <span className="inline-flex items-center justify-center p-2 bg-indigo-500 rounded-md shadow-lg">
                     <svg
@@ -157,7 +165,7 @@ const HomePage = () => {
               </div>
             </Grid>
             <Grid item sm={4}>
-              <div className="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl">
+              <div className="bg-white dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl">
                 <div>
                   <span className="inline-flex items-center justify-center p-2 bg-indigo-500 rounded-md shadow-lg">
                     <svg
@@ -196,12 +204,12 @@ const HomePage = () => {
 
         <Grid item sm={10}>
           <p
-            style={{ color: 'blue', fontSize: '15px' }}
-            className={'Manrope700'}
+            style={{  fontSize: '15px' }}
+            className={'Manrope700 dark:text-white'}
           >
             Production-ready components
           </p>
-          <p>Beautiful and powerful, right out of the box</p>
+          <p className="dark:text-slate-400">Beautiful and powerful, right out of the box</p>
         </Grid>
 
         <Grid item sm={1}>
@@ -209,20 +217,31 @@ const HomePage = () => {
         </Grid>
       </Grid>
 
+
+      <Grid container sx={{ marginTop: '20px' }} spacing={3}>
+      <Grid item lg={1}/>
+      <Grid item xs={10}>
+      <span href="#" class="block p-6 max-w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Get started now</h5>
+    <p class="font-normal text-gray-700 dark:text-gray-400">Become a partner today and join the list of growing merchants bringing more to their business with Napna.</p>
+</span>
+      </Grid>
+        <Grid item lg={1}/>
+      </Grid>
+
+
+
       <Grid container sx={{ marginTop: '20px' }} spacing={3}>
         <Grid item sm={1}>
           {/* gutter */}
         </Grid>
 
+
+
+
         <Grid item sm={10}>
-          <p
-            style={{ color: 'blue', fontSize: '15px' }}
-            className={'Manrope700'}
-          >
-            Start now
-          </p>
-          <p>Ship your next project faster</p>
-          <p>
+          <p style={{  fontSize: '15px' }} className={'Manrope700 dark:text-white'}>Ship your next project faster</p>
+          <p className='dark:text-slate-400'>
             Find out why MUI's tools are trusted by thousands of open source
             developers and teams around the world.
           </p>
@@ -231,7 +250,13 @@ const HomePage = () => {
         <Grid item sm={1}>
           {/* gutter */}
         </Grid>
+
+<Grid item sm={12}/>
+
       </Grid>
+
+
+
 
       <Grid
         container
@@ -244,7 +269,7 @@ const HomePage = () => {
 
         <Grid item sm={6}>
           {/* <p
-            style={{ color: 'blue', fontSize: '15px' }}
+            style={{  fontSize: '15px' }}
             className={'Manrope700'}
           >
             Download App
@@ -286,7 +311,7 @@ const HomePage = () => {
         <Grid item sm={10}>
           <Grid container spacing={3}>
             <Grid item sm={6}>
-              <p>
+              <p className='dark:text-slate-400'>
                 "MUI offers a wide variety of high quality components that have
                 allowed us to ship features faster. MUI has been used by more
                 than a hundred engineers in our organization. What's more, MUI's
@@ -323,14 +348,14 @@ const HomePage = () => {
                 </div>
                 <div className="block">
                   <span className="sr-only">Choose profile photo</span>
-                  <p>Gustavo de Paula, Specialist Software Engineer</p>
+                    <p className='dark:text-slate-400'>Gustavo de Paula, Specialist Software Engineer</p>
                 </div>
               </div>
             </Grid>
             <Grid item sm={6}>
               <Grid container spacing={3}>
                 <Grid item sm={6}>
-                  <div className="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 ">
+                  <div className="bg-white dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 ">
                     <div>
                       <span className="inline-flex items-center justify-center p-2 bg-indigo-500 rounded-md shadow-lg">
                         <svg
@@ -355,7 +380,7 @@ const HomePage = () => {
                   </div>
                 </Grid>
                 <Grid item sm={6}>
-                  <div className="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 ">
+                  <div className="bg-white dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 ">
                     <div>
                       <span className="inline-flex items-center justify-center p-2 bg-indigo-500 rounded-md shadow-lg">
                         <svg
@@ -380,7 +405,7 @@ const HomePage = () => {
                   </div>
                 </Grid>
                 <Grid item sm={6}>
-                  <div className="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 ">
+                  <div className="bg-white dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 ">
                     <div>
                       <span className="inline-flex items-center justify-center p-2 bg-indigo-500 rounded-md shadow-lg">
                         <svg
@@ -406,7 +431,7 @@ const HomePage = () => {
                   </div>
                 </Grid>
                 <Grid item sm={6}>
-                  <div className="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 ">
+                  <div className="bg-white dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 ">
                     <div>
                       <span className="inline-flex items-center justify-center p-2 bg-indigo-500 rounded-md shadow-lg">
                         <svg

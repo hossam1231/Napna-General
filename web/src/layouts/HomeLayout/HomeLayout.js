@@ -12,8 +12,9 @@ const HomeLayout = ({ children }) => {
   return (
     <>
       <header
+
         style={{ height: '15vh' }}
-        className="relative  justify-between items-center bg-white"
+        className="relative  justify-between items-center bg-white dark:bg-slate-800"
       >
         <div
           style={{
@@ -76,11 +77,11 @@ const HomeLayout = ({ children }) => {
             xs={10}
           >
             <div>
-              <h1>Napna</h1>
+              <h1 className='dark:text-white'>Napna</h1>
             </div>
             <div style={{ alignItems: 'center', display: 'flex' }}>
               <div>
-                <ul className="flex items-center font-light">
+                <ul className="flex dark:text-white items-center font-light">
                   <li>
                     <Link
                       className="py-2 px-4 hover:bg-blue-600 transition duration-100 rounded"
@@ -136,8 +137,8 @@ const HomeLayout = ({ children }) => {
         </Grid>
       </header>
       <Divider />
-      <main style={{ width: '100%' }}>{children}</main>
-      <footer>
+      <main className='dark:bg-slate-600' style={{ width: '100%' }}>{children}</main>
+      <footer className='dark:bg-slate-600'  >
         <Grid container sx={{ alignItems: 'center', width: '100%' }}>
           <Grid item xs={1}>
             {/* gutter */}
@@ -169,12 +170,12 @@ const HomeLayout = ({ children }) => {
                   {footerData.map(function (item, i) {
                     return (
                       <Grid key={i} item xs={3}>
-                        <p className="Manrope800">{item.title}</p>
+                        <p  className="Manrope800 dark:text-white">{item.title}</p>
                         <ul>
                           {item.data.map(function (item, i) {
                             return (
                               <li key={i}>
-                                <p className="Manrope200">{item}</p>
+                                <p className="Manrope200 dark:text-slate-400">{item}</p>
                               </li>
                             )
                           })}

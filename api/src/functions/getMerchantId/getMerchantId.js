@@ -20,8 +20,6 @@ export const handler = async (event, context) => {
   return {
       statusCode: 200,
       headers: {
-        'Access-Control-Allow-Origin': 'http://localhost:19006',
-        'Access-Control-Allow-Origin': 'http://napna.market.co.uk',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({

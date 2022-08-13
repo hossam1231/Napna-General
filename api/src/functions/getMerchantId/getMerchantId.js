@@ -32,7 +32,7 @@ HEADERS['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
 export const handler = async (event, context) => {
   return {
       statusCode: 200,
-      headers: HEADERS,
+      HEADERS,
       body: JSON.stringify({
         data: '${name} function',
       }),

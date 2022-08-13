@@ -16,12 +16,23 @@ import { logger } from 'src/lib/logger'
  * @param { Context } context - contains information about the invocation,
  * function, and execution environment.
  */
+
+let HEADERS = {
+  'Access-Control-Allow-Headers':
+    'Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin',
+  'Content-Type': 'application/json', //optional
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Max-Age': '8640',
+}
+
+HEADERS['Access-Control-Allow-Origin'] = '*'
+HEADERS['Vary'] = 'Origin'
+HEADERS['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
+
 export const handler = async (event, context) => {
   return {
       statusCode: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: HEADERS,
       body: JSON.stringify({
         data: '${name} function',
       }),

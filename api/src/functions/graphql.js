@@ -16,8 +16,8 @@ export const handler = createGraphQLHandler({
   sdls,
   services,
   cors: {
-  origin: '*',
-},
+    origin: ['http://localhost:19006'],
+  },
   schemaOptions: {
     typeDefs: [URLTypeDefinition],
     resolvers: {

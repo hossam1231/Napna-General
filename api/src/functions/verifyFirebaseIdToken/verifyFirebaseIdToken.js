@@ -30,12 +30,11 @@ HEADERS['Vary'] = 'Origin'
 HEADERS['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
 
 export const handler = async (event, context) => {
-
   return {
     statusCode: 200,
     HEADERS,
     body: JSON.stringify({
-      token: "hi",
+      data: '${name} function',
     }),
   }
 }

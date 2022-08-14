@@ -34,14 +34,14 @@ export const handler = async (event, context) => {
       'https://napna-9faa1-default-rtdb.europe-west1.firebasedatabase.app',
   })
 
+  let uid
+
   // idToken comes from the client app
   admin
     .getAuth()
     .verifyIdToken(token)
     .then((decodedToken) => {
-      const uid = decodedToken.uid
-      // ...
-      console.log(uid)
+       uid = decodedToken.uid
     })
     .catch((error) => {
       // Handle error
@@ -53,7 +53,7 @@ export const handler = async (event, context) => {
     statusCode: 200,
     HEADERS,
     body: JSON.stringify({
-      data: '$ √ Verified UserID$',
+      data: '$ √ Verified UserID{uid}$',
     }),
   }
 }

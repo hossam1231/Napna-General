@@ -37,9 +37,7 @@ export default function UserStack({ user }) {
     const token = await getIdToken(user, true);
     APIURL = APIURL.replace("REPLACE_ME", token);
     console.log(APIURL, "sending out request");
-    await fetch(APIURL)
-      .then((response) => response.json())
-      .then((data) => console.log("RESPONSEDATA", data));
+    await fetch(APIURL).then((response) => console.log(response.json()));
   }
 
   if (user) {

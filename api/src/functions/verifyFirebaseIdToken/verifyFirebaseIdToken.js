@@ -31,16 +31,11 @@ HEADERS['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
 
 export const handler = async (event, context) => {
 
-const url = require('url');
-
-// get url parameters
-const id = querystring.parse(url)
-
   return {
     statusCode: 200,
     HEADERS,
     body: JSON.stringify({
-      token: id,
+      token: "hi",
     }),
   }
 }

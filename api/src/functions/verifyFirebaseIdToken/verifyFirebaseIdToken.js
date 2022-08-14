@@ -28,32 +28,32 @@ export const handler = async (event, context) => {
   // get url parameters
   const token = search_params.get('token')
 
-  admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    databaseURL:
-      'https://napna-9faa1-default-rtdb.europe-west1.firebasedatabase.app',
-  })
+  // admin.initializeApp({
+  //   credential: admin.credential.cert(serviceAccount),
+  //   databaseURL:
+  //     'https://napna-9faa1-default-rtdb.europe-west1.firebasedatabase.app',
+  // })
 
-  let uid
+  // let uid
 
-  // idToken comes from the client app
-  admin
-    .getAuth()
-    .verifyIdToken(token)
-    .then((decodedToken) => {
-       uid = decodedToken.uid
-    })
-    .catch((error) => {
-      // Handle error
-      logger.error(error)
-    })
+  // // idToken comes from the client app
+  // admin
+  //   .getAuth()
+  //   .verifyIdToken(token)
+  //   .then((decodedToken) => {
+  //      uid = decodedToken.uid
+  //   })
+  //   .catch((error) => {
+  //     // Handle error
+  //     logger.error(error)
+  //   })
 
   logger.info('Invoked verifyFirebaseIdToken function')
   return {
     statusCode: 200,
     HEADERS,
     body: JSON.stringify({
-      data: '$ √ Verified UserID{uid}$',
+      data: token,
     }),
   }
 }

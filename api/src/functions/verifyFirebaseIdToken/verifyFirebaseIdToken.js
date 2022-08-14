@@ -27,7 +27,7 @@ let HEADERS = {
 
 HEADERS['Access-Control-Allow-Origin'] = '*'
 HEADERS['Vary'] = 'Origin'
-HEADERS['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
+HEADERS['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS, FETCH'
 
 export const handler = async (event, context) => {
   const url = require('url')

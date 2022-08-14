@@ -59,12 +59,14 @@ export const handler = async (event) => {
     return {
       statusCode,
       HEADERS,
-      body: {
-        message,
-        dividend,
-        divisor,
-        quotient,
-      },
+
+      body:
+        JSON.stringify([
+          message,
+          dividend,
+          divisor,
+          quotient,
+        ]),
     }
   } catch (error) {
     return {

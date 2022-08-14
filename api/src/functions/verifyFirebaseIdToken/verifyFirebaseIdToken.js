@@ -41,7 +41,7 @@ export const handler = async (event, context) => {
     .then((decodedToken) => {
       const uid = decodedToken.uid
       // ...
-      return uid
+      console.log(uid)
     })
     .catch((error) => {
       // Handle error
@@ -53,7 +53,7 @@ export const handler = async (event, context) => {
     statusCode: 200,
     HEADERS,
     body: JSON.stringify({
-      data: '$ √ Verified UserID: ${uid}',
+      data: '$ √ Verified UserID$',
     }),
   }
 }

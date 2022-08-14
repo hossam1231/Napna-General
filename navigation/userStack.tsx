@@ -31,9 +31,9 @@ export default function UserStack({ user }) {
   }, []);
 
   async function testFunction() {
-    console.log(user);
+    console.log("USER" + user);
     let APIURL =
-      "http://napna.co.uk/.netlify/functions/getMerchantId/?token=REPLACE_ME";
+      "http://napna.co.uk/.netlify/functions/verifyFirebaseIdToken/?token=REPLACE_ME";
     const token = await getIdToken(user, true);
     APIURL = APIURL.replace("REPLACE_ME", token);
     console.log(APIURL, "sending out request");

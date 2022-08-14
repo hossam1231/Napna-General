@@ -23,28 +23,26 @@ import { getIdToken } from "firebase/auth";
 
 const Stack = createStackNavigator();
 
-export default function UserStack() {
-  const { user } = useAuthentication();
-
+export default function UserStack({ user }) {
   useEffect(() => {
-    testFunction();
+    if (user) {
+      testFunction();
+    }
   }, []);
 
   async function testFunction() {
-    console.log("test");
+    console.log(user);
     let APIURL =
       "http://napna.co.uk/.netlify/functions/getMerchantId/?token=REPLACE_ME";
     const token = await getIdToken(user, true);
     APIURL = APIURL.replace("REPLACE_ME", token);
+    console.log(APIURL, "sending out request");
     await fetch(APIURL)
       .then((response) => response.json())
       .then((data) => console.log(data.data));
   }
 
   if (user) {
-    {
-      console.log(user);
-    }
     return (
       <NavigationContainer ref={navigationRef}>
         <Stack.Navigator>

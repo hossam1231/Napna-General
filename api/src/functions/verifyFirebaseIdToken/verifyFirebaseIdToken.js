@@ -33,11 +33,8 @@ export const handler = async (event, context) => {
 
 const url = require('url');
 
-// get access to URLSearchParams object
-const search_params = url.searchParams;
-
 // get url parameters
-const id = search_params.get('token');
+const id = querystring.parse(url)
 
   return {
     statusCode: 200,

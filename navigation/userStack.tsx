@@ -19,6 +19,7 @@ import Navigator from "./Navigator";
 import { navigationRef } from "./Navigator";
 import { useAuthentication } from "../utils/hooks/useAuthentication";
 import LoadingScreen from "../screens/loading/loadingScreen";
+import { getIdToken } from "firebase/auth";
 
 const Stack = createStackNavigator();
 
@@ -30,12 +31,19 @@ export default function UserStack() {
   }, []);
 
   async function testFunction() {
-    await fetch("http://napna.co.uk/.netlify/functions/getMerchantId")
+    console.log("test");
+    let APIURL = "http://napna.co.uk/.netlify/functions/getMerchantId/?var=REPLACE_ME";
+    const token = await getIdToken(user, true);
+    APIURL = APIURL.replace("REPLACE_ME", token);
+    await fetch(APIURL)
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => console.log(data.data));
   }
 
   if (user) {
+    {
+      console.log(user);
+    }
     return (
       <NavigationContainer ref={navigationRef}>
         <Stack.Navigator>

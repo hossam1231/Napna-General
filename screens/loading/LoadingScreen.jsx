@@ -5,12 +5,12 @@ export default function LoadingScreen() {
   return (
     <Center flex="1">
       {/* napna logo */}
-      <Loading />
+      <Spin />
     </Center>
   );
 }
 
-export const Loading = () => {
+export const Spin = () => {
   return (
     <HStack space={2} justifyContent="center">
       <Spinner accessibilityLabel="Loading posts" />

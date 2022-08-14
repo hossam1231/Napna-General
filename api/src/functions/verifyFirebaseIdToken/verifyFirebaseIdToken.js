@@ -14,40 +14,11 @@ HEADERS['Vary'] = 'Origin'
 HEADERS['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
 
 export const handler = async (event, context) => {
-  const url = require('url')
-
-  // get access to URLSearchParams object
-  const search_params = url.searchParams
-
-  // get url parameters
-  const token = search_params.get('token')
-
-  console.log('token', token)
-
-  // admin.initializeApp({
-  //   credential: admin.credential.cert(serviceAccount),
-  //   databaseURL:
-  //     'https://napna-9faa1-default-rtdb.europe-west1.firebasedatabase.app',
-  // })
-
-  // let uid
-
-  // // idToken comes from the client app
-  // admin
-  //   .getAuth()
-  //   .verifyIdToken(token)
-  //   .then((decodedToken) => {
-  //      uid = decodedToken.uid
-  //   })
-  //   .catch((error) => {
-  //     // Handle error
-  //     logger.error(error)
-  //   })
 
   logger.info('Invoked verifyFirebaseIdToken function')
   return {
     statusCode: 200,
     HEADERS,
-    body : token,
+    body: JSON.stringify({ hello: 'world' })
   }
 }

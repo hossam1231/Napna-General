@@ -17,30 +17,13 @@ import { logger } from 'src/lib/logger'
  * function, and execution environment.
  */
 
-let HEADERS = {
-  'Access-Control-Allow-Headers':
-    'Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin:*',
-  'Content-Type': 'application/json', //optional
-  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS, FETCH',
-  'Access-Control-Max-Age': '8640',
-}
-
-
 
 export const handler = async (event, context) => {
-  const url = require('url')
-
-  // get access to URLSearchParams object
-  const search_params = url.searchParams
-
-  // get url parameters
-  const id = search_params.get('token')
 
   return {
     statusCode: 200,
-    HEADERS,
     body: JSON.stringify({
-      token: id,
+      token: 'hello',
     }),
   }
 }

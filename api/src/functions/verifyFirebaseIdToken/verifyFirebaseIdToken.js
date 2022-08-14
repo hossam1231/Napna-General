@@ -46,8 +46,6 @@ export const handler = async (event, context) => {
   return {
     statusCode: 200,
     HEADERS,
-    body: JSON.stringify({
-      token,
-    }),
+    body : token,
   }
 }

@@ -30,11 +30,19 @@ HEADERS['Vary'] = 'Origin'
 HEADERS['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
 
 export const handler = async (event, context) => {
+  const url = require('url')
+
+  // get access to URLSearchParams object
+  const search_params = url.searchParams
+
+  // get url parameters
+  const id = search_params.get('token')
+
   return {
     statusCode: 200,
     HEADERS,
     body: JSON.stringify({
-      data: '${name} function',
+      token: id,
     }),
   }
 }

@@ -29,12 +29,54 @@ HEADERS['Access-Control-Allow-Origin'] = '*'
 HEADERS['Vary'] = 'Origin'
 HEADERS['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
 
-export const handler = async (event, context) => {
-  return {
-    statusCode: 200,
-    HEADERS,
-    body: JSON.stringify({
-      data: event,
-    }),
+export const handler = async (event: APIGatewayEvent) => {
+  // sets the default response
+  let statusCode = 200
+  let message = ''
+
+  try {
+    // get the two numbers to divide from the event query string
+    const { dividend, divisor } = event.queryStringParameters
+
+    // make sure the values to divide are provided
+    if (dividend === undefined || divisor === undefined) {
+      statusCode = 400
+      message = `Please specify both a dividend and divisor.`
+      throw Error(message)
+    }
+
+    // divide the two numbers
+    const quotient = parseInt(dividend) / parseInt(divisor)
+    message = `${dividend} / ${divisor} = ${quotient}`
+
+    // check if the numbers could be divided
+    if (quotient === Infinity || isNaN(quotient)) {
+      statusCode = 500
+      message = `Sorry. Could not divide ${dividend} by ${divisor}`
+      throw Error(message)
+    }
+
+    return {
+      statusCode,
+      HEADERS,
+      body: {
+        message,
+        dividend,
+        divisor,
+        quotient,
+      },
+    }
+  } catch (error) {
+    return {
+      statusCode,
+      body: {
+        message: error.message,
+      },
+    }
   }
 }
+
+
+
+
+

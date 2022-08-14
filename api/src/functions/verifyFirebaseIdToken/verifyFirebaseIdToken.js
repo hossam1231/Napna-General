@@ -1,11 +1,11 @@
-import { initializeApp } from "firebase-admin/app";
+// import { initializeApp } from "firebase-admin/app";
 
 import { logger } from "src/lib/logger";
 
-var admin = require("firebase-admin");
+// var admin = require("firebase-admin");
 
 // When authorizing via a service account, you have two choices for providing the credentials to your application. You can either set the GOOGLE_APPLICATION_CREDENTIALS environment variable, or you can explicitly pass the path to the service account key in code. The first option is more secure and is strongly recommended
-var serviceAccount = require("./serviceAccountKey.json");
+// var serviceAccount = require("./serviceAccountKey.json");
 
 let HEADERS = {
   "Access-Control-Allow-Headers":

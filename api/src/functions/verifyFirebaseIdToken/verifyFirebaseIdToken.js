@@ -29,7 +29,7 @@ HEADERS['Access-Control-Allow-Origin'] = '*'
 HEADERS['Vary'] = 'Origin'
 HEADERS['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
 
-export const handler = async (event: APIGatewayEvent) => {
+export const handler = async (event) => {
   // sets the default response
   let statusCode = 200
   let message = ''

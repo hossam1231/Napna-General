@@ -32,7 +32,8 @@ export default function UserStack() {
 
   async function testFunction() {
     console.log("test");
-    let APIURL = "http://napna.co.uk/.netlify/functions/getMerchantId/?var=REPLACE_ME";
+    let APIURL =
+      "http://napna.co.uk/.netlify/functions/getMerchantId/?token=REPLACE_ME";
     const token = await getIdToken(user, true);
     APIURL = APIURL.replace("REPLACE_ME", token);
     await fetch(APIURL)

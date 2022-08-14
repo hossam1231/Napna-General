@@ -39,7 +39,7 @@ export default function UserStack({ user }) {
     console.log(APIURL, "sending out request");
     await fetch(APIURL)
       .then((response) => response.json())
-      .then((data) => console.log("RESPONSEDATA", data.data));
+      .then((data) => console.log("RESPONSEDATA", data));
   }
 
   if (user) {

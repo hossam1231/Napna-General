@@ -22,6 +22,8 @@ export const handler = async (event, context) => {
   // get url parameters
   const token = search_params.get('token')
 
+  console.log('token', token)
+
   // admin.initializeApp({
   //   credential: admin.credential.cert(serviceAccount),
   //   databaseURL:

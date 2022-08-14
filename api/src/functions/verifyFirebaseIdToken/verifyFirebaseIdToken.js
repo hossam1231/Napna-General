@@ -52,7 +52,9 @@ export const handler = async (event, context) => {
   return {
     statusCode: 200,
     HEADERS,
-    body:
-      { data: token },
+    body: JSON.stringify({
+      token,
+      message: `Here is your requested token ${token}`,
+    }),
   }
 }

@@ -1,6 +1,8 @@
 import { logger } from 'src/lib/logger'
 import { initializeApp, getAuth } from 'firebase-admin/app'
 
+var admin = require('firebase-admin')
+
 initializeApp({
   credential: admin.credential.cert({
     type: 'service_account',

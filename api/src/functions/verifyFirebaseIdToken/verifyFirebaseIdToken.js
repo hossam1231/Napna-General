@@ -1,21 +1,16 @@
 import { logger } from 'src/lib/logger'
+import { initializeApp } from 'firebase-admin/app'
 
-/**
- * The handler function is your code that processes http request events.
- * You can use return and throw to send a response or error, respectively.
- *
- * Important: When deployed, a custom serverless function is an open API endpoint and
- * is your responsibility to secure appropriately.
- *
- * @see {@link https://redwoodjs.com/docs/serverless-functions#security-considerations|Serverless Function Considerations}
- * in the RedwoodJS documentation for more information.
- *
- * @typedef { import('aws-lambda').APIGatewayEvent } APIGatewayEvent
- * @typedef { import('aws-lambda').Context } Context
- * @param { APIGatewayEvent } event - an object which contains information from the invoker.
- * @param { Context } context - contains information about the invocation,
- * function, and execution environment.
- */
+var admin = require('firebase-admin')
+
+var serviceAccount = require('./serviceAccountKey.json')
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL:
+    'https://napna-9faa1-default-rtdb.europe-west1.firebasedatabase.app',
+})
+
 
 let HEADERS = {
   'Access-Control-Allow-Headers':
@@ -30,9 +25,10 @@ HEADERS['Vary'] = 'Origin'
 HEADERS['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
 
 export const handler = async (event) => {
+
   // sets the default response
   let statusCode = 200
-
+  let uid
   try {
     // get the two numbers to divide from the event query string
     const { token } = event.queryStringParameters
@@ -51,12 +47,24 @@ export const handler = async (event) => {
       throw Error(message)
     }
 
+admin.getAuth(token)
+  .verifyIdToken(token)
+  .then((decodedToken) => {
+    const uid = decodedToken.uid
+    return uid
+  })
+  .catch((error) => {
+    return error.message
+  })
+
+   uid = await getAuth(token)
+
     return {
       statusCode,
       HEADERS,
       body:
         JSON.stringify([
-         token
+          uid
         ]),
     }
   } catch (error) {

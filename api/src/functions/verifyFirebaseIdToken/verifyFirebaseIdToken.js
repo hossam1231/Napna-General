@@ -1,4 +1,3 @@
-import { initializeApp } from 'firebase-admin/app'
 import { getAuth } from 'firebase-admin/auth'
 
 var admin = require('firebase-admin')

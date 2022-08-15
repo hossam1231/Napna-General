@@ -32,40 +32,31 @@ HEADERS['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
 export const handler = async (event) => {
   // sets the default response
   let statusCode = 200
-  let message = ''
 
   try {
     // get the two numbers to divide from the event query string
-    const { dividend, divisor } = event.queryStringParameters
+    const { token } = event.queryStringParameters
 
     // make sure the values to divide are provided
-    if (dividend === undefined || divisor === undefined) {
+    if (token === undefined ) {
       statusCode = 400
-      message = `Please specify both a dividend and divisor.`
+      message = `Please specify a firebase token to verify.`
       throw Error(message)
     }
 
-    // divide the two numbers
-    const quotient = parseInt(dividend) / parseInt(divisor)
-    message = `${dividend} / ${divisor} = ${quotient}`
-
     // check if the numbers could be divided
-    if (quotient === Infinity || isNaN(quotient)) {
+    if (token == null || token == '') {
       statusCode = 500
-      message = `Sorry. Could not divide ${dividend} by ${divisor}`
+      message = `Sorry Could authenticate token ${token}`
       throw Error(message)
     }
 
     return {
       statusCode,
       HEADERS,
-
       body:
         JSON.stringify([
-          message,
-          dividend,
-          divisor,
-          quotient,
+         token
         ]),
     }
   } catch (error) {

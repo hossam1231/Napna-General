@@ -1,4 +1,7 @@
-import { initializeApp, getAuth } from 'firebase-admin/app'
+import { initializeApp } from 'firebase-admin/app'
+import { getAuth } from 'firebase-admin/auth'
+
+var admin = require('firebase-admin')
 
 const firebaseApp = initializeApp({
   credential: admin.credential.cert({

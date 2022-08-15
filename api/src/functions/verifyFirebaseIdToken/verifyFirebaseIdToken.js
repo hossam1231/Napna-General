@@ -1,9 +1,7 @@
 import { logger } from 'src/lib/logger'
-import { initializeApp } from 'firebase-admin/app'
+import { initializeApp, getAuth } from 'firebase-admin/app'
 
-var admin = require('firebase-admin')
-
-admin.initializeApp({
+initializeApp({
   credential: admin.credential.cert({
     type: 'service_account',
     project_id: 'napna-9faa1',
@@ -21,7 +19,6 @@ admin.initializeApp({
   databaseURL:
     'https://napna-9faa1-default-rtdb.europe-west1.firebasedatabase.app',
 })
-
 
 let HEADERS = {
   'Access-Control-Allow-Headers':
@@ -58,7 +55,7 @@ export const handler = async (event) => {
       throw Error(message)
     }
 
-admin.getAuth(token)
+getAuth(token)
   .verifyIdToken(token)
   .then((decodedToken) => {
     const uid = decodedToken.uid

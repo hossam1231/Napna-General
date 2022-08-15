@@ -1,4 +1,6 @@
-const admin = require('firebase-admin')
+import { getAuth } from 'firebase-admin/auth'
+
+var admin = require('firebase-admin')
 
 const firebaseApp = admin.initializeApp({
   credential: admin.credential.cert({
@@ -20,7 +22,11 @@ const firebaseApp = admin.initializeApp({
 })
 
 let HEADERS = {
+  'Access-Control-Allow-Headers':
+    'Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin',
   'Content-Type': 'application/json',
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+  'Access-Control-Max-Age': '8640',
   'Access-Control-Allow-Origin': '*',
 }
 
@@ -46,19 +52,13 @@ export const handler = async (event) => {
       throw Error(message)
     }
 
-    const auth = admin.getAuth(firebaseApp)
+    const auth = getAuth(firebaseApp)
 
     try {
       const decodedToken = await auth.verifyIdToken(token)
       uid = decodedToken.uid
     } catch (error) {
-      return {
-        statusCode,
-        HEADERS,
-        body: {
-          message: error.message,
-        },
-      }
+      return error.message
     }
     return {
       statusCode,

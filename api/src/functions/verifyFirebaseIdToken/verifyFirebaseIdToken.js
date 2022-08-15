@@ -63,9 +63,9 @@ admin.getAuth(token)
       statusCode,
       HEADERS,
       body:
-        JSON.stringify([
-          uid
-        ]),
+        JSON.stringify({
+         confirmedId : uid
+    }),
     }
   } catch (error) {
     return {

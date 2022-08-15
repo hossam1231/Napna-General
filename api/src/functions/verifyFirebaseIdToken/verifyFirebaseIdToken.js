@@ -3,7 +3,7 @@ import { getAuth } from 'firebase-admin/auth'
 
 var admin = require('firebase-admin')
 
-const firebaseApp = initializeApp({
+const firebaseApp = admin.initializeApp({
   credential: admin.credential.cert({
     type: 'service_account',
     project_id: 'napna-9faa1',

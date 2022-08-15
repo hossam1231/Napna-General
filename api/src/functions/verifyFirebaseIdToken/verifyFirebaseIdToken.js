@@ -1,9 +1,6 @@
-import { logger } from 'src/lib/logger'
 import { initializeApp, getAuth } from 'firebase-admin/app'
 
-var admin = require('firebase-admin')
-
-initializeApp({
+const firebaseApp = initializeApp({
   credential: admin.credential.cert({
     type: 'service_account',
     project_id: 'napna-9faa1',
@@ -25,17 +22,13 @@ initializeApp({
 let HEADERS = {
   'Access-Control-Allow-Headers':
     'Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin',
-  'Content-Type': 'application/json', //optional
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Content-Type': 'application/json',
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
   'Access-Control-Max-Age': '8640',
+  'Access-Control-Allow-Origin': '*',
 }
 
-HEADERS['Access-Control-Allow-Origin'] = '*'
-HEADERS['Vary'] = 'Origin'
-HEADERS['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
-
 export const handler = async (event) => {
-
   // sets the default response
   let statusCode = 200
   let uid
@@ -44,7 +37,7 @@ export const handler = async (event) => {
     const { token } = event.queryStringParameters
 
     // make sure the values to divide are provided
-    if (token === undefined ) {
+    if (token === undefined) {
       statusCode = 400
       message = `Please specify a firebase token to verify.`
       throw Error(message)
@@ -57,37 +50,28 @@ export const handler = async (event) => {
       throw Error(message)
     }
 
-getAuth(token)
-  .verifyIdToken(token)
-  .then((decodedToken) => {
-    const uid = decodedToken.uid
-    return uid
-  })
-  .catch((error) => {
-    return error.message
-  })
+    const auth = getAuth(firebaseApp)
 
-   uid = await getAuth(token)
-
+    try {
+      const decodedToken = await auth.verifyIdToken(token)
+      uid = decodedToken.uid
+    } catch (error) {
+      return error.message
+    }
     return {
       statusCode,
       HEADERS,
-      body:
-        JSON.stringify({
-         confirmedId : uid
-    }),
+      body: JSON.stringify({
+        confirmedId: uid,
+      }),
     }
   } catch (error) {
     return {
       statusCode,
+      HEADERS,
       body: {
         message: error.message,
       },
     }
   }
 }
-
-
-
-
-

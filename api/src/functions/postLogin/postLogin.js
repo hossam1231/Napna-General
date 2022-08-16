@@ -1,7 +1,5 @@
 import { logger } from 'src/lib/logger'
-import fetch from 'node-fetch'
 logger.info('Invoked postLogin function')
-
 let HEADERS = {
   'Access-Control-Allow-Headers':
     'Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin',
@@ -16,13 +14,20 @@ let res
 export const handler = async (event, context) => {
   const { token, site } = event.queryStringParameters
   //all outward facing api should expect a token to validate before continuing
+
+
   async function postLoginBackend() {
     let APIURL =
       "http://napna.co.uk/.netlify/functions/verifyFirebaseIdToken?token=REPLACE_TOKEN";
     APIURL = APIURL.replace("REPLACE_TOKEN", token);
     console.log(APIURL, "sending out request");
-    await fetch(APIURL).then((response) => { return response.body });
+     res = await fetch(APIURL)
+    if (res.ok) {
+      const data = await res.json()
+      return data
+    }
   }
+
 
 if (site == "Merchant") {
   if (token) {

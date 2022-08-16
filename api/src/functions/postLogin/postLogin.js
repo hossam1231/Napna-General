@@ -20,7 +20,7 @@ export const handler = async (event, context) => {
       "http://napna.co.uk/.netlify/functions/verifyFirebaseIdToken?token=REPLACE_TOKEN";
     APIURL = APIURL.replace("REPLACE_TOKEN", token);
     console.log(APIURL, "sending out request");
-    await fetch(APIURL).then((response) => return response.body);
+    await fetch(APIURL).then((response) => { return response.body });
   }
 
 if (site == "Merchant") {

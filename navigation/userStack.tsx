@@ -35,7 +35,7 @@ const [merchant, setMerchant] = useState(false)
   async function merchantRoleCheck() {
     console.log("USER", user);
     let APIURL =
-      "http://napna.co.uk/.netlify/functions/merchantRoleCheck?token=REPLACE_TOKEN&site=Merchant";
+      "http://napna.co.uk/.netlify/functions/merchantRoleCheck?token=REPLACE_TOKEN";
     const token = await getIdToken(user, true);
     APIURL = APIURL.replace("REPLACE_TOKEN", token);
     console.log(APIURL, "sending out request");

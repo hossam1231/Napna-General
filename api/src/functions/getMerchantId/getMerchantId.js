@@ -1,4 +1,9 @@
 import { logger } from 'src/lib/logger'
+// importing `db` directly
+import { db } from 'src/lib/db'
+
+// importing services
+import { update } from 'src/services/subscriptions'
 
 import { merchantByPartnerId } from '../../services/merchants/merchants'
 

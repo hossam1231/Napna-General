@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../screens/HomeScreen";
@@ -24,24 +24,28 @@ import { getIdToken } from "firebase/auth";
 const Stack = createStackNavigator();
 
 export default function UserStack({ user }) {
+const [merchant, setMerchant] = useState(false)
+
   useEffect(() => {
     if (user) {
-      postLoginBackend();
+      merchantRoleCheck();
     }
   }, []);
 
-  async function postLoginBackend() {
+  async function merchantRoleCheck() {
     console.log("USER", user);
     let APIURL =
-      "http://napna.co.uk/.netlify/functions/postLogin?token=REPLACE_TOKEN&site=Merchant";
+      "http://napna.co.uk/.netlify/functions/merchantRoleCheck?token=REPLACE_TOKEN&site=Merchant";
     const token = await getIdToken(user, true);
     APIURL = APIURL.replace("REPLACE_TOKEN", token);
     console.log(APIURL, "sending out request");
     await fetch(APIURL).then((response) => console.log(response));
   }
 
+
   if (user) {
-    return (
+    if (merchant) {
+        return (
       <NavigationContainer ref={navigationRef}>
         <Stack.Navigator>
           <Stack.Screen
@@ -68,7 +72,8 @@ export default function UserStack({ user }) {
           </Stack.Group>
         </Stack.Navigator>
       </NavigationContainer>
-    );
+    )
+} 
   } else {
     return <LoadingScreen />;
   }

@@ -18,3 +18,4 @@ web-build/
 # macOS
 .DS_Store
 api/src/functions/verifyFirebaseIdToken/verifyFirebaseIdToken.js
+api/src/functions/postLogin/postLogin.js

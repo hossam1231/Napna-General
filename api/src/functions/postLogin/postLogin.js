@@ -17,21 +17,21 @@ export const handler = async (event, context) => {
   const { token, site } = event.queryStringParameters;
   //all outward facing api should expect a token to validate before continuing
 
-  async function postLoginBackend() {
+  async function getVerifiedUserId() {
     let APIURL =
       "http://napna.co.uk/.netlify/functions/verifyFirebaseIdToken?token=REPLACE_TOKEN";
     APIURL = APIURL.replace("REPLACE_TOKEN", token);
     console.log(APIURL, "sending out request");
     res = await fetch(APIURL);
     if (res.ok) {
-      const data = await res.json();
-      return data;
+      const verifiedUserIdRaw = await res.json();
+      return verifiedUserIdRaw;
     }
   }
 
   if (site == "Merchant") {
     if (token) {
-      res = await postLoginBackend();
+      verifiedUserId = await getVerifiedUserId();
     }
   }
 
@@ -43,4 +43,3 @@ export const handler = async (event, context) => {
     }),
   };
 };
-  

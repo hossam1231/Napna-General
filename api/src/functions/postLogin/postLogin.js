@@ -15,19 +15,11 @@ export const handler = async (event, context) => {
 
   const { token, site } = event.queryStringParameters
 
-  if (token && site) {
-
-
-}
-
-
-
-
   return {
     statusCode: 200,
     HEADERS,
     body: JSON.stringify({
-      data: 'postLogin function',
+      data: [token, site],
     }),
   }
 }

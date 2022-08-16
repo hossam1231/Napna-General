@@ -73,7 +73,9 @@ const [merchant, setMerchant] = useState(false)
         </Stack.Navigator>
       </NavigationContainer>
     )
-} 
+    } else {
+       return <LoadingScreen />;
+}
   } else {
     return <LoadingScreen />;
   }

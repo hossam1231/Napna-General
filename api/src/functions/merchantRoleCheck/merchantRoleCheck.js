@@ -45,7 +45,7 @@ export const handler = async (event, context) => {
 
   async function getMerchantId() {
     let APIURL =
-      'http://napna.co.uk/.netlify/functions/getPartnerId?partnerId=REPLACE_PARTNERID'
+      'http://napna.co.uk/.netlify/functions/getMerchantId?partnerId=REPLACE_PARTNERID'
     APIURL = APIURL.replace('REPLACE_PARTNERID', partnerId)
     console.log(APIURL, 'sending out request')
     res = await fetch(APIURL)

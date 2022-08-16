@@ -13,13 +13,21 @@ export const handler = async (event, context) => {
   //all outward facing api should expect a token to validate before continuing
   logger.info('Invoked postLogin function')
 
+let res
   const { token, site } = event.queryStringParameters
+
+if (site == "Merchant") {
+
+res = "COOL"
+}
+
+
 
   return {
     statusCode: 200,
     HEADERS,
     body: JSON.stringify({
-      data: [token, site],
+      data: [token, site, res],
     }),
   }
 }

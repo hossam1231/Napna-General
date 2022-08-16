@@ -26,16 +26,16 @@ const Stack = createStackNavigator();
 export default function UserStack({ user }) {
   useEffect(() => {
     if (user) {
-      testFunction();
+      postLoginBackend();
     }
   }, []);
 
-  async function testFunction() {
+  async function postLoginBackend() {
     console.log("USER", user);
     let APIURL =
       "http://napna.co.uk/.netlify/functions/postLogin?token=REPLACE_TOKEN&site=Merchant";
     const token = await getIdToken(user, true);
-    APIURL = APIURL.replace("REPLACE_ME", token);
+    APIURL = APIURL.replace("REPLACE_TOKEN", token);
     console.log(APIURL, "sending out request");
     await fetch(APIURL).then((response) => console.log(response));
   }

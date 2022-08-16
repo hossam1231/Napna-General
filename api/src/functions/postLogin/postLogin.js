@@ -18,21 +18,36 @@ export const handler = async (event, context) => {
   const { token, site } = event.queryStringParameters
   //all outward facing api should expect a token to validate before continuing
 
-  async function postLoginBackend() {
+  async function verifyFirebaseIdToken() {
     let APIURL =
       'http://napna.co.uk/.netlify/functions/verifyFirebaseIdToken?token=REPLACE_TOKEN'
     APIURL = APIURL.replace('REPLACE_TOKEN', token)
     console.log(APIURL, 'sending out request')
     res = await fetch(APIURL)
     if (res.ok) {
-      const data = await res.json()
-      return data
+      const confirmedUserId = await res.json()
+      return confirmedUserId
     }
   }
 
+ async function getPartnerId() {
+    let APIURL =
+      'http://napna.co.uk/.netlify/functions/getPartnerId?userId=REPLACE_USERID'
+    APIURL = APIURL.replace('REPLACE_USERID', userId)
+    console.log(APIURL, 'sending out request')
+    res = await fetch(APIURL)
+    if (res.ok) {
+      const partnerId = await res.json()
+      return partnerId
+    }
+  }
+
+
+
   if (site == 'Merchant') {
     if (token) {
-      res = await postLoginBackend()
+      confirmedUserId = await verifyFirebaseIdToken()
+      partnerId = await getPartnerId()
     }
   }
 

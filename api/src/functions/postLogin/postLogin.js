@@ -1,5 +1,6 @@
 import { logger } from 'src/lib/logger'
-import fetch from 'node-fetch'
+
+const fetch = require('node-fetch')
 
 logger.info('Invoked postLogin function')
 let HEADERS = {

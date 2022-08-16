@@ -14,7 +14,7 @@ let HEADERS = {
 }
 
 let res
-
+let error = 'A okay √'
 export const handler = async (event, context) => {
   const { token } = event.queryStringParameters
   //all outward facing api should expect a token to validate before continuing
@@ -28,6 +28,8 @@ export const handler = async (event, context) => {
     if (res.ok) {
       const confirmedUserId = await res.json()
       return confirmedUserId
+    } else {
+      error = 'no user'
     }
   }
 
@@ -40,6 +42,8 @@ export const handler = async (event, context) => {
     if (res.ok) {
       const partnerId = await res.json()
       return partnerId
+    } else {
+      error = 'no partnerId'
     }
   }
 
@@ -52,6 +56,8 @@ export const handler = async (event, context) => {
     if (res.ok) {
       const merchantId = await res.json()
       return merchantId
+    } else {
+      error = 'no merchantId'
     }
   }
 
@@ -61,11 +67,14 @@ export const handler = async (event, context) => {
   // √ get partnerId from userId
   let merchantId = await getMerchantId()
   // √ get partnerId from userId
+  res = merchantId
+
   return {
     statusCode: 200,
     HEADERS,
     body: JSON.stringify({
-      data: [merchantId],
+      data: merchantId,
+      error: error
     }),
   }
 }

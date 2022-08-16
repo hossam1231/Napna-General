@@ -16,8 +16,10 @@ export const handler = async (event, context) => {
 
   logger.info('Invoked getPartnerId function')
 
-  let partnerId = partnerByUser({ id: userId })
-
+   const partnerId = await db.merchant.update({
+      where: { userId: userId },
+      data: { partnerId: partnerId },
+ })
   return {
     statusCode: 200,
     HEADERS,

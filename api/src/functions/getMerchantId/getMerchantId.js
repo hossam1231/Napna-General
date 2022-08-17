@@ -15,7 +15,7 @@ export const handler = async (event, context) => {
 
   logger.info('Invoked getMerchantId function')
 
-let merchantId = merchantByPartnerId({id: partnerId})
+let merchantId = await merchantByPartnerId({id: partnerId})
 
   return {
     statusCode: 200,

@@ -12,7 +12,7 @@ export const merchant = ({ id }) => {
 
 export const merchantByPartnerId = ({ id }) => {
   return db.merchant.findUnique({
-    where: { id },
+    where: { partnerId: id },
   })
 }
 

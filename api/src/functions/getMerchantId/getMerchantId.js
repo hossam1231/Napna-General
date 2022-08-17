@@ -1,10 +1,4 @@
 import { logger } from 'src/lib/logger'
-// importing `db` directly
-import { db } from 'src/lib/db'
-
-// importing services
-import { update } from 'src/services/subscriptions'
-
 import { merchantByPartnerId } from '../../services/merchants/merchants'
 
 let HEADERS = {
@@ -21,10 +15,7 @@ export const handler = async (event, context) => {
 
   logger.info('Invoked getMerchantId function')
 
- const merchantId = await db.merchant.update({
-      where: { partnerId: partnerId },
-      data: { merchantId: merchantId },
- })
+let merchantId = merchantByPartnerId({id: partnerId})
 
   return {
     statusCode: 200,

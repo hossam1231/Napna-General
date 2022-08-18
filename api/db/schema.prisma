@@ -28,7 +28,7 @@ model Plan {
 model Partner {
   id                  String       @id @default(cuid())
   userId              String?      @unique
-  merchantId          String
+  merchant            Merchant[]
 }
 
 model Merchant {
@@ -37,6 +37,18 @@ model Merchant {
   name                String
   address             String       @unique
   postalCode          String
+  owner               Partner      @relation(fields: [ownerId], references: [userId])
+  ownerId             String
+  staff               Staff[]
 }
 
+model Staff {
+  role                String
+  name                String
+  merchant            Merchant @relation(fields: [merchantId], references: [id])
+  merchantId          String
+
+ @@id(merchantId)
+
+}
 

@@ -10,11 +10,6 @@ export const merchant = ({ id }) => {
   })
 }
 
-export const merchantByPartnerId = ({ id }) => {
-  return db.merchant.findUnique({
-    where: { partnerId: id },
-  })
-}
 
 export const createMerchant = ({ input }) => {
   return db.merchant.create({

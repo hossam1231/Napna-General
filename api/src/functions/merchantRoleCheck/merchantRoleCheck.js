@@ -26,7 +26,7 @@ APIURL
       )
       return res.data;
     } catch (e) {
-      return {};
+      return e;
     }
   }
 
@@ -35,11 +35,11 @@ APIURL
     APIURL = APIURL.replace("REPLACE_WITH_USER_ID", userId);
     try {
       var res = await axios.get(
-  APIURL
+APIURL
       )
       return res.data;
     } catch (e) {
-      return {};
+      return e;
     }
   }
 

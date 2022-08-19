@@ -19,6 +19,7 @@ export const handler = async (event, context) => {
     where: {
       userId: userId,
     },
+    include: { merchants: true },
   })
 
   return {

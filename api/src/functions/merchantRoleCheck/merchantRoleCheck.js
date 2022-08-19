@@ -67,7 +67,7 @@ export const handler = async (event, context) => {
   // √ get partnerId from userId
   // let merchantId = await getMerchantId()
   // √ get partnerId from userId
-  res = partnerId
+  res = await partnerId
 
   return {
     statusCode: 200,

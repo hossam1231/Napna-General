@@ -15,7 +15,7 @@ let HEADERS = {
 
 let res;
 let error = "A okay √";
-export const handler = async (event, context) => {
+export const handler = async (event) => {
   const { token } = event.queryStringParameters;
   //all outward facing api should expect a token to validate before continuing
 
@@ -30,6 +30,7 @@ export const handler = async (event, context) => {
       return confirmedUserId;
     } else {
       error = "no user";
+      return error;
     }
   }
 
@@ -44,6 +45,7 @@ export const handler = async (event, context) => {
       return partnerId;
     } else {
       error = "no partnerId";
+      return error;
     }
   }
 

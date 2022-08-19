@@ -16,10 +16,10 @@ let HEADERS = {
 export const handler = async (event) => {
   const { token } = event.queryStringParameters;
 
-  async function verifyFirebaseIdToken(token1) {
+  async function verifyFirebaseIdToken(token) {
     try {
       var res = await axios.get(
-        http://napna.co.uk/.netlify/functions/verifyFirebaseIdToken?token=${token1}
+        http://napna.co.uk/.netlify/functions/verifyFirebaseIdToken?token=${token}
       );
       return res.data;
     } catch (e) {
@@ -27,10 +27,10 @@ export const handler = async (event) => {
     }
   }
 
-  async function getPartnerId(userId1) {
+  async function getPartnerId(userId) {
     try {
       var res = await axios.get(
-        http://napna.co.uk/.netlify/functions/getPartnerId?userId=${userId1}
+        http://napna.co.uk/.netlify/functions/getPartnerId?userId=${userId}
       );
       return res.data;
     } catch (e) {
@@ -38,16 +38,16 @@ export const handler = async (event) => {
     }
   }
 
-  let response1 = await verifyFirebaseIdToken(token);
+  let userId = await verifyFirebaseIdToken(token);
   // If the above functions returned {} that means we met an error in axios, otherwise it's a json
   // so get the relevent field from response1
-  // let partnerId = await getPartnerId();
+  let partnerId = await getPartnerId(userId);
 
-  // return {
-  //   statusCode: 200,
-  //   HEADERS,
-  //   body: JSON.stringify({
-  //     partnerId
-  //   })
-  // };
+  return {
+    statusCode: 200,
+    HEADERS,
+    body: JSON.stringify({
+      partnerId
+    })
+  };
 };

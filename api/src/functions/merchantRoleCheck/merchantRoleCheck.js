@@ -17,9 +17,12 @@ export const handler = async (event) => {
   const { token } = event.queryStringParameters;
 
   async function verifyFirebaseIdToken(token) {
+
+    let APIURL='http://napna.co.uk/.netlify/functions/verifyFirebaseIdToken?token=$REPLACE_WITH_TOKEN'
+    APIURL = APIURL.replace("REPLACE_WITH_TOKEN", token);
     try {
       var res = await axios.get(
-       http://napna.co.uk/.netlify/functions/verifyFirebaseIdToken?token=${token}
+
       )
       return res.data;
     } catch (e) {
@@ -28,9 +31,13 @@ export const handler = async (event) => {
   }
 
   async function getPartnerId(userId) {
+    let APIURL='http://napna.co.uk/.netlify/functions/getPartnerId?userId=$REPLACE_WITH_USER_ID'
+    APIURL = APIURL.replace("REPLACE_WITH_USER_ID", userId);
+
     try {
       var res = await axios.get(
-       http://napna.co.uk/.netlify/functions/getPartnerId?userId=${userId}
+
+  APIURL
       )
       return res.data;
     } catch (e) {

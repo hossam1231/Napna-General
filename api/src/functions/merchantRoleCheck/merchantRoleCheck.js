@@ -1,49 +1,49 @@
-import { logger } from 'src/lib/logger'
+import { logger } from "src/lib/logger";
 
-const fetch = require('node-fetch')
+const fetch = require("node-fetch");
 
-logger.info('Invoked merchantRoleCheck function')
+logger.info("Invoked merchantRoleCheck function");
 
 let HEADERS = {
-  'Access-Control-Allow-Headers':
-    'Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin',
-  'Content-Type': 'application/json',
-  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-  'Access-Control-Max-Age': '8640',
-  'Access-Control-Allow-Origin': '*',
-}
+  "Access-Control-Allow-Headers":
+    "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin",
+  "Content-Type": "application/json",
+  "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+  "Access-Control-Max-Age": "8640",
+  "Access-Control-Allow-Origin": "*",
+};
 
-let res
-let error = 'A okay √'
+let res;
+let error = "A okay √";
 export const handler = async (event, context) => {
-  const { token } = event.queryStringParameters
+  const { token } = event.queryStringParameters;
   //all outward facing api should expect a token to validate before continuing
 
   async function verifyFirebaseIdToken() {
     let APIURL =
-      'http://napna.co.uk/.netlify/functions/verifyFirebaseIdToken?token=REPLACE_TOKEN'
-    APIURL = APIURL.replace('REPLACE_TOKEN', token)
-    console.log(APIURL, 'sending out request')
-    res = await fetch(APIURL)
+      "http://napna.co.uk/.netlify/functions/verifyFirebaseIdToken?token=REPLACE_TOKEN";
+    APIURL = APIURL.replace("REPLACE_TOKEN", token);
+    console.log(APIURL, "sending out request");
+    res = await fetch(APIURL);
     if (res.ok) {
-      const confirmedUserId = await res.json()
-      return confirmedUserId
+      const confirmedUserId = await res.json();
+      return confirmedUserId;
     } else {
-      error = 'no user'
+      error = "no user";
     }
   }
 
   async function getPartnerId() {
     let APIURL =
-      'http://napna.co.uk/.netlify/functions/getPartnerId?userId=REPLACE_USERID'
-    APIURL = APIURL.replace('REPLACE_USERID', confirmedUserId)
-    console.log(APIURL, 'sending out request')
-    res = await fetch(APIURL)
+      "http://napna.co.uk/.netlify/functions/getPartnerId?userId=REPLACE_USERID";
+    APIURL = APIURL.replace("REPLACE_USERID", confirmedUserId);
+    console.log(APIURL, "sending out request");
+    res = await fetch(APIURL);
     if (res.ok) {
-      const partnerId = await res.json()
-      return partnerId
+      const partnerId = await res.json();
+      return partnerId;
     } else {
-      error = 'no partnerId'
+      error = "no partnerId";
     }
   }
 
@@ -61,20 +61,20 @@ export const handler = async (event, context) => {
   //   }
   // }
 
-  let confirmedUserId = await verifyFirebaseIdToken()
+  let confirmedUserId = await verifyFirebaseIdToken();
   // √ get userId from toke
-  let partnerId = await getPartnerId()
+  let partnerId = await getPartnerId();
   // √ get partnerId from userId
   // let merchantId = await getMerchantId()
   // √ get partnerId from userId
-  res = await partnerId
+  res = await partnerId;
 
   return {
     statusCode: 200,
     HEADERS,
     body: JSON.stringify({
-      data: partnerId,
+      data: res,
       error: error,
     }),
-  }
-}
+  };
+};

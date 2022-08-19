@@ -28,25 +28,36 @@ model Plan {
 model Partner {
   id                  String       @id @default(cuid())
   userId              String?      @unique
+  // who is this backstage account belonging to
   merchant            Merchant[]
+  // who is this merchant account belonging to this allows for one partner to own many stores (merchants)
+  staff               Staff[]
+  // checks where they work and what they do can also bring up co workers for instant message
 }
 
 model Merchant {
   id                  String       @id @default(cuid())
-  partnerId           String
   name                String
   address             String       @unique
   postalCode          String
-  owner               Partner      @relation(fields: [ownerId], references: [userId])
-  ownerId             String
+  partner             Partner      @relation(fields: [partnerId], references: [id])
+  partnerId           String
+  // who owns this shop show private info to them grant admin auto
   staff               Staff[]
+  // who works here
 }
 
 model Staff {
   role                String
+  // acess controls
   name                String
-  merchant            Merchant @relation(fields: [merchantId], references: [id])
+  email               String       @unique
+  merchant            Merchant     @relation(fields: [merchantId], references: [id])
   merchantId          String
+  // what shop
+  partner             Partner      @relation(fields: [partnerId], references: [id])
+  partnerId           String
+  // who is this person
 
  @@id(merchantId)
 

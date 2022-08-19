@@ -1,11 +1,5 @@
-import { logger } from 'src/lib/logger'
-// importing `db` directly
 import { db } from 'src/lib/db'
-
-// importing services
-import { update } from 'src/services/subscriptions'
-
-import { partnerByUser } from '../../services/partners/partners'
+import { logger } from 'src/lib/logger'
 
 let HEADERS = {
   'Access-Control-Allow-Headers':
@@ -21,10 +15,12 @@ export const handler = async (event, context) => {
 
   logger.info('Invoked getPartnerId function')
 
-   const partnerId = await db.merchant.update({
-      where: { userId: userId },
-      data: { partnerId: partnerId },
- })
+  const partnerId = await db.partner.findUnique({
+    where: {
+      userId: userId,
+    },
+  })
+
   return {
     statusCode: 200,
     HEADERS,

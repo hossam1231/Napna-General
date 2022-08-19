@@ -32,11 +32,10 @@ CREATE TABLE "Partner" (
 -- CreateTable
 CREATE TABLE "Merchant" (
     "id" TEXT NOT NULL,
-    "partnerId" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "address" TEXT NOT NULL,
     "postalCode" TEXT NOT NULL,
-    "ownerId" TEXT NOT NULL,
+    "partnerId" TEXT NOT NULL,
 
     CONSTRAINT "Merchant_pkey" PRIMARY KEY ("id")
 );
@@ -45,7 +44,9 @@ CREATE TABLE "Merchant" (
 CREATE TABLE "Staff" (
     "role" TEXT NOT NULL,
     "name" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
     "merchantId" TEXT NOT NULL,
+    "partnerId" TEXT NOT NULL,
 
     CONSTRAINT "Staff_pkey" PRIMARY KEY ("merchantId")
 );
@@ -59,8 +60,14 @@ CREATE UNIQUE INDEX "Partner_userId_key" ON "Partner"("userId");
 -- CreateIndex
 CREATE UNIQUE INDEX "Merchant_address_key" ON "Merchant"("address");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "Staff_email_key" ON "Staff"("email");
+
 -- AddForeignKey
-ALTER TABLE "Merchant" ADD CONSTRAINT "Merchant_ownerId_fkey" FOREIGN KEY ("ownerId") REFERENCES "Partner"("userId") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Merchant" ADD CONSTRAINT "Merchant_partnerId_fkey" FOREIGN KEY ("partnerId") REFERENCES "Partner"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Staff" ADD CONSTRAINT "Staff_partnerId_fkey" FOREIGN KEY ("partnerId") REFERENCES "Partner"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Staff" ADD CONSTRAINT "Staff_merchantId_fkey" FOREIGN KEY ("merchantId") REFERENCES "Merchant"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

@@ -15,7 +15,7 @@ export const handler = async (event, context) => {
 
   logger.info('Invoked getPartnerId function')
 
-  const partnerId = await db.partner.findUnique({
+  const partnerByUserId = await db.partner.findUnique({
     where: {
       userId: userId,
     },
@@ -24,11 +24,12 @@ export const handler = async (event, context) => {
     },
   })
 
+
   return {
     statusCode: 200,
     HEADERS,
     body: JSON.stringify(
-      partnerId
+      partnerByUserId
     ),
   }
 }

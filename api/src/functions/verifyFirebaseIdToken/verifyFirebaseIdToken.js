@@ -63,9 +63,9 @@ export const handler = async (event) => {
     return {
       statusCode,
       HEADERS,
-      body: JSON.stringify({
+      body: JSON.stringify(
         uid
-      }),
+      ),
     }
   } catch (error) {
     return {

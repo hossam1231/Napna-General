@@ -48,8 +48,8 @@ let partnerId = await getPartnerId(userId);
   return {
     statusCode: 200,
     HEADERS,
-    body: JSON.stringify({
+    body: JSON.stringify(
      [ userId , partnerId ]
-    })
+    )
   };
 };

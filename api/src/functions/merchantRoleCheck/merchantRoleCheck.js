@@ -1,6 +1,6 @@
 import { logger } from "src/lib/logger";
 
-const fetch = require("node-fetch");
+const axios = require('axios').default;
 
 logger.info("Invoked merchantRoleCheck function");
 
@@ -15,37 +15,44 @@ let HEADERS = {
 
 let res;
 export const handler = async (event) => {
-  const { token } = event.queryStringParameters;
+  const { token } = event.queryStringParameters
   //all outward facing api should expect a token to validate before continuing
 
   async function verifyFirebaseIdToken() {
     let APIURL =
-      "http://napna.co.uk/.netlify/functions/verifyFirebaseIdToken?token=REPLACE_TOKEN";
-    APIURL = APIURL.replace("REPLACE_TOKEN", token);
-    console.log(APIURL, "sending out request");
-    res = await fetch(APIURL);
-    if (res.ok) {
-      const confirmedUserId = await res.json();
-      return confirmedUserId;
-    } else {
-      res.error = "no user";
-      return res.error;
-    }
+      'http://napna.co.uk/.netlify/functions/verifyFirebaseIdToken?token=REPLACE_TOKEN'
+    APIURL = APIURL.replace('REPLACE_TOKEN', token)
+    console.log(APIURL, 'sending out request')
+   axios.get(APIURL)
+  .then(function (response) {
+    // handle success
+    console.log(response);
+    return response
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+    return error
+  })
   }
+
 
   async function getPartnerId() {
     let APIURL =
-      "http://napna.co.uk/.netlify/functions/getPartnerId?userId=REPLACE_USERID";
-    APIURL = APIURL.replace("REPLACE_USERID", confirmedUserId);
-    console.log(APIURL, "sending out request");
-    res = await fetch(APIURL);
-    if (res.ok) {
-      const partnerId = await res.json();
-      return partnerId;
-    } else {
-      res.error = "no partnerId";
-      return res.error;
-    }
+      'http://napna.co.uk/.netlify/functions/getPartnerId?userId=REPLACE_USERID'
+    APIURL = APIURL.replace('REPLACE_USERID', confirmedUserId)
+    console.log(APIURL, 'sending out request')
+    axios.get(APIURL)
+  .then(function (response) {
+    // handle success
+    console.log(response);
+    return response
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+    return error
+  })
   }
 
   // async function getMerchantId() {
@@ -62,20 +69,19 @@ export const handler = async (event) => {
   //   }
   // }
 
-  let confirmedUserId = await verifyFirebaseIdToken();
+  let confirmedUserId = await verifyFirebaseIdToken()
   // √ get userId from toke
-  let partnerId = await getPartnerId();
+  let partnerId = await getPartnerId()
   // √ get partnerId from userId
   // let merchantId = await getMerchantId()
   // √ get partnerId from userId
-  res = await partnerId;
+  res = await partnerId
 
   return {
     statusCode: 200,
     HEADERS,
     body: JSON.stringify({
-      data: res,
-      error: res.error,
+      partnerId
     }),
-  };
+  }
 };

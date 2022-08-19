@@ -38,13 +38,11 @@ export const handler = async (event) => {
     }
   }
 
-  let userId = await verifyFirebaseIdToken(token);
+let userId = await verifyFirebaseIdToken(token);
 
   // If the above functions returned {} that means we met an error in axios, otherwise it's a json
   // so get the relevent field from response1
- let partnerId = await getPartnerId(userId);
-
-
+let partnerId = await getPartnerId(userId);
 
 
   return {

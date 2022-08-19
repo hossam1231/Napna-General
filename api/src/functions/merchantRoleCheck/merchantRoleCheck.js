@@ -47,34 +47,34 @@ export const handler = async (event, context) => {
     }
   }
 
-  async function getMerchantId() {
-    let APIURL =
-      'http://napna.co.uk/.netlify/functions/getMerchantId?partnerId=REPLACE_PARTNERID'
-    APIURL = APIURL.replace('REPLACE_PARTNERID', partnerId)
-    console.log(APIURL, 'sending out request')
-    res = await fetch(APIURL)
-    if (res.ok) {
-      const merchantId = await res.json()
-      return merchantId
-    } else {
-      error = 'no merchantId'
-    }
-  }
+  // async function getMerchantId() {
+  //   let APIURL =
+  //     'http://napna.co.uk/.netlify/functions/getMerchantId?partnerId=REPLACE_PARTNERID'
+  //   APIURL = APIURL.replace('REPLACE_PARTNERID', partnerId)
+  //   console.log(APIURL, 'sending out request')
+  //   res = await fetch(APIURL)
+  //   if (res.ok) {
+  //     const merchantId = await res.json()
+  //     return merchantId
+  //   } else {
+  //     error = 'no merchantId'
+  //   }
+  // }
 
   let confirmedUserId = await verifyFirebaseIdToken()
   // √ get userId from toke
   let partnerId = await getPartnerId()
   // √ get partnerId from userId
-  let merchantId = await getMerchantId()
+  // let merchantId = await getMerchantId()
   // √ get partnerId from userId
-  res = merchantId
+  res = partnerId
 
   return {
     statusCode: 200,
     HEADERS,
     body: JSON.stringify({
-      data: merchantId,
-      error: error
+      data: partnerId,
+      error: error,
     }),
   }
 }

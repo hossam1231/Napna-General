@@ -18,7 +18,7 @@ export const handler = async (event) => {
 
   async function verifyFirebaseIdToken(token) {
 
-    let APIURL='http://napna.co.uk/.netlify/functions/verifyFirebaseIdToken?token=$REPLACE_WITH_TOKEN'
+    let APIURL='http://napna.co.uk/.netlify/functions/verifyFirebaseIdToken?token=REPLACE_WITH_TOKEN'
     APIURL = APIURL.replace("REPLACE_WITH_TOKEN", token);
     try {
       var res = await axios.get(
@@ -31,7 +31,7 @@ APIURL
   }
 
   async function getPartnerId(userId) {
-    let APIURL='http://napna.co.uk/.netlify/functions/getPartnerId?userId=$REPLACE_WITH_USER_ID'
+    let APIURL='http://napna.co.uk/.netlify/functions/getPartnerId?userId=REPLACE_WITH_USER_ID'
     APIURL = APIURL.replace("REPLACE_WITH_USER_ID", userId);
     try {
       var res = await axios.get(
@@ -44,9 +44,8 @@ APIURL
   }
 
 let userId = await verifyFirebaseIdToken(token);
-
   // If the above functions returned {} that means we met an error in axios, otherwise it's a json
-  // so get the relevent field from response1
+  // so get the relevent field from
 let partnerId = await getPartnerId(userId);
 
 

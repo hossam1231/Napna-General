@@ -64,7 +64,7 @@ export const handler = async (event) => {
       statusCode,
       HEADERS,
       body: JSON.stringify({
-        confirmedId: uid,
+        uid
       }),
     }
   } catch (error) {

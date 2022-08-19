@@ -25,7 +25,7 @@ export const handler = async (event, context) => {
     statusCode: 200,
     HEADERS,
     body: JSON.stringify({
-      data: partnerId,
+      partnerId
     }),
   }
 }

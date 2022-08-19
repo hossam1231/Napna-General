@@ -1,6 +1,6 @@
 import { logger } from "src/lib/logger";
 
-const axios = require('axios').default;
+const axios = require("axios").default;
 
 logger.info("Invoked merchantRoleCheck function");
 
@@ -10,78 +10,44 @@ let HEADERS = {
   "Content-Type": "application/json",
   "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
   "Access-Control-Max-Age": "8640",
-  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Origin": "*"
 };
 
-let res;
 export const handler = async (event) => {
-  const { token } = event.queryStringParameters
-  //all outward facing api should expect a token to validate before continuing
+  const { token } = event.queryStringParameters;
 
-  async function verifyFirebaseIdToken() {
-    let APIURL =
-      'http://napna.co.uk/.netlify/functions/verifyFirebaseIdToken?token=REPLACE_TOKEN'
-    APIURL = APIURL.replace('REPLACE_TOKEN', token)
-    console.log(APIURL, 'sending out request')
-   axios.get(APIURL)
-  .then(function (response) {
-    // handle success
-    console.log(response);
-    return response
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-    return error
-  })
+  async function verifyFirebaseIdToken(token1) {
+    try {
+      var res = await axios.get(
+        http://napna.co.uk/.netlify/functions/verifyFirebaseIdToken?token=${token1}
+      );
+      return res.data;
+    } catch (e) {
+      return {};
+    }
   }
 
-
-  async function getPartnerId() {
-    let APIURL =
-      'http://napna.co.uk/.netlify/functions/getPartnerId?userId=REPLACE_USERID'
-    APIURL = APIURL.replace('REPLACE_USERID', confirmedUserId)
-    console.log(APIURL, 'sending out request')
-    axios.get(APIURL)
-  .then(function (response) {
-    // handle success
-    console.log(response);
-    return response
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-    return error
-  })
+  async function getPartnerId(userId1) {
+    try {
+      var res = await axios.get(
+        http://napna.co.uk/.netlify/functions/getPartnerId?userId=${userId1}
+      );
+      return res.data;
+    } catch (e) {
+      return {};
+    }
   }
 
-  // async function getMerchantId() {
-  //   let APIURL =
-  //     'http://napna.co.uk/.netlify/functions/getMerchantId?partnerId=REPLACE_PARTNERID'
-  //   APIURL = APIURL.replace('REPLACE_PARTNERID', partnerId)
-  //   console.log(APIURL, 'sending out request')
-  //   res = await fetch(APIURL)
-  //   if (res.ok) {
-  //     const merchantId = await res.json()
-  //     return merchantId
-  //   } else {
-  //     error = 'no merchantId'
-  //   }
-  // }
+  let response1 = await verifyFirebaseIdToken(token);
+  // If the above functions returned {} that means we met an error in axios, otherwise it's a json
+  // so get the relevent field from response1
+  // let partnerId = await getPartnerId();
 
-  let confirmedUserId = await verifyFirebaseIdToken()
-  // √ get userId from toke
-  let partnerId = await getPartnerId()
-  // √ get partnerId from userId
-  // let merchantId = await getMerchantId()
-  // √ get partnerId from userId
-  res = await partnerId
-
-  return {
-    statusCode: 200,
-    HEADERS,
-    body: JSON.stringify({
-      partnerId
-    }),
-  }
+  // return {
+  //   statusCode: 200,
+  //   HEADERS,
+  //   body: JSON.stringify({
+  //     partnerId
+  //   })
+  // };
 };

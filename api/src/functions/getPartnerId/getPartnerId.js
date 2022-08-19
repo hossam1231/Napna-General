@@ -20,7 +20,7 @@ export const handler = async (event, context) => {
       userId: userId,
     },
     include: {
-      merchants: true,
+      merchant: true,
     },
   })
 

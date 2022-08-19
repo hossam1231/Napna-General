@@ -22,7 +22,7 @@ export const handler = async (event) => {
     APIURL = APIURL.replace("REPLACE_WITH_TOKEN", token);
     try {
       var res = await axios.get(
-
+APIURL
       )
       return res.data;
     } catch (e) {
@@ -33,10 +33,8 @@ export const handler = async (event) => {
   async function getPartnerId(userId) {
     let APIURL='http://napna.co.uk/.netlify/functions/getPartnerId?userId=$REPLACE_WITH_USER_ID'
     APIURL = APIURL.replace("REPLACE_WITH_USER_ID", userId);
-
     try {
       var res = await axios.get(
-
   APIURL
       )
       return res.data;

@@ -19,8 +19,8 @@ export const handler = async (event) => {
   async function verifyFirebaseIdToken(token) {
     try {
       var res = await axios.get(
-        http://napna.co.uk/.netlify/functions/verifyFirebaseIdToken?token=${token}
-      );
+        'http://napna.co.uk/.netlify/functions/verifyFirebaseIdToken?token=${token}'
+      )
       return res.data;
     } catch (e) {
       return {};
@@ -30,8 +30,8 @@ export const handler = async (event) => {
   async function getPartnerId(userId) {
     try {
       var res = await axios.get(
-        http://napna.co.uk/.netlify/functions/getPartnerId?userId=${userId}
-      );
+        'http://napna.co.uk/.netlify/functions/getPartnerId?userId=${userId}'
+      )
       return res.data;
     } catch (e) {
       return {};

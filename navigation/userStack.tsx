@@ -5,7 +5,7 @@ import HomeScreen from "../screens/Home/HomeScreen";
 import MoreModal from "../screens/MoreModal";
 import CatalogScreen from "../screens/CatalogScreen";
 import UserNotFoundScreen from "../screens/UserNotFoundScreen";
-import MenuScreen from "../screens/MenuScreen";
+import MenuScreen from "../screens/Menu/MenuScreen";
 import {
   Box,
   Text,
@@ -18,7 +18,7 @@ import {
 import Navigator from "./Navigator";
 import { navigationRef } from "./Navigator";
 import { useAuthentication } from "../utils/hooks/useAuthentication";
-import LoadingScreen from "../screens/loading/loadingScreen";
+import LoadingScreen from "../screens/Loading/loadingScreen";
 import { getIdToken } from "firebase/auth";
 import Home from "../screens/Home/Home";
 

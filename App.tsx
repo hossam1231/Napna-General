@@ -7,7 +7,7 @@ import RootNavigation from './navigation';
 import { NativeBaseProvider, Center, Spinner} from "native-base";
 import useCachedResources from "./hooks/useCachedResources";
 import './index.css'
-import LoadingScreen from './screens/loading/LoadingScreen'
+import LoadingScreen from './screens/Loading/LoadingScreen'
 
 export default function App() {
 

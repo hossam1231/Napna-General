@@ -14,7 +14,7 @@ import {
   useNavigationContainerRef,
   createNavigationContainerRef,
 } from "@react-navigation/native";
-import LoadingScreen from "../screens/loading/loadingScreen";
+import LoadingScreen from "../screens/Loading/loadingScreen";
 
 export const navigationRef = createNavigationContainerRef();
 

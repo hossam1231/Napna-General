@@ -1,3 +1,5 @@
+import { getFirestore } from 'firebase/firestore'
+
 import { logger } from 'src/lib/logger'
 
 var admin = require('firebase-admin')
@@ -35,7 +37,7 @@ export const handler = async (event, context) => {
 
   logger.info('Invoked saveProductFirestore function')
 
-  const db = admin.getFirestore(firebaseApp)
+  const db = getFirestore(firebaseApp)
 
   const citiesRef = db.collection('cities')
 

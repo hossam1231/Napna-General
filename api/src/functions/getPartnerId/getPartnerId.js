@@ -21,6 +21,7 @@ export const handler = async (event, context) => {
     },
     include: {
       merchant: true,
+      staff: true,
     },
   })
 

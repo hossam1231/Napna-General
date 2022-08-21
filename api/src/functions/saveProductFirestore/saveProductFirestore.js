@@ -15,12 +15,12 @@ let HEADERS = {
 
 export const handler = async (event) => {
   const { collection } = event.queryStringParameters
-  const { encodedUriJsonData } = event.queryStringParameters
+  const { data } = event.queryStringParameters
    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI
 
 
   async function saveToFirestore() {
-      let APIURL = `http://napna.co.uk/.netlify/functions/getPartnerId?collection=${collection}&data=${encodedUriJsonData}`
+      let APIURL = `http://napna.co.uk/.netlify/functions/getPartnerId?collection=${collection}&data=${data}`
      try {
        var res = await axios.get(APIURL)
        return res.data

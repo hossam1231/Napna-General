@@ -32,22 +32,19 @@ admin.initializeApp()
 exports.writeToFirestore = functions.https.onRequest(async (req, res) => {
   // [END addMessageTrigger]
   // Grab the text parameter.
-  const data = req.query.data
+  const data = req.body.data
   const collection = req.query.collection
-
-  var buf = Buffer.from(data, 'base64') // Ta-da
 
   // [START adminSdkAdd]
   // Push the new message into Firestore using the Firebase Admin SDK.
-  // const writeResult = await admin
-  //   .firestore()
-  //   .collection(collection.toString())
-  //   .add(JSON.parse(json))
+  const writeResult = await admin
+    .firestore()
+    .collection(collection.toString())
+    .add(JSON.parse(data))
   // Send back a message that we've successfully written the message
-  // res.json({
-  //   result: `Message with ID: ${writeResult.id} added. ${writeResult}`,
-  // })
-  res.json(data)
+  res.json({
+    result: `Message with ID: ${writeResult.id} added. ${writeResult}`,
+  })
   // [END adminSdkAdd]
 })
 // [END addMessage]

@@ -19,7 +19,7 @@ export const handler = async (event) => {
 
 
   async function saveToFirestore() {
-      let APIURL = `http://napna.co.uk/.netlify/functions/getPartnerId?collection=${collection}`
+      let APIURL = `https://us-central1-napna-9faa1.cloudfunctions.net/writeToFirestore?collection=${collection}`
      try {
        var res = await axios.post(APIURL, {
          firstName: 'Finn',

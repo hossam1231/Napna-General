@@ -37,13 +37,14 @@ exports.writeToFirestore = functions.https.onRequest(async (req, res) => {
 
   // [START adminSdkAdd]
   // Push the new message into Firestore using the Firebase Admin SDK.
-  const writeResult = await admin
-    .firestore()
-    .collection(collection.toString())
-    .add(JSON.parse(data))
+  // const writeResult = await admin
+  //   .firestore()
+  //   .collection(collection.toString())
+  //   .add(JSON.parse(data))
   // Send back a message that we've successfully written the message
   res.json({
-    result: `Message with ID: ${writeResult.id} added. ${writeResult}`,
+    // result: `Message with ID: ${writeResult.id} added. ${writeResult}`,
+    data: data,
   })
   // [END adminSdkAdd]
 })

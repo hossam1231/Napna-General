@@ -19,7 +19,6 @@ export const handler = async (event) => {
   async function saveToFirestore() {
     let APIURL =
       'https://us-central1-napna-9faa1.cloudfunctions.net/writeToFirestore'
-    APIURL = APIURL.replace('REPLACE_COLLECTION_NAME', collection)
     try {
       var res = await axios({
         method: 'post',

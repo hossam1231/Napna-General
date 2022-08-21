@@ -18,11 +18,9 @@ export const handler = async (event) => {
   const { encodedUriJsonData } = event.queryStringParameters
    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI
 
+
   async function saveToFirestore() {
-     let APIURL =
-       'http://napna.co.uk/.netlify/functions/getPartnerId?collection=REPLACE_WITH_USER_ID&data=REPLACE_WITH_DATA'
-    APIURL = APIURL.replace('REPLACE_WITH_COLLECTION', collection)
-    APIURL = APIURL.replace('REPLACE_WITH_DATA', encodedUriJsonData)
+      let APIURL = `http://napna.co.uk/.netlify/functions/getPartnerId?collection=${collection}&data=${encodedUriJsonData}`
      try {
        var res = await axios.get(APIURL)
        return res.data

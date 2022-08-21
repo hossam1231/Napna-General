@@ -15,19 +15,16 @@ let HEADERS = {
 
 export const handler = async (event) => {
   const { collection } = event.queryStringParameters
+  const { encodedUriJsonData } = event.queryStringParameters
+   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI
 
   async function saveToFirestore() {
     let APIURL =
       'https://us-central1-napna-9faa1.cloudfunctions.net/writeToFirestore'
     try {
-      var res = await axios({
-        method: 'post',
-        url: APIURL + '?collection=' + collection,
-        headers: {},
-        data: {
-          foo: 'bar',
-        },
-      })
+      var res = await axios.get(
+        APIURL + '?collection=' + collection,+ '&data=' + encodedUriJsonData
+      )
       return res.data
     } catch (e) {
       return e
@@ -35,7 +32,6 @@ export const handler = async (event) => {
   }
 
   let productResponse = await saveToFirestore()
-
 
 
   return {

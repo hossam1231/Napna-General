@@ -24,6 +24,7 @@ export const handler = async (event) => {
       var res = await axios({
         method: 'post',
         url: APIURL + '?collection=' + collection,
+        headers: {},
         data: {
           foo: 'bar',
         },

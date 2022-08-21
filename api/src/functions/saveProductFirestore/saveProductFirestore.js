@@ -19,20 +19,19 @@ export const handler = async (event) => {
    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI
 
   async function saveToFirestore() {
-    let APIURL =
-      'https://us-central1-napna-9faa1.cloudfunctions.net/writeToFirestore'
-    try {
-      var res = await axios.get(
-        APIURL + '?collection=' + collection,+ '&data=' + encodedUriJsonData
-      )
-      return res.data
-    } catch (e) {
-      return e
-    }
+     let APIURL =
+       'http://napna.co.uk/.netlify/functions/getPartnerId?collection=REPLACE_WITH_USER_ID&data=REPLACE_WITH_DATA'
+    APIURL = APIURL.replace('REPLACE_WITH_COLLECTION', collection)
+    APIURL = APIURL.replace('REPLACE_WITH_DATA', encodedUriJsonData)
+     try {
+       var res = await axios.get(APIURL)
+       return res.data
+     } catch (e) {
+       return e
+     }
   }
 
   let productResponse = await saveToFirestore()
-
 
   return {
     statusCode: 200,

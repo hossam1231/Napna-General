@@ -19,5 +19,5 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
     regions: ['west_coast', 'norcal'],
   })
 
-  response.send(res);
+  response.send("success");
 });

@@ -15,8 +15,6 @@ let HEADERS = {
 
 export const handler = async (event) => {
   const { collection } = event.queryStringParameters
-   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI
-
 
   async function saveToFirestore() {
       let APIURL = `https://us-central1-napna-9faa1.cloudfunctions.net/writeToFirestore?collection=${collection}`

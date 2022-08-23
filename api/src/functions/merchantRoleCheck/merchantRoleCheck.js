@@ -53,7 +53,7 @@ let partnerId = await getPartnerId(userId);
     statusCode: 200,
     HEADERS,
     body: JSON.stringify(
-     [ userId , partnerId ]
+     partnerId
     )
   };
 };

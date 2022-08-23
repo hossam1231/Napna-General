@@ -1,15 +1,22 @@
-import React from 'react'
+import React from "react";
+import {
+  Box,
+  Text,
+  Heading,
+  Center,
+  HStack,
+  VStack,
+  Divider,
+  Image,
+  Pressable,
+} from "native-base";
 
 const MerchantNotRegistered = () => {
-  return (
-   <></>
-  )
-}
+  return <Text>Merchant not registered</Text>;
+};
 
 export const MerchantNotRegisteredScreen = () => {
-    return (
-        <></>
-    )
-}
+  return <></>;
+};
 
-export default MerchantNotRegistered
+export default MerchantNotRegistered;

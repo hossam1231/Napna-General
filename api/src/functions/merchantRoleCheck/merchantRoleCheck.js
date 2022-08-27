@@ -48,6 +48,9 @@ let userId = await verifyFirebaseIdToken(token);
   // so get the relevent field from
 let partnerId = await getPartnerId(userId);
 
+  if (partnerId == null) {
+  partnerId  = "No partner record"
+}
 
   return {
     statusCode: 200,

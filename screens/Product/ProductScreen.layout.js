@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Input,
   VStack,
   IconButton,
+  Button,
   HStack,
+  ScrollView,
   Avatar,
   Badge,
   Text,
@@ -19,10 +21,43 @@ import {
   MaterialCommunityIcons,
   AntDesign,
 } from "@expo/vector-icons";
+import ProductScreen from "./ProductScreen";
+import { useNavigation } from "@react-navigation/native";
+
+function Example() {
+  const [showBottomNavigation, setShowBottomNavigation] = useState(false);
+  return (
+    <VStack
+      space={5}
+      _dark={{
+        bg: "coolGray.800",
+      }}
+      _light={{
+        bg: "white",
+      }}
+      flex="1"
+      safeAreaTop
+      w="100%"
+    >
+      <TopBar />
+      <SearchBar />
+      <ProductNavigation />
+      <ScrollView flex="1" showsVerticalScrollIndicator={false}>
+        <ProductScreen />
+      </ScrollView>
+      {showBottomNavigation && (
+        <Center h="5vh" w="100%" position="absolute" bottom="0">
+          <Button>Home</Button>
+        </Center>
+      )}
+    </VStack>
+  );
+}
 
 function SearchBar() {
   return (
     <VStack
+      px="2"
       space={5}
       w="100%"
       divider={
@@ -56,36 +91,34 @@ function SearchBar() {
   );
 }
 
-function Example() {
+function ProductNavigation() {
   return (
     <>
-      <TopBar />
-      <Center w="100%">
-        <SearchBar />
-        <HStack m="2" space={2} w="100%">
-          <Badge colorScheme="success">
-            <Text>Success</Text>
-          </Badge>
-          <Badge colorScheme="success">
-            <Text>Success</Text>
-          </Badge>
-          <Badge colorScheme="success">
-            <Text>Success</Text>
-          </Badge>
-          <Badge colorScheme="success">
-            <Text>Success</Text>
-          </Badge>
-        </HStack>
-      </Center>
+      <HStack m="2" space={2} w="100%">
+        <Badge colorScheme="success">
+          <Text>Success</Text>
+        </Badge>
+        <Badge colorScheme="success">
+          <Text>Success</Text>
+        </Badge>
+        <Badge colorScheme="success">
+          <Text>Success</Text>
+        </Badge>
+        <Badge colorScheme="success">
+          <Text>Success</Text>
+        </Badge>
+      </HStack>
     </>
   );
 }
 
 const TopBar = () => {
+  const navigation = useNavigation();
   return (
-    <HStack justifyContent="space-between">
-      <Box>
+    <HStack alignItems="center" mt="2" justifyContent="space-between">
+      <Box ml="2">
         <Avatar
+          size="sm"
           bg="indigo.500"
           source={{
             uri: "https://images.unsplash.com/photo-1614289371518-722f2615943d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
@@ -96,7 +129,7 @@ const TopBar = () => {
       </Box>
       <HStack>
         <IconButton
-          onPress={() => navigation.navigate("Menu")}
+          onPress={() => navigation.navigate("Analytic")}
           icon={
             <Icon
               as={AntDesign}
@@ -110,7 +143,7 @@ const TopBar = () => {
           }
         />{" "}
         <IconButton
-          onPress={() => navigation.navigate("Menu")}
+          onPress={() => navigation.navigate("Favourite")}
           icon={
             <Icon
               as={AntDesign}
@@ -124,7 +157,7 @@ const TopBar = () => {
           }
         />
         <IconButton
-          onPress={() => navigation.navigate("Menu")}
+          onPress={() => navigation.navigate("Notification")}
           icon={
             <Icon
               as={MaterialCommunityIcons}
@@ -144,7 +177,7 @@ const TopBar = () => {
 
 const ProductScreenLayout = () => {
   return (
-    <Box flex="1" p="10" bg="#EFF5F8">
+    <Box flex="1" bg="#EFF5F8">
       <Example />
     </Box>
   );

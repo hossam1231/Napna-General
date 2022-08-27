@@ -16,6 +16,8 @@ import Home from "../screens/Home/Home";
 import MerchantNotRegistered, {
   MerchantNotRegisteredScreen,
 } from "../components/Merchant/MerchantNotRegistered";
+import Demo from "../screens/Test/Demo";
+import ProductScreenLayout from "../screens/Product/ProductScreen.layout";
 
 const axios = require("axios").default;
 
@@ -31,11 +33,13 @@ export default function UserStack({ user }) {
   }, []);
 
   useEffect(() => {
-    if (partner.merchant) {
-      setMerchant(partner.merchant);
-    }
-    if (partner.staff) {
-      setStaff(partner.staff);
+    if (partner) {
+      if (partner.merchant) {
+        setMerchant(partner.merchant);
+      }
+      if (partner.staff) {
+        setStaff(partner.staff);
+      }
     }
   }, [partner]);
 
@@ -46,7 +50,11 @@ export default function UserStack({ user }) {
     APIURL = APIURL.replace("REPLACE_TOKEN", token);
     try {
       var res = await axios.get(APIURL);
-      setPartner(res.data.partner);
+      if (res == null) {
+        setPartner("EMPTY");
+      } else {
+        setPartner(res.data);
+      }
     } catch (e) {
       console.log("error merchant role check", e);
     }
@@ -61,6 +69,11 @@ export default function UserStack({ user }) {
               <Stack.Screen
                 name="Home"
                 component={Home}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="demo"
+                component={Demo}
                 options={{ headerShown: false }}
               />
               <Stack.Screen
@@ -80,14 +93,21 @@ export default function UserStack({ user }) {
               />
               <Stack.Screen
                 name="Product"
-                component={ProductScreen}
+                component={ProductScreenLayout}
                 options={{ headerShown: false }}
               />
               <Stack.Group
                 options={{ headerShown: false }}
                 screenOptions={{ presentation: "modal" }}
               >
-                <Stack.Screen name="Menu" component={MenuScreen} />
+                <Stack.Screen name="Favourite" component={MenuScreen} />
+                <Stack.Screen name="Analytic" component={MenuScreen} />
+                <Stack.Screen name="Profile" component={MenuScreen} />
+                <Stack.Screen
+                  options={{ headerShown: false }}
+                  name="Menu"
+                  component={MenuScreen}
+                />
                 <Stack.Screen
                   name="UserNotFound"
                   component={UserNotFoundScreen}
@@ -96,6 +116,8 @@ export default function UserStack({ user }) {
             </Stack.Navigator>
           </NavigationContainer>
         );
+      } else if (partner === "EMPTY") {
+        console.log("hi");
       } else {
         return (
           <NavigationContainer ref={navigationRef}>

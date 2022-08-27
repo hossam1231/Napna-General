@@ -12,9 +12,17 @@ import {
   Divider,
   Image,
   Pressable,
+  Fab,
+  Hidden,
 } from "native-base";
-import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+import {
+  MaterialCommunityIcons,
+  MaterialIcons,
+  Entypo,
+  FontAwesome,
+} from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import GoBackButtonFab from "../../components/Button/GoBackButton";
 export default function MenuScreen() {
   return <AppDrawer></AppDrawer>;
 }
@@ -59,6 +67,7 @@ function AppDrawer() {
     {
       name: "settings",
       bg: "pink.600",
+      route: "demo",
     },
     {
       name: "sports-esports",
@@ -106,35 +115,57 @@ function AppDrawer() {
     },
   ];
   return (
-    <FlatList
-      flex="1"
-      numColumns={4}
-      data={icons}
-      renderItem={({ item }) => {
-        return (
-          <>
-            <IconButton
-              m={"8px"}
-              borderRadius="full"
-              bg={item.bg}
-              variant="solid"
-              onPress={() => {
-                navigation.navigate(item.route);
-              }}
-              p="3"
-              icon={
-                <Icon
-                  color="white"
-                  name={item.name}
-                  as={MaterialIcons}
-                  size="sm"
+    <>
+      <Center flex="1" p="10">
+        <Hidden from="sm" till="md">
+          <Fab
+            placement="top-right"
+            m="10"
+            label={
+              <Text fontFamily="Manrope-ExtraBold" color="white">
+                close
+              </Text>
+            }
+            onPress={() => {
+              navigation.goBack();
+            }}
+            colorScheme="blue"
+            size="lg"
+            icon={<FontAwesome name="close" size={24} color="white" />}
+          />
+        </Hidden>
+
+        <FlatList
+          flex="1"
+          numColumns={4}
+          data={icons}
+          renderItem={({ item }) => {
+            return (
+              <Center size="xl" alignItems="center" p="5">
+                <IconButton
+                  m={"8px"}
+                  borderRadius="full"
+                  bg={item.bg}
+                  variant="solid"
+                  onPress={() => {
+                    navigation.navigate(item.route);
+                  }}
+                  p="3"
+                  icon={
+                    <Icon
+                      color="white"
+                      name={item.name}
+                      as={MaterialIcons}
+                      size="sm"
+                    />
+                  }
                 />
-              }
-            />
-            <Text>{item.name}</Text>
-          </>
-        );
-      }}
-    />
+                <Text>{item.route}</Text>
+              </Center>
+            );
+          }}
+        />
+      </Center>
+    </>
   );
 }

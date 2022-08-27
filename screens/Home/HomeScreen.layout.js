@@ -1,5 +1,7 @@
-import React from "react";
+import React, { Children } from "react";
 import HomeScreen from "./HomeScreen";
+import { StyleSheet } from "react-native";
+import { BlurView } from "expo-blur";
 import {
   Box,
   useDisclose,
@@ -7,6 +9,7 @@ import {
   Stagger,
   HStack,
   Heading,
+  VStack,
   Button,
   Text,
   Icon,
@@ -15,12 +18,13 @@ import {
 } from "native-base";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import ActionNativeBaseModal from "../../components/Action/ActionNativeBaseModal";
+import HomeBottomSheet from "../../components/Home/HomeBottomSheet";
 
-const HomeScreenLayout = () => {
+const HomeScreenLayout = ({ isOpen, onToggle }) => {
   const navigation = useNavigation();
-
   return (
-    <Box flex="1" p="10" bg="#EFF5F8">
+    <VStack flex="1" p="10" bg="#EFF5F8" space="5">
       {/* <YourMerchants /> */}
       <HStack justifyContent="space-between">
         <Box>
@@ -43,120 +47,24 @@ const HomeScreenLayout = () => {
             }
           />
         </Box>
-        <Box>
-          <YourMerchants />
-        </Box>
+
+        <HStack space="2">
+          <ActionNativeBaseModal />
+        </HStack>
       </HStack>
-      <Heading fontSize={["4xl"]} color="#2D284E">
-        Hello there admin@example.com
-      </Heading>
-      <Text fontSize={["md"]} fontFamily="Manrope-Light" color="#28234A">
-        Here is some information we gathered about your store
-      </Text>
+      <VStack space="2" py="5">
+        <Heading fontSize={["4xl"]} color="#2D284E">
+          Hello there admin@example.com
+        </Heading>
+        <Text fontSize={["md"]} fontFamily="Manrope-Light" color="#28234A">
+          Here is some information we gathered about your store
+        </Text>
+      </VStack>
+
       <HomeScreen />
-    </Box>
-  );
-};
 
-const YourMerchants = () => {
-  const { isOpen, onToggle } = useDisclose();
-  return (
-    <>
-      <HStack mb="10" alignItems="center">
-        <Button
-          variant="solid"
-          borderRadius="full"
-          size="lg"
-          onPress={onToggle}
-          bg="cyan.400"
-        >
-          <Text fontFamily="Manrope-Bold" color="white">
-            Kaiser Chicken
-          </Text>
-        </Button>
-      </HStack>
-
-      <Box position="fixed" alignItems="center">
-        <Stagger
-          visible={isOpen}
-          initial={{
-            opacity: 0,
-            scale: 0,
-            translateY: 34,
-          }}
-          animate={{
-            translateY: 0,
-            scale: 1,
-            opacity: 1,
-            transition: {
-              type: "spring",
-              mass: 0.8,
-              stagger: {
-                offset: 30,
-                reverse: false,
-              },
-            },
-          }}
-          exit={{
-            translateY: 34,
-            scale: 0.5,
-            opacity: 0,
-            transition: {
-              duration: 100,
-              stagger: {
-                offset: 30,
-                reverse: false,
-              },
-            },
-          }}
-        >
-          <Button
-            mb="4"
-            variant="solid"
-            bg="indigo.500"
-            colorScheme="indigo"
-            borderRadius="full"
-          >
-            <Text fontFamily="Manrope-Bold" color="white">
-              Kaiser Chicken
-            </Text>
-          </Button>
-          <Button
-            mb="4"
-            variant="solid"
-            bg="yellow.400"
-            colorScheme="yellow"
-            borderRadius="full"
-          >
-            <Text fontFamily="Manrope-Bold" color="white">
-              Kaiser Chicken
-            </Text>
-          </Button>
-          <Button
-            mb="4"
-            variant="solid"
-            bg="teal.400"
-            colorScheme="teal"
-            borderRadius="full"
-          >
-            <Text fontFamily="Manrope-Bold" color="white">
-              Kaiser Chicken
-            </Text>
-          </Button>
-          <Button
-            mb="4"
-            variant="solid"
-            bg="red.500"
-            colorScheme="red"
-            borderRadius="full"
-          >
-            <Text fontFamily="Manrope-Bold" color="white">
-              Kaiser Chicken
-            </Text>
-          </Button>
-        </Stagger>
-      </Box>
-    </>
+      <HomeBottomSheet />
+    </VStack>
   );
 };
 

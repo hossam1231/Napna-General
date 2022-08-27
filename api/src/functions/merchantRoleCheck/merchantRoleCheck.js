@@ -18,8 +18,7 @@ export const handler = async (event) => {
 
   async function verifyFirebaseIdToken(token) {
 
-    let APIURL='http://napna.co.uk/.netlify/functions/verifyFirebaseIdToken?token=REPLACE_WITH_TOKEN'
-    APIURL = APIURL.replace("REPLACE_WITH_TOKEN", token);
+    let APIURL=`http://napna.co.uk/.netlify/functions/verifyFirebaseIdToken?token=${token}`
     try {
       var res = await axios.get(
 APIURL
@@ -31,8 +30,7 @@ APIURL
   }
 
   async function getPartnerId(userId) {
-    let APIURL='http://napna.co.uk/.netlify/functions/getPartnerId?userId=REPLACE_WITH_USER_ID'
-    APIURL = APIURL.replace("REPLACE_WITH_USER_ID", userId);
+    let APIURL=`http://napna.co.uk/.netlify/functions/getPartnerId?userId=${userId}`
     try {
       var res = await axios.get(
 APIURL

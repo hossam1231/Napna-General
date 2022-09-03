@@ -6,5 +6,5 @@ import AuthStack from './authStack';
 export default function RootNavigation() {
   const { user } = useAuthentication();
 
-  return user ? <UserStack user={user} /> : <AuthStack/>;
+  return user ? <UserStack firebaseUser={user} /> : <AuthStack/>;
 }

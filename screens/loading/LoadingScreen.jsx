@@ -1,13 +1,17 @@
-import React from "react";
-import { Spinner, Center, Heading, HStack } from "native-base";
+import React, { useState } from "react";
+import { Spinner, Center,Heading, HStack } from "native-base";
 
-export default function LoadingScreen() {
-  return (
-    <Center flex="1">
-      {/* napna logo */}
-      <Spin />
-    </Center>
-  );
+export default function LoadingScreen() {   
+
+  
+  return <Center flex="1">
+   
+          <Spin/>
+        </Center>
+       
+  
+    
+  
 }
 
 export const Spin = () => {

@@ -1,37 +1,41 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
 import { Button } from 'react-native-elements';
+import { NativeBaseProvider, VStack, PresenceTransition, Heading, Icon, Fab, Text, Center, Box, View } from 'native-base';
+import { Entypo } from '@expo/vector-icons';
 
 const WelcomeScreen: React.FC<StackScreenProps<any>> = ({ navigation }) => {
+  const [isOpen, setIsOpen] = React.useState(true);
   return (
-    <View style={styles.container}>
-      <Text>Welcome screen!</Text>
-
-      <View style={styles.buttons}>
-        <Button title="Sign in" buttonStyle={styles.button} onPress={() => navigation.navigate('Sign In')} />
-        <Button title="Sign up" type="outline" buttonStyle={styles.button} onPress={() => navigation.navigate('Sign Up')} />
-      </View>
-    </View>
+    <NativeBaseProvider>
+      <Center h="100vh">
+        <Box>
+          <PresenceTransition visible={isOpen} initial={{
+            opacity: 0
+          }} animate={{
+            opacity: 1,
+            transition: {
+              duration: 5500
+            }
+          }}>
+            <VStack space={4}>
+              <Text fontSize='4xl' fontFamily='Manrope-ExtraLight' >Napna <Text  fontFamily="Manrope-ExtraBold">KIOSK</Text></Text>
+              <Text bold sub fontFamily='Manrope-ExtraBold'>FOR MERCHANTS</Text>
+            </VStack>
+          </PresenceTransition>
+        </Box> 
+        <Fab
+          colorScheme="blue"
+          size="lg"
+          onPress={() => navigation.navigate('Sign In')}
+          icon={<Entypo name="chevron-right" size={24} color="white" />}
+        >
+        </Fab>
+      </Center>
+    </NativeBaseProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 20,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
 
-  buttons: {
-    flex: 1,
-  },
-
-  button: {
-    marginTop: 10
-  }
-});
 
 export default WelcomeScreen;

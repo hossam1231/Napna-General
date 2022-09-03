@@ -1,17 +1,25 @@
-import {React, useState, useEffect }from 'react';
+import { React, useState, useEffect } from 'react';
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ThemeProvider } from 'react-native-elements';
 import './config/firebase';
 import RootNavigation from './navigation';
-import { NativeBaseProvider, Center, Spinner} from "native-base";
+import { NativeBaseProvider, Center, Spinner } from "native-base";
 import useCachedResources from "./hooks/useCachedResources";
-import './index.css'
 import LoadingScreen from './screens/Loading/LoadingScreen'
+import AllContextProviders from './context/AllContext';
 
-export default function App() {
+export default function Application() {
+	return (
+		<AllContextProviders>
+			<App />
+		</AllContextProviders>
+	)
+}
 
-let isLoadingComplete = useCachedResources();
+function App() {
+
+	let isLoadingComplete = useCachedResources();
 
 	if (!isLoadingComplete) {
 		return (
@@ -21,14 +29,14 @@ let isLoadingComplete = useCachedResources();
 		);
 	} else {
 		return (
-      <ThemeProvider>
-			<NativeBaseProvider>
-				<SafeAreaProvider>
-			      <RootNavigation />
-					<StatusBar />
-				</SafeAreaProvider>
-			</NativeBaseProvider>
-          </ThemeProvider>
+			<ThemeProvider>
+				<NativeBaseProvider>
+					<SafeAreaProvider>
+						<RootNavigation />
+						<StatusBar />
+					</SafeAreaProvider>
+				</NativeBaseProvider>
+			</ThemeProvider>
 		);
 	}
 }

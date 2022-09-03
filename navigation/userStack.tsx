@@ -18,49 +18,32 @@ import MerchantNotRegistered, {
 } from "../components/Merchant/MerchantNotRegistered";
 import Demo from "../screens/Test/Demo";
 import ProductScreenLayout from "../screens/Product/ProductScreen.layout";
+import { getLocalStorageObject, setLocalStorageObject } from "../data/LocalStorage";
+import { Text } from "native-base";
+import { UserContext } from "../context/UserContext";
 
 const axios = require("axios").default;
-
 const Stack = createStackNavigator();
 
-export default function UserStack({ user }) {
-  const [partner, setPartner] = useState();
-  const [merchant, setMerchant] = useState();
-  const [staff, setStaff] = useState();
+export default function UserStack({ firebaseUser }) {
+  const [User, setUser] = React.useContext(UserContext)
+
 
   useEffect(() => {
-    merchantRoleCheck();
-  }, []);
+    if (firebaseUser) {
+      setUser({ ...User, user: firebaseUser })
+    }
+  }, [firebaseUser])
+
+
+
+  const { merchant, staff, partner, user } = User
 
   useEffect(() => {
-    if (partner) {
-      if (partner.merchant) {
-        setMerchant(partner.merchant);
-      }
-      if (partner.staff) {
-        setStaff(partner.staff);
-      }
-    }
-  }, [partner]);
+    console.log(User)
+  }, [User])
 
-  async function merchantRoleCheck() {
-    let APIURL =
-      "http://napna.co.uk/.netlify/functions/merchantRoleCheck?token=REPLACE_TOKEN";
-    const token = await getIdToken(user, true);
-    APIURL = APIURL.replace("REPLACE_TOKEN", token);
-    try {
-      var res = await axios.get(APIURL);
-      if (res == null) {
-        setPartner("EMPTY");
-      } else {
-        setPartner(res.data);
-      }
-    } catch (e) {
-      console.log("error merchant role check", e);
-    }
-  }
-
-  if (user) {
+  if (firebaseUser) {
     if (partner) {
       if (merchant || staff) {
         return (
@@ -97,7 +80,7 @@ export default function UserStack({ user }) {
                 options={{ headerShown: false }}
               />
               <Stack.Group
-                options={{ headerShown: false }}
+
                 screenOptions={{ presentation: "modal" }}
               >
                 <Stack.Screen name="Favourite" component={MenuScreen} />
@@ -116,8 +99,6 @@ export default function UserStack({ user }) {
             </Stack.Navigator>
           </NavigationContainer>
         );
-      } else if (partner === "EMPTY") {
-        console.log("hi");
       } else {
         return (
           <NavigationContainer ref={navigationRef}>
@@ -131,7 +112,12 @@ export default function UserStack({ user }) {
           </NavigationContainer>
         );
       }
-    } else {
+    } else if (partner == 'A partner associated with this account has not been found.') {
+      return (
+        <Text>No partner present for this account</Text>
+      )
+    }
+    else {
       return <LoadingScreen />;
     }
   } else {

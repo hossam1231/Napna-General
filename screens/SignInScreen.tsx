@@ -2,7 +2,7 @@ import React from 'react';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { Center, Text, Slide,Alert,Heading, View, VStack, Link, HStack, Button, Box, FormControl, Input, Icon } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
-import { streamlineError } from '../functionsLocal';
+import { streamlineError } from '../compute';
 
 // {!!value.error && <View style={styles.error}><Text>{value.error}</Text></View>}
 

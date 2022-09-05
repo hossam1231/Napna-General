@@ -11,7 +11,7 @@ import UserNotFoundScreen from "../screens/UserNotFoundScreen";
 import MenuScreen from "../screens/Menu/MenuScreen";
 import { navigationRef } from "./Navigator";
 import LoadingScreen from "../screens/Loading/loadingScreen";
-import { getIdToken } from "firebase/auth";
+
 import Home from "../screens/Home/Home";
 import MerchantNotRegistered, {
   MerchantNotRegisteredScreen,

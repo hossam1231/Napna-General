@@ -1,7 +1,6 @@
 import React from 'react';
 import { StackScreenProps } from '@react-navigation/stack';
-import { Button } from 'react-native-elements';
-import { NativeBaseProvider, VStack, PresenceTransition, Heading, Icon, Fab, Text, Center, Box, View } from 'native-base';
+import { NativeBaseProvider,Button, VStack, PresenceTransition, Heading, Icon, Fab, Text, Center, Box, View } from 'native-base';
 import { Entypo } from '@expo/vector-icons';
 
 const WelcomeScreen: React.FC<StackScreenProps<any>> = ({ navigation }) => {
@@ -22,6 +21,7 @@ const WelcomeScreen: React.FC<StackScreenProps<any>> = ({ navigation }) => {
               <Text fontSize='4xl' fontFamily='Manrope-ExtraLight' >Napna <Text  fontFamily="Manrope-ExtraBold">KIOSK</Text></Text>
               <Text bold sub fontFamily='Manrope-ExtraBold'>FOR MERCHANTS</Text>
             </VStack>
+            <Button onPress={()=>navigation.navigate('Profile')}>FRANCIS</Button>
           </PresenceTransition>
         </Box> 
         <Fab

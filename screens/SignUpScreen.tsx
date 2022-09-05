@@ -3,7 +3,7 @@ import { Center, Text, Slide, Alert, Heading, View, VStack, Link, HStack, Button
 import { StackScreenProps } from '@react-navigation/stack';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { createIconSetFromFontello } from '@expo/vector-icons';
-import { streamlineError } from '../functionsLocal';
+import { streamlineError } from '../compute';
 
 const auth = getAuth();
 

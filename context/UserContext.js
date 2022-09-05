@@ -1,17 +1,10 @@
 import React, { useState } from "react"
-import GetPartnerData from "../functionsLocal/GetPartnerData"
 
 const UserContext = React.createContext()
 
-const UserContextProvider = ({ children }) => {
+const UserContextProvider =  ({ children }) => {
   const [state, setState] = React.useState({})
-
-  React.useEffect(() => {
-    if (state.user) {
-      setState({ ...state ,  partner:  GetPartnerData(state.user.uid) })
-    }
-  }, [state])
-
+  //  this then accepts the auth to the context else where making it state : user:user
 
   return (
     <UserContext.Provider value={[state, setState]}>

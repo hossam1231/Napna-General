@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import WelcomeScreen from '../screens/Welcome';
 import SignInScreen from '../screens/SignInScreen';
 import SignOutScreen from '../screens/SignUpScreen';
+import ProfileScreen from '../screens/Profile/ProfileScreen';
 
 const Stack = createStackNavigator();
 
@@ -13,7 +14,8 @@ export default function AuthStack() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen options={{ headerShown: false }} name="Welcome" component={WelcomeScreen} />
-        <Stack.Group
+             <Stack.Screen options={{ headerShown: false }} name="Profile" component={ProfileScreen} />
+ <Stack.Group
 
                 screenOptions={{ presentation: "modal" }}
               >

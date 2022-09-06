@@ -15,11 +15,19 @@ export default function usePartner(key) {
   async function partnerCall() {
     try {
       let partnerBackend = await fetchPartner(user);
-      partnerBackend
-        ? setPartner(partnerBackend)
-        : setPartner(
-            "A partner associated with this account has not been found."
-          );
+      if (partnerBackend) {
+        setValue(partnerBackend);
+        try {
+          let saveLs = await setLocalStorageObject({
+            key: `[Partner]${user.uid}`,
+          });
+          console.log(saveLs);
+        } catch (error) {
+          console.log(error);
+        }
+      } else {
+        setValue("A partner associated with this account has not been found.");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -27,10 +35,16 @@ export default function usePartner(key) {
 
   async function partnerHandler() {
     try {
-      let partnerls = await getLocalStorageObject({
+      let partnerLs = await getLocalStorageObject({
         key: `[Partner]${user.uid}`,
       });
-      partnerls ? setPartner(partnerls) : partnerCall();
+      console.log(partnerLs);
+      if (partnerLs) {
+        setValue(partnerLs);
+      } else {
+        console.log("no local record found fetching...");
+        partnerCall();
+      }
     } catch (error) {
       console.log(error);
     }

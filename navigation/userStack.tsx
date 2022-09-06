@@ -24,18 +24,21 @@ import {
 } from "../data/LocalStorage";
 import { Text, Heading, Center, Button, VStack } from "native-base";
 import usePartner from "../utils/hooks/usePartner";
+import { UserContext } from "../context/UserContext";
 
 const axios = require("axios").default;
 const Stack = createStackNavigator();
 
 export default function UserStack({ user }) {
   const [partner, setPartner] = usePartner();
+  const [userContext, setUserContext] = React.useContext(UserContext);
 
-  useEffect(() => {
-    console.log(user);
+  React.useEffect(() => {
+    setUserContext(user);
   }, [user]);
 
- 
+  let x = 23;
+
   if (partner) {
     if (partner.merchant || partner.staff) {
       return (
@@ -88,7 +91,7 @@ export default function UserStack({ user }) {
           </Stack.Navigator>
         </NavigationContainer>
       );
-    } else {
+    } else if (x == 4) {
       return (
         <NavigationContainer ref={navigationRef}>
           <Stack.Navigator>
@@ -100,6 +103,8 @@ export default function UserStack({ user }) {
           </Stack.Navigator>
         </NavigationContainer>
       );
+    } else {
+      return <LoadingScreen />;
     }
   } else if (
     partner === "A partner associated with this account has not been found."

@@ -11,7 +11,7 @@ export const getLocalStorageObject = async ({ key: key }) => {
 };
 
 export const setLocalStorageObject = async ({ key: key, value: value }) => {
-  try {
+  try { 
     const jsonValue = JSON.stringify(value);
     await AsyncStorage.setItem(key, jsonValue);
     return `Good job saving ${key} in local storage!`;

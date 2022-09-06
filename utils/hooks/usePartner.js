@@ -55,5 +55,13 @@ export default function usePartner(key) {
     // this makes sense and if it doesnt hallmark it this is swag
   }, [user]);
 
+  useEffect(() => {
+    !value ? partnerHandler() : null;
+  });
+
+  useEffect(() => {
+    console.log(value);
+  }, [value]);
+
   return [value, setValue];
 }

@@ -78,7 +78,6 @@ export default function ProfileScreen() {
               </Text>
             </Box>
           </HStack>
-         
         </VStack>
       </Box>
     </Center>

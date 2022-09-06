@@ -47,15 +47,19 @@ export default function HomeScreen() {
             <HStack justifyContent="space-between">
               <Box justifyContent="space-between">
                 <VStack space={5}>
-                  <Text
-                    fontSize="xl"
-                    fontFamily="Manrope-Regular"
-                    color="#28234A"
-                  >
-                    Orders
-                  </Text>
+                  <HStack space={5}>
+                    <Text
+                      fontSize="xl"
+                      fontFamily="Manrope-ExtraBold"
+                      color="#28234A"
+                    >
+                      4
+                    </Text>
+                    <Text sub>Currently trading</Text>
+                  </HStack>
+
                   <Text bold fontFamily="Manrope-Regular" fontSize="xs">
-                    All merchants{" "}
+                    All locations
                     <Text bold color="#7E7B93">
                       : Combined overview
                     </Text>
@@ -99,17 +103,43 @@ export default function HomeScreen() {
       <Text sub fontFamily="Manrope-Bold" color="#7E7B93">
         Suggested for You
       </Text>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} h="80">
-        <HStack flex="1">
-          {/* {Object.keys(colors.cyan).map((key, index) => {
-        if (index >= 1 && index <= 5) return <Center py="4" bg={`cyan.${key}`}>
-                {key}
-              </Center>;
-      })} */}
-
-          <SuggestedList />
-        </HStack>
-      </ScrollView>
+      <Box>
+        <SuggestedList />
+      </Box>
+      <Text sub fontFamily="Manrope-Bold" color="#7E7B93">
+        Assets
+      </Text>
+      <Box>
+        <SuggestedList />
+      </Box>
+      <Text sub fontFamily="Manrope-Bold" color="#7E7B93">
+        Scheduled
+      </Text>
+      <Box>
+        <Box bg="white" h="50" rounded="xl" w="100%"></Box>
+      </Box>
+      <HStack space={3} h="150">
+        <Box p="5" rounded="xl" bg="black" flex="2">
+          <Text sub fontFamily="Manrope-Bold" color="#7E7B93">
+            Spent this month
+          </Text>
+        </Box>
+        <Box p="5" flex="2" bg="black" rounded="xl">
+          <Text sub fontFamily="Manrope-Bold" color="#7E7B93">
+            Track your activity and see more, set up a watcher.
+          </Text>
+          <Button>+ set up</Button>
+        </Box>
+      </HStack>
+      <Text sub fontFamily="Manrope-Bold" color="#7E7B93">
+        Suggested for You
+      </Text>
+      <Box>
+        <SuggestedList />
+      </Box>
+      <Center w="100%">
+        <Button>Edit Feed</Button>
+      </Center>
     </VStack>
   );
 }
@@ -159,8 +189,10 @@ const SuggestedList = () => {
   return (
     <Box>
       <FlatList
-        data={data}
         horizontal
+        pagingEnabled={true}
+        showsHorizontalScrollIndicator={false}
+        data={data}
         renderItem={({ item }) => (
           <Box
             _dark={{

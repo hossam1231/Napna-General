@@ -1,9 +1,8 @@
-import { LoadingContextProvider } from './LoadingContext'
-import { UserContextProvider } from './UserContext'
+import { LoadingContextProvider } from "./LoadingContext";
 
 const AllContextProviders = ({ children }) => {
-    // Add additional context providers here
-    return <LoadingContextProvider><UserContextProvider>{children}</UserContextProvider></LoadingContextProvider>
-}
+  // Add additional context providers here
+  return <LoadingContextProvider>{children}</LoadingContextProvider>;
+};
 
-export default AllContextProviders
+export default AllContextProviders;

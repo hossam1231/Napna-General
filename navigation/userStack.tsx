@@ -18,108 +18,96 @@ import MerchantNotRegistered, {
 } from "../components/Merchant/MerchantNotRegistered";
 import Demo from "../screens/Test/Demo";
 import ProductScreenLayout from "../screens/Product/ProductScreen.layout";
-import { getLocalStorageObject, setLocalStorageObject } from "../data/LocalStorage";
-import { Text } from "native-base";
-import { UserContext } from "../context/UserContext";
+import {
+  getLocalStorageObject,
+  setLocalStorageObject,
+} from "../data/LocalStorage";
+import { Text, Heading, Center, Button, VStack } from "native-base";
+import usePartner from "../utils/hooks/usePartner";
 
 const axios = require("axios").default;
 const Stack = createStackNavigator();
 
-export default function UserStack({ firebaseUser }) {
-  const [User, setUser] = React.useContext(UserContext)
+export default function UserStack() {
+  const [partner, setPartner] = usePartner();
 
-
-  useEffect(() => {
-    if (firebaseUser) {
-      setUser({ ...User, user: firebaseUser })
-    }
-  }, [firebaseUser])
-
-
-
-  const { merchant, staff, partner, user } = User
-
-  useEffect(() => {
-    console.log(User)
-  }, [User])
-
-  if (firebaseUser) {
-    if (partner) {
-      if (merchant || staff) {
-        return (
-          <NavigationContainer ref={navigationRef}>
-            <Stack.Navigator>
-              <Stack.Screen
-                name="Home"
-                component={Home}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="demo"
-                component={Demo}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="More"
-                component={MoreModal}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="CreateProduct"
-                component={CreateProductScreen}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="CreateProductI"
-                component={CreateProductI}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="Product"
-                component={ProductScreenLayout}
-                options={{ headerShown: false }}
-              />
-              <Stack.Group
-
-                screenOptions={{ presentation: "modal" }}
-              >
-                <Stack.Screen name="Favourite" component={MenuScreen} />
-                <Stack.Screen name="Analytic" component={MenuScreen} />
-                <Stack.Screen name="Profile" component={MenuScreen} />
-                <Stack.Screen
-                  options={{ headerShown: false }}
-                  name="Menu"
-                  component={MenuScreen}
-                />
-                <Stack.Screen
-                  name="UserNotFound"
-                  component={UserNotFoundScreen}
-                />
-              </Stack.Group>
-            </Stack.Navigator>
-          </NavigationContainer>
-        );
-      } else {
-        return (
-          <NavigationContainer ref={navigationRef}>
-            <Stack.Navigator>
-              <Stack.Screen
-                name="NoMerchant"
-                component={MerchantNotRegistered}
-                options={{ headerShown: false }}
-              />
-            </Stack.Navigator>
-          </NavigationContainer>
-        );
-      }
-    } else if (partner == 'A partner associated with this account has not been found.') {
+  if (partner) {
+    if (partner.merchant || partner.staff) {
       return (
-        <Text>No partner present for this account</Text>
-      )
+        <NavigationContainer ref={navigationRef}>
+          <Stack.Navigator>
+            <Stack.Screen
+              name="Home"
+              component={Home}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="demo"
+              component={Demo}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="More"
+              component={MoreModal}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="CreateProduct"
+              component={CreateProductScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="CreateProductI"
+              component={CreateProductI}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Product"
+              component={ProductScreenLayout}
+              options={{ headerShown: false }}
+            />
+            <Stack.Group screenOptions={{ presentation: "modal" }}>
+              <Stack.Screen name="Favourite" component={MenuScreen} />
+              <Stack.Screen name="Analytic" component={MenuScreen} />
+              <Stack.Screen name="Profile" component={MenuScreen} />
+              <Stack.Screen
+                options={{ headerShown: false }}
+                name="Menu"
+                component={MenuScreen}
+              />
+              <Stack.Screen
+                name="UserNotFound"
+                component={UserNotFoundScreen}
+              />
+            </Stack.Group>
+          </Stack.Navigator>
+        </NavigationContainer>
+      );
+    } else {
+      return (
+        <NavigationContainer ref={navigationRef}>
+          <Stack.Navigator>
+            <Stack.Screen
+              name="NoMerchant"
+              component={MerchantNotRegistered}
+              options={{ headerShown: false }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      );
     }
-    else {
-      return <LoadingScreen />;
-    }
+  } else if (
+    partner === "A partner associated with this account has not been found."
+  ) {
+    return (
+      <VStack justifyContent="center" alignItems="center" flex="1">
+        <Heading>Oops you dont seem to be allowed here</Heading>
+        <Text>
+          'A partner associated with this account has not been found.'
+        </Text>
+        <Button>Enroll now</Button>
+      </VStack>
+    );
   } else {
     return <LoadingScreen />;
   }

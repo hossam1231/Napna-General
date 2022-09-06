@@ -14,7 +14,7 @@ export default function AuthStack() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen options={{ headerShown: false }} name="Welcome" component={WelcomeScreen} />
-             <Stack.Screen options={{ headerShown: false }} name="Profile" component={ProfileScreen} />
+             {/* <Stack.Screen options={{ headerShown: false }} name="Profile" component={ProfileScreen} /> */}
  <Stack.Group
 
                 screenOptions={{ presentation: "modal" }}

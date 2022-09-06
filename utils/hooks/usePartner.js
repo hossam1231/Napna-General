@@ -9,7 +9,7 @@ import { useAuthentication } from "./useAuthentication";
 // CUSTOM HOOK BELOW
 
 export default function usePartner(key) {
-  const [partner, setPartner] = useState({});
+  const [value, setValue] = useState({});
   const user = useAuthentication();
 
   async function partnerCall() {
@@ -41,5 +41,5 @@ export default function usePartner(key) {
     // this makes sense and if it doesnt hallmark it this is swag
   }, [user]);
 
-  return [partner, setPartner];
+  return [value, setValue];
 }

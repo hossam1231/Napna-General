@@ -28,9 +28,14 @@ import usePartner from "../utils/hooks/usePartner";
 const axios = require("axios").default;
 const Stack = createStackNavigator();
 
-export default function UserStack() {
+export default function UserStack({ user }) {
   const [partner, setPartner] = usePartner();
 
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
+
+ 
   if (partner) {
     if (partner.merchant || partner.staff) {
       return (

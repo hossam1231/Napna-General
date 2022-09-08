@@ -29,16 +29,17 @@ export default function HomeScreen() {
     <VStack space="5">
       <HStack space="5" justifyContent="space-between">
         <Box w="100%">
-          <Button borderTopRadius={50} p="1" colorScheme="info">
+          {/* <Button borderTopRadius={50} p="1" colorScheme="info">
             <Text fontFamily="Manrope-ExtraBold" color="white">
               Switch Location
             </Text>
-          </Button>
+          </Button> */}
           <VStack
             space={5}
             bg="#FFFFFF"
             py="4"
             px="3"
+            shadow="1"
             borderRadius="5"
             rounded="md"
             flex="2"

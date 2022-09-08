@@ -14,14 +14,13 @@ import { ProductSearchModal } from 'src/components/Search/Index'
 // import ArticlesCell from 'src/components/ArticlesCell'
 
 const HomePage = () => {
-
-const landingPageMockup = './landingPageMockup.png'
+  const landingPageMockup = './landingPageMockup.png'
 
   return (
     <>
       <MetaTags title="Home" description="Home page" />
       {/* <ArticlesCell /> */}
-      <Grid className='dark:bg-slate-800' container spacing={3}>
+      <Grid className="dark:bg-slate-800" container spacing={3}>
         <Grid item xs={1}>
           {/* gutter */}
         </Grid>
@@ -33,7 +32,10 @@ const landingPageMockup = './landingPageMockup.png'
           >
             Move faster with intuitive React UI tools
           </p>
-          <p className='text-slate-500 dark:text-slate-400' style={{ marginBottom: '20px'}}>
+          <p
+            className="text-slate-500 dark:text-slate-400"
+            style={{ marginBottom: '20px' }}
+          >
             MUI offers a comprehensive suite of UI tools to help you ship new
             features faster. Start with Material UI, our fully-loaded component
             library, or bring your own design system to our production-ready
@@ -46,7 +48,7 @@ const landingPageMockup = './landingPageMockup.png'
         <Grid item xs={12} sm={6}>
           {/* image */}
           <div className="fill">
-            <img src={require('./landingPageMockup.png')}/>
+            <img src={require('./landingPageMockup.png')} />
           </div>
         </Grid>
         <Grid item xs={12}>
@@ -81,13 +83,15 @@ const landingPageMockup = './landingPageMockup.png'
 
         <Grid item sm={10}>
           <p
-            style={{  fontSize: '15px' }}
+            style={{ fontSize: '15px' }}
             className={'Manrope700 dark:text-white'}
           >
             Products
           </p>
-          <p className='dark:text-slate-400'>Every component you need is ready for production,
-          build at an accelerated pace without sacrificing flexibility or control.</p>
+          <p className="dark:text-slate-400">
+            Every component you need is ready for production, build at an
+            accelerated pace without sacrificing flexibility or control.
+          </p>
         </Grid>
 
         <Grid item sm={1}>
@@ -102,12 +106,12 @@ const landingPageMockup = './landingPageMockup.png'
 
         <Grid item sm={10}>
           <p
-            style={{  fontSize: '15px' }}
+            style={{ fontSize: '15px' }}
             className={'Manrope700 dark:text-white'}
           >
             Why build with Napna?
           </p>
-          <p className='dark:text-slate-400'>
+          <p className="dark:text-slate-400">
             A delightful experience for you and your customers. Increase
             footfall, build lasting customer relations with ease. Start with
             Napna and create your own, sophisticated sales campagins.
@@ -204,12 +208,14 @@ const landingPageMockup = './landingPageMockup.png'
 
         <Grid item sm={10}>
           <p
-            style={{  fontSize: '15px' }}
+            style={{ fontSize: '15px' }}
             className={'Manrope700 dark:text-white'}
           >
             Production-ready components
           </p>
-          <p className="dark:text-slate-400">Beautiful and powerful, right out of the box</p>
+          <p className="dark:text-slate-400">
+            Beautiful and powerful, right out of the box
+          </p>
         </Grid>
 
         <Grid item sm={1}>
@@ -217,31 +223,38 @@ const landingPageMockup = './landingPageMockup.png'
         </Grid>
       </Grid>
 
-
       <Grid container sx={{ marginTop: '20px' }} spacing={3}>
-      <Grid item lg={1}/>
-      <Grid item xs={10}>
-      <span href="#" className="block p-6 max-w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-[#122547] dark:border-[#1E4894] dark:hover:bg-gray-700">
-    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-[#CAE8FF]">Get started now</h5>
-    <p className="font-normal text-gray-700 dark:text-[#A7D3F8]">Become a partner today and join the list of growing merchants bringing more to their business with Napna.</p>
-</span>
+        <Grid item lg={1} />
+        <Grid item xs={10}>
+          <span
+            href="#"
+            className="block p-6 max-w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-[#122547] dark:border-[#1E4894] dark:hover:bg-gray-700"
+          >
+            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-[#CAE8FF]">
+              Get started now
+            </h5>
+            <p className="font-normal text-gray-700 dark:text-[#A7D3F8]">
+              Become a partner today and join the list of growing merchants
+              bringing more to their business with Napna.
+            </p>
+          </span>
+        </Grid>
+        <Grid item lg={1} />
       </Grid>
-        <Grid item lg={1}/>
-      </Grid>
-
-
 
       <Grid container sx={{ marginTop: '20px' }} spacing={3}>
         <Grid item sm={1}>
           {/* gutter */}
         </Grid>
-
-
-
 
         <Grid item sm={10}>
-          <p style={{  fontSize: '15px' }} className={'Manrope700 dark:text-white'}>Ship your next project faster</p>
-          <p className='dark:text-slate-400'>
+          <p
+            style={{ fontSize: '15px' }}
+            className={'Manrope700 dark:text-white'}
+          >
+            Ship your next project faster
+          </p>
+          <p className="dark:text-slate-400">
             Find out why MUI's tools are trusted by thousands of open source
             developers and teams around the world.
           </p>
@@ -251,12 +264,8 @@ const landingPageMockup = './landingPageMockup.png'
           {/* gutter */}
         </Grid>
 
-<Grid item sm={12}/>
-
+        <Grid item sm={12} />
       </Grid>
-
-
-
 
       <Grid
         container
@@ -311,7 +320,7 @@ const landingPageMockup = './landingPageMockup.png'
         <Grid item sm={10}>
           <Grid container spacing={3}>
             <Grid item sm={6}>
-              <p className='dark:text-slate-400'>
+              <p className="dark:text-slate-400">
                 "MUI offers a wide variety of high quality components that have
                 allowed us to ship features faster. MUI has been used by more
                 than a hundred engineers in our organization. What's more, MUI's
@@ -348,7 +357,9 @@ const landingPageMockup = './landingPageMockup.png'
                 </div>
                 <div className="block">
                   <span className="sr-only">Choose profile photo</span>
-                    <p className='dark:text-slate-400'>Gustavo de Paula, Specialist Software Engineer</p>
+                  <p className="dark:text-slate-400">
+                    Gustavo de Paula, Specialist Software Engineer
+                  </p>
                 </div>
               </div>
             </Grid>

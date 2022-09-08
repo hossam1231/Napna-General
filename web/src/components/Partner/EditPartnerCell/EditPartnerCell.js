@@ -14,6 +14,9 @@ export const QUERY = gql`
     }
   }
 `
+
+
+
 const UPDATE_PARTNER_MUTATION = gql`
   mutation UpdatePartnerMutation($id: String!, $input: UpdatePartnerInput!) {
     updatePartner(id: $id, input: $input) {

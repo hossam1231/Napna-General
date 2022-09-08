@@ -53,22 +53,20 @@ exports.writeToFirestore = functions.https.onRequest(async (req, res) => {
 
 
 
-
 exports.setAuthCustomClaim = functions.https.onRequest(async (req, res) => {
   // [END addMessageTrigger]
   // Grab the text parameter.
   const data = req.body
   const collection = req.query.collection
+  const claim =  req.query
+  const claimValue = req.query
 
   // [START adminSdkAdd]
-  // Push the new message into Firestore using the Firebase Admin SDK.
-  const writeResult = await admin
-    .firestore()
-    .collection(collection.toString())
-    .add(data)
+
+
   // Send back a message that we've successfully written the message
   res.json({
-    result: `Message with ID: ${writeResult.id} added. ${writeResult}`,
+    result: `User with ID: ${user.id} custom clam ${claim} added to merchant ${merchant}`,
 
   })
   // [END adminSdkAdd ]

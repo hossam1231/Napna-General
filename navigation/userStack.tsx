@@ -31,7 +31,7 @@ const Stack = createStackNavigator();
 
 export default function UserStack({ user }) {
   const [partner, setPartner] = usePartner();
-  const [userContext, setUserContext] = React.useContext(UserContext);
+  const [userContext, setUserContext]  = React.useContext(UserContext);
 
   React.useEffect(() => {
     setUserContext(user);

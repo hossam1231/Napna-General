@@ -39,11 +39,10 @@ export default function HomeScreen() {
             bg="#FFFFFF"
             py="4"
             px="3"
-            shadow="1"
             borderRadius="5"
-            rounded="md"
+            rounded="xl"
             flex="2"
-            h="auto"
+            size="lg"
           >
             <HStack justifyContent="space-between">
               <Box justifyContent="space-between">
@@ -66,17 +65,21 @@ export default function HomeScreen() {
                     </Text>
                   </Text>
                   <HStack space={2}>
-                    <Button>
-                      <Text color="white" fontFamily="Manrope-ExtraBold">
-                        {" "}
+                    <Button rounded="xl" size="md" bg="#e8f0fc">
+                      <Text color="#2c64e3" fontFamily="Manrope-ExtraBold">
                         + Add Location
                       </Text>
-                    </Button>{" "}
+                    </Button>
                     <IconButton
+                      rounded="xl"
+                      size="md"
+                      bg="#e8f0fc"
                       variant="solid"
                       _icon={{
+                        color: "#2c64e3",
                         as: AntDesign,
                         name: "ellipsis1",
+                        size: "lg",
                       }}
                     />
                   </HStack>
@@ -84,9 +87,12 @@ export default function HomeScreen() {
               </Box>
               <Box>
                 <IconButton
+                  rounded="xl"
+                  bg="#e8f0fc"
                   variant="solid"
                   _icon={{
                     as: Entypo,
+                    color: "#2c64e3",
                     name: "shop",
                   }}
                 />
@@ -129,7 +135,7 @@ export default function HomeScreen() {
           <Text sub fontFamily="Manrope-Bold" color="#7E7B93">
             Track your activity and see more, set up a watcher.
           </Text>
-          <Button>+ set up</Button>
+          <Button size="md">+ set up</Button>
         </Box>
       </HStack>
       <Text sub fontFamily="Manrope-Bold" color="#7E7B93">

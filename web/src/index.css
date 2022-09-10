@@ -34,6 +34,18 @@
 
   @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 
+  input::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #000000;
+}
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #000000;
+}
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #000000;
+}
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #000000;
+}
 .PricingBackground {
   background: url("https://img.freepik.com/free-vector/flat-geometric-background_23-2148967370.jpg?w=2000")
 }

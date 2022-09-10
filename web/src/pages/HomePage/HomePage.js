@@ -26,24 +26,31 @@ const HomePage = () => {
         </Grid>
 
         <Grid item sm={5}>
-          <p
-            style={{ fontSize: '65px', marginBottom: '20px' }}
-            className={'Manrope700 dark:text-white'}
-          >
-            Move faster with intuitive React UI tools
-          </p>
-          <p
-            className="text-slate-500 dark:text-slate-400"
-            style={{ marginBottom: '20px' }}
-          >
-            MUI offers a comprehensive suite of UI tools to help you ship new
-            features faster. Start with Material UI, our fully-loaded component
-            library, or bring your own design system to our production-ready
-            components.
-          </p>
-          <Box sx={{ marginTop: '20px', display: 'flex' }}>
-            <ProductSearchModal />
-          </Box>
+          <Grid container spacing={0}>
+            <Grid item xs={12}>
+              <p
+                style={{ fontSize: '65px', marginBottom: '20px' }}
+                className={'Manrope700 dark:text-white'}
+              >
+                Move faster with intuitive React UI tools
+              </p>
+            </Grid>
+
+            <Grid item xs={12}>
+              <p
+                className="text-slate-500 dark:text-slate-400"
+                style={{ marginBottom: '20px' }}
+              >
+                MUI offers a comprehensive suite of UI tools to help you ship
+                new features faster. Start with Material UI, our fully-loaded
+                component library, or bring your own design system to our
+                production-ready components.
+              </p>
+            </Grid>
+            <Grid item xs={12}>
+              <ProductSearchModal />
+            </Grid>
+          </Grid>
         </Grid>
         <Grid item xs={12} sm={6}>
           {/* image */}

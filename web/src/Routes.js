@@ -22,6 +22,9 @@ import MainLayout from 'src/layouts/MainLayout'
 const Routes = () => {
   return (
     <Router>
+      <Route path="/terms" page={TermsPage} name="terms" />
+      <Route path="/privacy" page={PrivacyPage} name="privacy" />
+      <Route path="/profile" page={ProfilePage} name="profile" />
       <Set wrap={MerchantsLayout}>
         <Route path="/merchants/new" page={MerchantNewMerchantPage} name="newMerchant" />
         <Route path="/merchants/{id}/edit" page={MerchantEditMerchantPage} name="editMerchant" />

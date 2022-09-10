@@ -3,7 +3,7 @@ import * as React from 'react'
 import FaceIcon from '@mui/icons-material/Face'
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded'
 import GoogleIcon from '@mui/icons-material/Google'
-import { Grid, TextField } from '@mui/material'
+import { Avatar, Badge, Grid, styled, TextField } from '@mui/material'
 import Backdrop from '@mui/material/Backdrop'
 import Box from '@mui/material/Box'
 import Fade from '@mui/material/Fade'
@@ -11,6 +11,14 @@ import Modal from '@mui/material/Modal'
 
 import { useAuth } from '@redwoodjs/auth'
 import { navigate, routes } from '@redwoodjs/router'
+
+import CreateCheckoutSession from '../../functions/useCheckoutSession'
+
+const SmallAvatar = styled(Avatar)(() => ({
+  width: 22,
+  height: 22,
+  border: `2px solid`,
+}))
 
 const style = {
   position: 'absolute' as const,
@@ -39,10 +47,10 @@ export default function AuthenticationTools({ type }: { type: string }) {
   const [open, setOpen] = React.useState(false)
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
-
+  const [modalTypeLogIn, setModalTypeLogIn] = React.useState(true)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
-  const { loading, isAuthenticated, logIn, logOut } = useAuth()
+  const { loading, isAuthenticated, logIn, logOut, signUp } = useAuth()
 
   React.useEffect(() => {
     console.log(email)
@@ -102,19 +110,56 @@ export default function AuthenticationTools({ type }: { type: string }) {
                   className="group block max-w-xs rounded-lg bg-white ring-1 ring-slate-900/5 shadow-lg"
                   sx={style}
                 >
-                  <button
-                    onClick={async () => {
-                      if (isAuthenticated) {
-                        await logOut()
-                        handleClose()
-                        navigate('/')
-                      }
-                    }}
-                  >
-                    Sign out
-                  </button>
-                  <p>or alternativly</p>
-                  <p>log out of all devices</p>
+                  <Grid container spacing={3} sx={{ width: '100%' }}>
+                    <Grid item xs={12}>
+                      <Badge
+                        overlap="circular"
+                        anchorOrigin={{
+                          vertical: 'bottom',
+                          horizontal: 'right',
+                        }}
+                        badgeContent={
+                          <SmallAvatar
+                            alt="Remy Sharp"
+                            src="/static/images/avatar/1.jpg"
+                          />
+                        }
+                      >
+                        <Avatar
+                          alt="Travis Howard"
+                          src="/static/images/avatar/2.jpg"
+                        />
+                      </Badge>
+                    </Grid>
+
+                    <Grid item xs={12}>
+                      <button
+                        onClick={async () => {
+                          if (isAuthenticated) {
+                            await logOut()
+                            handleClose()
+                            navigate('/')
+                          }
+                        }}
+                      >
+                        Sign out
+                      </button>
+                    </Grid>
+
+                    <Grid item xs={12}>
+                      <p>or alternativly</p>
+                    </Grid>
+
+                    <Grid item xs={12}>
+                      <p
+                        onClick={async () => {
+                          await CreateCheckoutSession()
+                        }}
+                      >
+                        log out of all devices
+                      </p>
+                    </Grid>
+                  </Grid>
                 </Box>
               </Fade>
             </div>
@@ -214,10 +259,10 @@ export default function AuthenticationTools({ type }: { type: string }) {
                 <Grid spacing={3} container style={{ width: '100%' }}>
                   <Grid item xs={12}>
                     <p className="Manrope500" style={{ fontSize: '15px' }}>
-                      Welcome back
+                      {modalTypeLogIn ? 'Welcome back' : 'Join today'}
                     </p>
                     <p className="Manrope800" style={{ fontSize: '25px' }}>
-                      Sign In
+                      {modalTypeLogIn ? 'Sign In' : 'Register'}
                     </p>
                   </Grid>
 
@@ -268,10 +313,15 @@ export default function AuthenticationTools({ type }: { type: string }) {
                           email: ${email},
                           password: ${password},
                         `)
-                        await logIn({
-                          email: email,
-                          password: password,
-                        })
+                        modalTypeLogIn
+                          ? await logIn({
+                              email: email,
+                              password: password,
+                            })
+                          : await signUp({
+                              email: email,
+                              password: password,
+                            })
                       }}
                     >
                       <p className="Manrope800" style={{ color: 'white' }}>
@@ -300,7 +350,7 @@ export default function AuthenticationTools({ type }: { type: string }) {
                         backgroundColor: 'black',
                       }}
                       onClick={async () => {
-                        await logIn()
+                        await logIn({ providerId: 'facebook.com' })
                         handleClose()
                       }}
                     >
@@ -329,10 +379,15 @@ export default function AuthenticationTools({ type }: { type: string }) {
 
                   <Grid item xs={12}>
                     <p
+                      onClick={() => {
+                        setModalTypeLogIn(!modalTypeLogIn)
+                      }}
                       className="Manrope700"
                       style={{ fontSize: '12.5px', textAlign: 'center' }}
                     >
-                      don’t have an account?
+                      {modalTypeLogIn
+                        ? 'don’t have an account?'
+                        : 'already a user?'}
                     </p>
                   </Grid>
                 </Grid>

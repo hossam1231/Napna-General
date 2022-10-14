@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  getLocalStorageObject,
-  setLocalStorageObject,
-} from "../../data/LocalStorage";
+import { getLocalStorageObject, setLocalStorageObject } from "../../data/LocalStorage";
 import { fetchPartner } from "../../functions/backend/fetchPartner";
 import { useAuthentication } from "./useAuthentication";
 
@@ -20,6 +17,7 @@ export default function usePartner(key) {
         try {
           let saveLs = await setLocalStorageObject({
             key: `[Partner]${user.uid}`,
+            partnerBackend,
           });
           console.log(saveLs);
         } catch (error) {

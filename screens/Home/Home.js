@@ -1,14 +1,6 @@
 import HomeScreenLayout from "./HomeScreen.layout";
 import React from "react";
-import {
-  SafeAreaView,
-  View,
-  FlatList,
-  StyleSheet,
-  Text,
-  StatusBar,
-  useWindowDimensions,
-} from "react-native";
+import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, useWindowDimensions } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 
 const App = () => {

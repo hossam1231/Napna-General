@@ -1,15 +1,8 @@
 node_modules/
-node_modules
 .expo/
-.redwood
-.yarn
-.web
-dist/
 npm-debug.*
 *.jks
 *.p8
-.env
-.api
 *.p12
 *.key
 *.mobileprovision
@@ -18,5 +11,3 @@ web-build/
 
 # macOS
 .DS_Store
-api/src/functions/verifyFirebaseIdToken/verifyFirebaseIdToken.js
-api/src/functions/postLogin/postLogin.js

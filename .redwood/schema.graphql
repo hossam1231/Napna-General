@@ -1,0 +1,92 @@
+"""
+Use to check whether or not a user is authenticated and is associated
+with an optional set of roles.
+"""
+directive @requireAuth(roles: [String]) on FIELD_DEFINITION
+
+"""Use to skip authentication checks and allow public access."""
+directive @skipAuth on FIELD_DEFINITION
+
+scalar BigInt
+
+scalar Date
+
+scalar DateTime
+
+scalar JSON
+
+scalar JSONObject
+
+enum Mode {
+  payment
+  subscription
+}
+
+type Mutation {
+  checkout(cart: [ProductInput!]!, customerId: String, mode: Mode!): Session!
+  portal(userId: ID!): Session!
+}
+
+type Product {
+  description: String
+  id: ID!
+  image: String
+  name: String!
+  price: Int!
+  type: String!
+}
+
+input ProductInput {
+  id: ID!
+  quantity: Int!
+}
+
+enum ProductType {
+  one_time
+  recurring
+}
+
+"""About the Redwood queries."""
+type Query {
+  getCustomerId(id: ID!): String!
+  getSession(id: ID!): Session!
+  products(type: ProductType): [Product!]!
+
+  """Fetches the Redwood root schema."""
+  redwood: Redwood
+}
+
+"""
+The RedwoodJS Root Schema
+
+Defines details about RedwoodJS such as the current user and version information.
+"""
+type Redwood {
+  """The current user."""
+  currentUser: JSON
+
+  """The version of Prisma."""
+  prismaVersion: String
+
+  """The version of Redwood."""
+  version: String
+}
+
+type Session {
+  customerEmail: String
+  customerId: String
+  customerName: String
+  customerSignedUp: Boolean
+  id: String!
+  url: String!
+}
+
+scalar Time
+
+scalar URL
+
+type User {
+  email: String!
+  id: ID!
+  name: String
+}

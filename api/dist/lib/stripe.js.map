@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/lib/stripe.js"],
-  "sourcesContent": ["import Stripe from 'stripe'\n\nexport const stripe = new Stripe(process.env.STRIPE_SK)\n\nexport const handleStripeWebhooks = (event, context, webhooksObj) => {\n  let stripeEvent\n  try {\n    const sig = event.headers['stripe-signature']\n    stripeEvent = stripe.webhooks.constructEvent(\n      event.body,\n      sig,\n      process.env.STRIPE_WEBHOOK_SK\n    )\n\n    let results = null\n    if (typeof webhooksObj[stripeEvent.type] !== 'undefined') {\n      results = webhooksObj[stripeEvent.type](event, context)\n    }\n    return results\n  } catch (error) {\n    console.log(error)\n    throw error\n  }\n}\n"],
-  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;AAAA;;;;;;oBAAmB;AAEZ,MAAMA,SAAS,IAAIC,cAAAA,QAAOC,QAAQC,IAAIC,SAAS;AAE/C,MAAMC,uBAAuB,CAACC,OAAOC,SAASC,gBAAgB;AACnE,MAAIC;AACJ,MAAI;AACF,UAAMC,MAAMJ,MAAMK,QAAQ;AAC1BF,kBAAcT,OAAOY,SAASC,eAC5BP,MAAMQ,MACNJ,KACAR,QAAQC,IAAIY,iBAAiB;AAG/B,QAAIC,UAAU;AACd,QAAI,OAAOR,YAAYC,YAAYQ,UAAU,aAAa;AACxDD,gBAAUR,YAAYC,YAAYQ,MAAMX,OAAOC,OAAO;IACxD;AACA,WAAOS;EACT,SAASE,OAAP;AACAC,YAAQC,IAAIF,KAAK;AACjB,UAAMA;EACR;AACF;",
-  "names": ["stripe", "Stripe", "process", "env", "STRIPE_SK", "handleStripeWebhooks", "event", "context", "webhooksObj", "stripeEvent", "sig", "headers", "webhooks", "constructEvent", "body", "STRIPE_WEBHOOK_SK", "results", "type", "error", "console", "log"]
-}

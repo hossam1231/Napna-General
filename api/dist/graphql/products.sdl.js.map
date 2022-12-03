@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/graphql/products.sdl.js"],
-  "sourcesContent": ["export const schema = gql`\n  scalar URL\n\n  type Product {\n    id: ID!\n    name: String!\n    image: String\n    description: String\n    price: Int!\n    type: String!\n  }\n\n  enum ProductType {\n    one_time\n    recurring\n  }\n\n  type Query {\n    products(type: ProductType): [Product!]! @skipAuth\n  }\n`\n"],
-  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;yBAAyB;AAAlB,MAAMA,SAASC,mBAAAA;;;;;;;;;;;;;;;;;;;;;",
-  "names": ["schema", "gql"]
-}

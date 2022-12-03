@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../src/services/portal/portal.js"],
-  "sourcesContent": ["import { stripe } from 'src/lib/stripe'\n\n/**\n * @param {{ userId: int }}\n */\nexport const portal = async ({ userId }) => {\n  // eslint-disable-next-line camelcase\n  // Create Customer Portal session and send temp url to web side\n  return await stripe.billingPortal.sessions.create({\n    customer: userId,\n    return_url: `${\n      context.request?.headers?.referer ?? process.env.DOMAIN_URL\n    }`,\n  })\n}\n"],
-  "mappings": ";;;;;;;;;;;;;;;;;;;;;;4BAWa;AAXb,oBAAe;AAKR,MAAMA,SAAS,OAAO;EAAEC;AAAO,MAAM;;AAG1C,SAAO,MAAMC,qBAAOC,cAAcC,SAASC,OAAO;IAChDC,UAAUL;IACVM,YAAa,KACXC,yCAAQC,YAARD,mBAAiBE,YAAjBF,mBAA0BG,YAAWC,QAAQC,IAAIC;EAErD,CAAC;AACH;",
-  "names": ["portal", "userId", "stripe", "billingPortal", "sessions", "create", "customer", "return_url", "context", "request", "headers", "referer", "process", "env", "DOMAIN_URL"]
-}

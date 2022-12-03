@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/graphql/checkouts.sdl.js"],
-  "sourcesContent": ["export const schema = gql`\n  type Session {\n    id: String!\n    customerId: String\n    customerEmail: String\n    customerName: String\n    customerSignedUp: Boolean\n  }\n\n  enum Mode {\n    payment\n    subscription\n  }\n\n  input ProductInput {\n    id: ID!\n    quantity: Int!\n  }\n\n  type Query {\n    getSession(id: ID!): Session! @skipAuth\n  }\n\n  type Mutation {\n    # In GraphQL, we can't reuse types as mutation inputs\n    # (otherwise we'd just type \"cart\" as \"[Product!]!\")\n    checkout(mode: Mode!, cart: [ProductInput!]!, customerId: String): Session!\n      @skipAuth\n  }\n`\n"],
-  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;yBAAyB;AAAlB,MAAMA,SAASC,mBAAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
-  "names": ["schema", "gql"]
-}

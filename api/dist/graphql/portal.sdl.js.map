@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/graphql/portal.sdl.js"],
-  "sourcesContent": ["export const schema = gql`\n  type Session {\n    id: String!\n    url: String!\n  }\n\n  type Mutation {\n    # In GraphQL, we can't reuse types as mutation inputs\n    portal(userId: ID!): Session! @requireAuth\n  }\n`\n"],
-  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;yBAAyB;AAAlB,MAAMA,SAASC,mBAAAA;;;;;;;;;;;",
-  "names": ["schema", "gql"]
-}

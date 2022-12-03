@@ -19,9 +19,9 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>
+        {/* <title>
           Everything Starts as a Square - Get lost in the world of icon design
-        </title>
+        </title> */}
         <meta
           name="description"
           content="A book and video course that teaches you how to design your own icons from scratch. "
@@ -54,8 +54,9 @@ export default function Home() {
         }}
       >
         <p>
-          “I’ve tried to create my own icons in the past but quickly got
-          frustrated and gave up. Now I sell my own custom icon sets online.”
+          “I’ve tried to create my own website for my store in the past but
+          quickly got frustrated and gave up. Now I have my own custom online
+          experience with Napna.”
         </p>
       </Testimonial>
       <Resources />

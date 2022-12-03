@@ -17,16 +17,17 @@ export function FreeChapters() {
           <Pattern className="absolute -top-32 left-0 w-full sm:left-3/4 sm:-top-5 sm:ml-8 sm:w-auto md:left-2/3 lg:left-auto lg:right-2 lg:ml-0 xl:right-auto xl:left-2/3" />
           <div>
             <h2 className="font-display text-5xl font-extrabold tracking-tight text-white sm:w-3/4 sm:text-6xl md:w-2/3 lg:w-auto">
-              Get the free sample chapters
+              Get a free consolation
             </h2>
             <p className="mt-4 text-lg tracking-tight text-blue-200">
-              Enter your email address and I’ll send you a sample from the book
-              containing two of my favorite chapters.
+              Its hard to find a solution that fits all the time or maybe your
+              on the edge. We get that, with a free consolation we can cover all
+              the nooks your business may function in.
             </p>
           </div>
           <form className="lg:pl-16">
             <h3 className="text-base font-medium tracking-tight text-white">
-              Get two free chapters straight to your inbox{' '}
+              Enter your email address and we’ll get in touch.{' '}
               <span aria-hidden="true">&rarr;</span>
             </h3>
             <div className="mt-4 sm:relative sm:flex sm:items-center sm:py-0.5 sm:pr-2.5">
@@ -46,7 +47,10 @@ export function FreeChapters() {
                 color="white"
                 className="mt-4 w-full sm:relative sm:z-10 sm:mt-0 sm:w-auto sm:flex-none"
               >
-                Get free chapters
+                Contact me
+                <div>
+                  <p>jhi</p>
+                </div>
               </Button>
             </div>
           </form>

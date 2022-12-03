@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Button } from '@/components/Button'
 import { GridPattern } from '@/components/GridPattern'
 import { StarRating } from '@/components/StarRating'
-import coverImage from '@/images/cover.png'
+import coverImage from '@/images/phone-frame.svg'
 
 function Testimonial() {
   return (
@@ -13,8 +13,8 @@ function Testimonial() {
       </div>
       <blockquote className="mt-2">
         <p className="font-display text-xl font-medium text-slate-900">
-          “This method of designing icons is genius. I wish I had known this
-          method a lot sooner.”
+          “This method of shopping in-store is genius. I wish I had known this
+          app a lot sooner.”
         </p>
       </blockquote>
       <figcaption className="mt-2 text-sm text-slate-500">
@@ -50,18 +50,18 @@ export function Hero() {
         <div className="bg-white pt-16 lg:col-span-7 lg:bg-transparent lg:pt-0 lg:pl-16 xl:pl-20">
           <div className="mx-auto px-4 sm:px-6 md:max-w-2xl md:px-4 lg:px-0">
             <h1 className="font-display text-5xl font-extrabold text-slate-900 sm:text-6xl">
-              Get lost in the world of icon design.
+              Get lost in the world of brick & mortar.
             </h1>
             <p className="mt-4 text-3xl text-slate-600">
-              A book and video course that teaches you how to design your own
-              icons from scratch.
+              Meh other retail solutions work. Start with you, place the
+              bullseye where it really should be.
             </p>
             <div className="mt-8 flex gap-4">
               <Button href="#free-chapters" color="blue">
-                Get sample chapter
+                Learn more
               </Button>
               <Button href="#pricing" variant="outline" color="blue">
-                Buy book
+                Get started
               </Button>
             </div>
           </div>

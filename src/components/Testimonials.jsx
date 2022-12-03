@@ -17,7 +17,7 @@ const testimonials = [
   [
     {
       content:
-        'Mira’s teaching style is second to none. Everything was easy to follow every step of the way.',
+        'Napna’s employee management style is second to none. Everything was easy to follow every step of the way.',
       author: {
         name: 'Antonio Littel',
         role: 'Frontend Developer',
@@ -26,7 +26,7 @@ const testimonials = [
     },
     {
       content:
-        'Even though I was excited to learn, I was pessimistic that I wouldn’t actually ever get good enough to design my own icons. I was wrong — this book is all I needed.',
+        'Even though I was excited to start, I was pessimistic that I wouldn’t actually ever get to good enough customization to design my own experience. I was wrong — Napna is all I needed.',
       author: {
         name: 'Lynn Nolan',
         role: 'Growth Marketer',
@@ -35,7 +35,7 @@ const testimonials = [
     },
     {
       content:
-        'I’ve been employed as a professional icon designer for years and still learned tons of new tricks that have made my work even better',
+        'I’ve been running a store for years and I am learning tons of new features that have made my store even better',
       author: {
         name: 'Krista Prosacco',
         role: 'Professional Designer',
@@ -46,7 +46,7 @@ const testimonials = [
   [
     {
       content:
-        'I run an ecommerce store selling rare vintage gummy bears and could never find a good gummy bear icon. Now I can design my own in minutes.',
+        'I run an vintage store selling rare vintage furniture and could never find a good solution. Now I can give a personal story every time.',
       author: {
         name: 'Cameron Considine',
         role: 'Entrepreneur',
@@ -141,7 +141,7 @@ export function Testimonials() {
         </h2>
         <p className="mt-4 text-lg tracking-tight text-slate-600">
           I worked with a small group of early access customers to make sure all
-          of the content in the book was exactly what they needed. Hears what
+          of the content in Napna was exactly what they needed. Hear what
           they had to say about the finished product.
         </p>
       </Container>

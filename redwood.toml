@@ -9,7 +9,7 @@
   title = "Napna"
   port = 8910
   apiUrl = "/.netlify/functions"
-  includeEnvironmentVariables = ['STRIPE_PK','STRIPE_WEBHOOK_SK' ,'STRIPE_SK','FIREBASE_API_KEY','FIREBASE_AUTH_DOMAIN,FIREBASE_PROJECT_ID','FIREBASE_STORAGE_BUCKET','FIREBASE_MESSAGING_SENDER_ID','FIREBASE_APP_ID','MEASUREMENT_ID']
+  includeEnvironmentVariables = ['stripe_pk'] # any ENV vars that should be available to the web side, see https://redwoodjs.com/docs/environment-variables#web
 [api]
   port = 8911
 [browser]

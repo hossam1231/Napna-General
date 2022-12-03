@@ -8,88 +8,13 @@ generator client {
   binaryTargets = "native"
 }
 
-model Partner {
-  id                  String       @id @default(cuid())
-  userId              String?      @unique
-  // who is this backstage account belonging to
-  merchant            Merchant[]
-  // who is this merchant account belonging to this allows for one partner to own many stores (merchants)
-  // checks where they work and what they do can also bring up co workers for instant message
-}
-
-model Plan {
-  id                  String       @id @default(cuid())
+model User {
+  id                  String       @id
+  email               String    @unique
   name                String?
-  price               String
-  body                String
+  hashedPassword      String
+  salt                String
+  resetToken          String?
+  resetTokenExpiresAt DateTime?
 }
-
-
-// MERCHANT START
-model Merchant {
-  id                  String       @id @default(cuid())
-  name                String
-  paused              Boolean
-  address             String       @unique
-  postalCode          String
-  partner             Partner      @relation(fields: [partnerId], references: [id])
-  partnerId           String
-  // who owns this shop show private info to them grant admin auto
-  staff               MerchantStaff[]
-  // who works here
-  activity            MerchantActivity[]
-  anouncements        MerchantAnouncements[]
-}
-
-model MerchantAnouncements {
-  id                  String       @id @default(cuid())
-  title               String
-  internal            Boolean
-  body                String
-  createdAt           DateTime     @default(now())
-  department          String
-  published           Boolean      @default(false)
-  merchant            Merchant     @relation(fields: [merchantId], references: [id])
-  merchantId          String
-}
-
-model MerchantActivity {
-  id                  String       @id @default(cuid())
-  createdAt           DateTime     @default(now())
-  title               String
-  description         String
-  body                String
-  published           Boolean      @default(false)
-  merchant            Merchant     @relation(fields: [merchantId], references: [id])
-  merchantId          String
-  firebaseUser        String
-  type                String
-  merchantActivityCategoryId      String
-  classification      String
-  // who in the orginiastion gets to see this
-}
-
-model MerchantActivityCategory {
-  id                  String       @id @default(cuid())
-  title               String
-  icon                String
-  iconFamily          String
-}
-
-model MerchantStaff {
-  id                  String       @id @default(cuid())
-  role                String
-  // acess controls
-  name                String
-  email               String       @unique
-  // what shop
-  merchant            Merchant     @relation(fields: [merchantId], references: [id])
-  merchantId          String
-  classification      String
-  // later make a collected employees for hotswapping
-}
-// MERCHANT END
-
-
-
 

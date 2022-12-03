@@ -80,7 +80,7 @@ For dbAuth to work properly, you need to generate a secret key and save it as an
 environment variable:
 
 ```
-echo "SESSION_SECRET=$(yarn rw g secret --raw)" >> .env
+echo "session_secret=$(yarn rw g secret --raw)" >> .env
 ```
 
 5. Setting up your database
